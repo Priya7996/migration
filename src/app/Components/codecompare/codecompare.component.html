@@ -1,0 +1,162 @@
+<section>
+  <div *ngIf="myLoader" class="spinner">
+    <img src="assets/images/spinner.gif">
+  </div>
+<div class="home-back">
+<a href="http://192.168.1.48:4300/#!/view2"><span ><mat-icon class="back">arrow_back</mat-icon></span>Back</a>
+</div>
+
+<a class="logout" (click)="close()">
+<!-- <i class="fa fa-sign-out" aria-hidden="true"></i> -->
+</a>
+<!-- *ngFor="let country of countries" value= {{country.id}} -->
+<div class="container-fluid">
+<div class="file-path">
+  <h4>{{user_name}}</h4>
+  <div class="filter_field">
+    <mat-form-field appearance="outline">
+      <mat-select placeholder="Select Machine"  required 
+      [(ngModel)]="machine_id" (selectionChange)="code_compare($event.value)">
+        <mat-option *ngFor="let file of reason_response" [value]="file.id">{{file.machine_name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+   <p>  <span>File Path :</span> {{file_status?.file_path}} </p>
+</div>
+<div class="page-title">
+  
+    <h2>File Compare</h2>
+    <button type="submit" (click)="submitComparison()" class="btn btn-primary"  (click)="toggle()" id="bt">{{buttonName}}</button>
+</div>
+
+
+<div class="main-content">
+
+    <form [formGroup]="">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div for="leftContent" class="left_content"> 
+          <div class="input-group">
+              <div class="custom-file">
+                <input type="file"  class="custom-file-input" aria-describedby="inputGroupFileAddon01" (change)="fileUpload($event)">
+                <!-- <label for="inputGroupFile01">{{filName || "Choose file from a master folder"}}</label> -->
+              </div>
+          </div>
+            <div>
+            <!-- <textarea rows="10" cols="50">{{FileText}}</textarea> -->
+            </div>
+          </div>
+         <tda-code-editor
+            [options]="options"
+            [ngModel]="content.leftContent"
+            [name]="'leftContent'"
+            [autoFocus]="true"
+            (focus)="handleChange('left',content.leftContent)"
+            (ngModelChange)="handleChange('left',$event)"
+          ></tda-code-editor> 
+        </div>
+        <div class="form-group col-md-6">
+          <div for="rightContent" class="right_content">
+            <div class="input-group">
+                <div class="custom-file">
+                  <input type="file"  class="custom-file-input" aria-describedby="inputGroupFileAddon01" (change)="fileUpload1($event)">
+                  <!-- <label class="custom-file-label" for="inputGroupFile01">{{filName1 || "Choose file from a slave folder"}}</label> -->
+                </div>
+            </div>
+            <div>
+            <!-- <textarea rows="10" cols="50">{{filetext1}}</textarea> -->
+            </div></div>
+          <tda-code-editor
+            [options]="options"
+            [ngModel]="content.rightContent"
+            [name]="'rightContent'"
+            [autoFocus]="false"
+            (focus)="handleChange('right',content.rightContent)"
+            (ngModelChange)="handleChange('right',$event)"
+          ></tda-code-editor>
+
+          
+        </div>
+        
+      </div>
+      
+    </form>
+     <div class="compare_table" *ngIf="submitted">
+      <td-ngx-text-diff
+        [left]="content.leftContent"
+        [right]="content.rightContent"
+        [loading]="!submitted"
+        [diffContent]="contentObservable$"
+        [synchronizeScrolling]="true"
+        [compareRowsStyle]="{'max-height': '500px', 'overflow': 'auto'}"
+        (compareResults)="onCompareResults($event)"
+      >
+      </td-ngx-text-diff>
+    </div> 
+  </div>
+    <div >
+        <form [formGroup]="login" (ngSubmit)="logintest(login.value)" *ngIf="Compare">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-label">
+                <label class='home-label'>Changed By</label>
+                <mat-form-field>
+                    <input matInput formControlName="name" type="text" placeholder="Enter Your Name">
+                </mat-form-field>
+              </div>
+              <div>
+                <label class='home-label'>Date</label>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]='date' (dateChange)='change($event)' (click)="picker.open()"   [ngModelOptions]="{standalone: true}">
+                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                   <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="input-label">
+                <label class='home-label'>Old Revision Number</label>
+                <mat-form-field>
+                    <input matInput formControlName="old_revision_no" type="text"  (keypress)="keyPress($event)"   placeholder="Enter Your Old Revision Number">
+              </mat-form-field>
+            </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-label">
+                <label class='home-label'>New Revision Number</label>
+                <mat-form-field>
+                      <input matInput formControlName="new_revision_no" (keypress)="keyPress($event)"   type="text" placeholder="Enter Your New Revision Number">
+                </mat-form-field>
+              </div>
+              <div class="input-label">
+                <label class='home-label'>Reason</label>
+                <mat-form-field >
+                     <textarea class="base" matInput  formControlName="reason" type="text"></textarea>
+                  </mat-form-field>
+                </div>
+                <div class="submit-btn">
+                  <button class="btn btn-primary" [disabled]="login.invalid">submit</button>
+                  </div>
+              </div>
+              
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                
+              </div>
+            </div>
+          </div>
+          
+    
+      
+      </form>
+    
+  
+
+</div>
+</div><br>
+<br>
+</section>
+
+
+
+
