@@ -294,11 +294,11 @@
                     <h2>Pulse Coder Temperature</h2>
                     <div class="row_sec temperature">
                       <div class="col brdr_right axis_display">
-                        <div class="gradient-wrapper" *ngClass="{col_sm_4 :machie_status?.axis_tem_count =='3', col_sm_6 :machie_status?.axis_tem_count =='2', col_sm_3 :machie_status?.axis_tem_count =='4', col_sm_2 :machie_status?.axis_tem_count =='5'}" *ngFor="(key,val) in machie_status?.puls_code">
-                            <circle-progress [percent]=val [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="false"
+                        <div class="gradient-wrapper" >
+                            <circle-progress [percent]="100" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="false"
                               [outerStrokeColor]="'#48ba46'" [animation]="true" [animationDuration]="300"></circle-progress>
                         </div>
-                        <p>{{key}}</p>
+                        <p>789</p>
                       </div>
                       <!-- <div class="col axis_display">
                         <div class="gradient-wrapper">

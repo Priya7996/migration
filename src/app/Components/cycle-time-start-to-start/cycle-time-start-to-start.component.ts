@@ -25,6 +25,7 @@ export class CycleTimeStartToStartComponent implements OnInit {
   macname: any;
   shiftname: any;
   showdate: any;
+  shiftNo: any;
   constructor(private nav:NavbarService,private service:CycleStartService,private fb :FormBuilder) {
     this.nav.show();
     this.tenant = localStorage.getItem('tenant_id')
@@ -165,10 +166,9 @@ export class CycleTimeStartToStartComponent implements OnInit {
     this.macname = event;
       
   }
-  getshift(event) {
-    this.shiftname = event;
-      
-  }
+  getshift(shift){
+    this.shiftNo = shift;
+    }
   getdate(event) {
     this.showdate = event;
       console.log(this.showdate);

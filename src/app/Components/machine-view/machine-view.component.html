@@ -1,0 +1,274 @@
+<section class="page" id="page_area">
+    <div class="sec_padding_top">
+        <section class="dashbaord_sec">
+            <div *ngIf="myLoader" class="spinner">
+                <img src="assets/images/spinner.gif">
+            </div>
+            <div class="content-inner active content-dashboard">
+                <div class="container-fluid">
+                    <div class="wrapper_inner">
+                        <div class="mec_head">
+                            <div class="row_sec main_header">
+                                <p class="current_running">
+                                    <i class="material-icons">
+                                        fiber_manual_record
+                                    </i>
+                                    <span>Running</span>
+                                </p>
+                                <div class="col-lg-5 col-md-4 col-xs-12 v_mid">
+                                    <h2 class="title">SBE/TC/BA/M-M123(E) </h2>
+                                    <span class="shift_time">Shift:2(12:00PM - 04:00PM) </span>
+                                </div>
+                                <div class="col-lg-3 col-md-2 col-xs-12 clock_all">
+                                    <div class="clock_top date">
+                                        <h4>
+                                            Date:
+                                            <span> 03-07-2020</span>
+                                        </h4>
+                                    </div>
+                                    <div class="clock_top time">
+                                        <!-- <span>Time:</span> -->
+                                        <h4>
+                                            01:22:49
+                                            <span>PM</span>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-xs-12">
+                                    <div class="mac_ut_holder">
+                                        <h5 class="sub_title"><i class="material-icons">
+                                                access_time
+                                            </i> Current Status</h5>
+                                        <div class="row_sec">
+                                            <div class="col">
+                                                <span class="mac_ut_bar_green"></span>
+                                                <h5>Run Time</h5>
+                                                <div class="mac_ut_time">00:00:00</div>
+                                            </div>
+                                            <div class="col brdr_mid">
+                                                <span class="mac_ut_bar_yellow"></span>
+                                                <h5>Idle Time</h5>
+                                                <div class="mac_ut_time">00:00:00</div>
+                                            </div>
+                                            <div class="col">
+                                                <span class="mac_ut_bar_red"></span>
+                                                <h5>Stop Time</h5>
+                                                <div class="mac_ut_time">00:00:00</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="time_desc">
+                            <p> <b>Operator Name : </b>
+                                <span>
+                                    Name not Entered
+                                </span></p>
+                            <p><b>Last Updated Time : </b> <span>03-07-2020 / 12:54 </span>PM
+                            </p>
+                        </div>
+
+
+                        <!-- main row start -->
+                        <div class="main_row">
+                            <div class="col-lg-4 col-md-12 col-xs-12 main_col">
+                                <div class="gradient-wrapper">
+                                    <div class="circle_progress_wrapper utilization_chart">
+                                        <span>Utilization</span>
+                                        <circle-progress percent="{{machie_status?.utilization}}" radius="100"
+                                            outerStrokeColor="#48ba46" innerStrokeColor="#78542C" animation="true"
+                                            animationDuration="300"></circle-progress>
+                                    </div>
+                                </div>
+                                <div class="bg_grad">
+                                    <h5>6140-(002946140B-30 SFG-TU1)</h5>
+                                </div>
+                                <div class="bg_grad">
+                                    <div class="row_sec">
+                                        <div class="col brdr_right parts_pro">
+                                            <h4>Parts Produced</h4>
+                                            <ul class="parts_produced">
+                                                <li>
+                                                    <h4> MD :
+                                                        <p>
+                                                            <b> {{machie_status?.machine_disply}}</b>
+                                                            <span> Nos </span>
+                                                        </p>
+                                                    </h4>
+                                                </li>
+                                                <li>
+                                                    <h4>C :
+                                                        <p><b> {{machie_status?.parts_count}}</b>
+                                                            <span>
+                                                                Nos
+                                                            </span>
+                                                        </p>
+                                                    </h4>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col brdr_left table-reponsive">
+                                            <table class="table parts_pro_table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Pgm No</th>
+                                                        <th>Parts</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr ng-repeat="(key,val) in datas.job_wise_parts" class="ng-scope">
+                                                        <td>6140</td>
+                                                        <td>12</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                            <div class="col-lg-4 col-md-12 col-xs-12 main_col sec_center">
+                                <div class="bg_grad">
+                                    <div class="mac_alarm">
+                                        <h5 class="brdr_botm"><i class="material-icons">
+                                                notification_important
+                                            </i>Recent Alarms</h5>
+                                        <div class="brdr_top mac_alarm_innr">(X) OVERTRAVEL ( SOFT 1 )</div>
+                                    </div>
+                                </div>
+                                <div class="bg_grad">
+                                    <h2>Servo Load</h2>
+                                    <div class="axis_display">
+                                        <p> x_axis
+                                        </p>
+                                        <span>49 %</span>
+                                    </div>
+                                    <div class="axis two">
+                                        <div>
+                                            <span class="green"></span>
+                                        </div>
+                                        <div>
+                                            <span class="green"></span>
+                                        </div>
+                                        <div>
+                                            <span class="green"></span>
+                                        </div>
+                                    </div>
+                                    <div class="axis_display">
+                                        <p> z_axis
+                                        </p>
+                                        <span>47 %</span>
+                                    </div>
+                                    <div class="axis two">
+                                        <div>
+                                            <span class="green"></span>
+                                        </div>
+                                        <div>
+                                            <span class="green"></span>
+                                        </div>
+                                        <div>
+                                            <span class="green"></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="speed_sec">
+                                    <figure class="highcharts-figure">
+                                      <div id="container" class="chart-container"></div>
+                                      <div id="container2" class="chart-container"></div>
+                                    </figure>
+                                  </div>
+
+                            </div>
+
+                            <div class="col-lg-4 col-md-12 col-xs-12 main_col sec_last">
+                                <div class="bg_grad donut_small bg_grad_temp time_sec">
+                                    <div class="mac_ut">
+                                        <h5>Last Cycle time</h5>
+                                        <span class="mac_ut_time">00:00:00</span>
+                                    </div>
+                                    <div class="mac_ut brdr_mid">
+                                        <h5>Last cutting time</h5>
+                                        <span class="mac_ut_time">00:00:00</span>
+                                    </div>
+                                    <div class="mac_ut">
+                                        <h5>total run time</h5>
+                                        <span class="mac_ut_time">00:00:00</span>
+                                    </div>
+                                </div>
+                                <div class="bg_grad donut_small bg_grad_temp">
+                                    <h2>Pulse Coder Temperature</h2>
+                                    <div class="row_sec temperature">
+                                        <div class="col brdr_right axis_display">
+                                            <div class="gradient-wrapper pulse_coder_chart">
+                                                <circle-progress [percent]="100" [radius]="100" [outerStrokeWidth]="16"
+                                                    [innerStrokeWidth]="false" [outerStrokeColor]="'#48ba46'"
+                                                    [animation]="true" [animationDuration]="300"></circle-progress>
+                                            </div>
+                                            <p>x-axis</p>
+                                        </div>
+                                        <!-- <div class="col axis_display">
+                              <div class="gradient-wrapper">
+                                <circle-progress [percent]="100" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="false"
+                                    [outerStrokeColor]="'#48ba46'" [animation]="true" [animationDuration]="300"></circle-progress>
+                              </div>
+                              <p>y_axis</p>
+                            </div> -->
+                                    </div>
+                                </div>
+                                <div class="bg_grad donut_small bg_grad_temp">
+                                    <h2>Servo Motor Temperature</h2>
+                                    <div class="row_sec temperature">
+                                        <div class="col brdr_right axis_display">
+                                            <div class="gradient-wrapper servo_motor_chart">
+                                                <circle-progress [percent]="100" [radius]="100" [outerStrokeWidth]="16"
+                                                    [innerStrokeWidth]="false" [outerStrokeColor]="'#48ba46'"
+                                                    [animation]="true" [animationDuration]="300"></circle-progress>
+                                            </div>
+                                            <p>x_axis</p>
+                                        </div>
+                                        <div class="col axis_display">
+                                            <div class="gradient-wrapper servo_motor_chart">
+                                                <circle-progress [percent]="100" [radius]="100" [outerStrokeWidth]="16"
+                                                    [innerStrokeWidth]="false" [outerStrokeColor]="'#48ba46'"
+                                                    [animation]="true" [animationDuration]="300"></circle-progress>
+                                            </div>
+                                            <p>y_axis</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="bg_grad donut_small bg_grad_temp">
+                                    <h2>Spindle</h2>
+                                    <div class="row_sec temperature">
+                                        <div class="col brdr_right axis_display">
+                                            <div class="gradient-wrapper">
+                                                <circle-progress [percent]="100" [radius]="100" [outerStrokeWidth]="16"
+                                                    [innerStrokeWidth]="false" [outerStrokeColor]="'#48ba46'"
+                                                    [animation]="true" [animationDuration]="300"></circle-progress>
+                                            </div>
+
+                                            <p>Load</p>
+                                        </div>
+                                        <div class="col axis_display">
+                                            <div class="gradient-wrapper">
+                                                <circle-progress [percent]="100" [radius]="100" [outerStrokeWidth]="16"
+                                                    [innerStrokeWidth]="false" [outerStrokeColor]="'#48ba46'"
+                                                    [animation]="true" [animationDuration]="300"></circle-progress>
+                                            </div>
+                                            <p>Motor Temperature</p>
+                                        </div>
+                                    </div>
+
+                                </div> -->
+
+
+                            </div>
+                        </div>
+                        <!-- main row end -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>

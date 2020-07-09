@@ -22,8 +22,8 @@
           </div>
           <div class="filter_field">
             <mat-form-field appearance="outline">
-              <mat-select placeholder="Select Shift"  (selectionChange)="getshift($event.value)"   matNativeControl required formControlName="shift_id">
-                <mat-option *ngFor="let shift of shift_response" [value]="shift">{{shift.shift_no}} </mat-option>
+              <mat-select placeholder="Select Shift"   matNativeControl required formControlName="shift_id">
+                <mat-option *ngFor="let shift of shift_response" (click)="getshift(shift.shift_no)" [value]="shift">{{shift.shift_no}} </mat-option>
               </mat-select>
             </mat-form-field>
           </div>
