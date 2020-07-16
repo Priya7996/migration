@@ -42,6 +42,7 @@ const routes: Routes = [
   { path: 'device_registration', loadChildren: () => import('./Components/device-registration/device-registration.module').then(m => m.DeviceRegistrationModule) },
   { path: 'device_details', loadChildren: () => import('./Components/device-details/device-details.module').then(m => m.DeviceDetailsModule) },
   { path: 'machine_view', loadChildren: () => import('./Components/machine-view/machine-view.module').then(m => m.MachineViewModule) },
+  { path: 'machine_details', loadChildren: () => import('./Components/machine-details/machine-details.module').then(m => m.MachineDetailsModule) },
   
 ];
 
