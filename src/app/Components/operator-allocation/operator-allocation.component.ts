@@ -118,7 +118,7 @@ export class Add {
   
   }
 
-  onNoClick(): void {
+  onNoClick() {
     this.dialogRef.close();
   }
   ngOnInit()

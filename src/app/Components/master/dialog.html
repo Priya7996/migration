@@ -20,7 +20,7 @@
                   </div>
                 <mat-form-field>
                     <mat-label>User Name</mat-label>
-                    <input matInput formControlName="user" type="text">
+                    <input matInput formControlName="user_name" type="text">
                 </mat-form-field>
                 <mat-form-field>
                     <mat-label>Revision Number</mat-label>
@@ -38,14 +38,18 @@
                         </e-presets>
                     </ejs-daterangepicker>
                 </div>
-                <mat-form-field class="upload_file">
+                <!-- <mat-form-field class="upload_file">
                     <input matInput placeholder="Choose File"
                     (click)="selectAssetFile.click()" [readonly]="true">
                     <mat-icon matSuffix class="upload_files">cloud_upload</mat-icon>
                     </mat-form-field>
                     <input #selectAssetFile type='file' (change)="upload($event.target.files)" 
-                    style="display: none;">
+                    style="display: none;"> -->
 
+
+                    <div class="form-group">
+                        <label for="file">Choose File</label><br /> <input type="file" id="file" (change)="fileUpload1($event)">
+                      </div>
                 <!-- <div>
                     <input type="file" (change)="upload($event.target.files)" />
                 </div> -->

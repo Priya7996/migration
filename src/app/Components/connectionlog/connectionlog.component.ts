@@ -11,26 +11,37 @@ import { untilDestroyed } from 'ngx-take-until-destroy';
 export class ConnectionlogComponent implements OnInit {
   displayedColumns: string[] = ['position','date','time','status'];
   displayedColumns1: string[] = ['position','date','time','machinename','status'];
+  powerconnected:string[] = ['position','date','time','status']
 
   dataSource = new MatTableDataSource();
   dataSource1 = new MatTableDataSource();
+  power = new MatTableDataSource();
   
   public dolly = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
 
+  
   public dongly = (value: string) => {
     this.dataSource1.filter = value.trim().toLocaleLowerCase();
+  }
+
+  public doblly = (value: string) => {
+    this.power.filter = value.trim().toLocaleLowerCase();
   }
 tenant:any;
 myLoader = false;
 myLoader1 = false;
 searchText:any
+ploh:any;
+
 connectionStatus:any[]=[];
 powerStatus:any[]=[];
 data:any;
 connectionlog: any;
   log: unknown[];
+  logfh: any;
+  logjvh: any;
   constructor(private nav:NavbarService,private service:LogService) {
     this.nav.show();
     this.tenant=localStorage.getItem('tenant_id')
@@ -43,11 +54,16 @@ connectionlog: any;
     this.service.internet(this.tenant).pipe(untilDestroyed(this)).subscribe(res =>{
       this.myLoader=false
       this.connectionlog=res;
+      console.log(res)
       this.dataSource=new MatTableDataSource(this.connectionlog)
       for(let i = 0; i <= res.length; i++){ 
         console.log(res[i].status)
         if(res[i].status != 'Connected'){
         this.connectionStatus.push(res[i]);
+        console.log(this.connectionStatus)
+        this.logfh = this.connectionStatus
+        console.log(this.logfh)
+        this.power=new MatTableDataSource(this.logfh)
         }else{
          this.powerStatus.push(res[i])
          }

@@ -166,7 +166,8 @@ export class Popup {
   loginform() {
     console.log(this.login.value);
     this.filepath.popup(this.login.value).pipe(untilDestroyed(this)).subscribe(res => {
-      console.log(res);
+      console.log(res.status);
+      Swal.fire(res.status)
       
       this.dialogRef.close();
   })

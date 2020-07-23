@@ -21,16 +21,14 @@
           </mat-select>
         </mat-form-field>
 
-        <!-- <mat-form-field>
+        <mat-form-field>
           <mat-label>Reason</mat-label>
           <input matInput formControlName="reason" type="text">
         </mat-form-field>
-        <div>
-          <input type="file" (change)="upload($event)" />
-        </div> -->
+        
         <div class="form-button text-right">
-          <button mat-raised-button [disabled]="login.invalid" class="filter_btn btn_orange">
-            Save</button>
+          <!-- <button mat-raised-button [disabled]="login.invalid" class="filter_btn btn_orange">
+            Save</button> -->
           <button mat-raised-button (click)="onNoClick()" class="filter_btn btn_default ml-16">Close</button>
         </div>
       </form>

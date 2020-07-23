@@ -23,7 +23,7 @@ export class SidebarComponent implements OnInit,OnChanges {
   // first: any;
   // last: any;
     hide: boolean = true;
-
+    flock: boolean = true;
   constructor(private nav: NavbarService, private route: Router,private dialog:MatDialog) { }
 
   ngOnInit() {
@@ -131,6 +131,16 @@ export class editComponent {
   }
   editform() {
     this.service.editvalue(this.tenant,this.edit1.value).subscribe(res => {
+      console.log(res)
+      if(res === true)
+      {
+        Swal.fire("Updated Succesfully !")
+      }
+      else{
+        Swal.fire("Updated Sucessfully !")
+      }
+      this.dialogRef.close();
+      this.ngOnInit();
       })
   }
   

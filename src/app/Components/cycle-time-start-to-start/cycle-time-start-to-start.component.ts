@@ -42,11 +42,8 @@ export class CycleTimeStartToStartComponent implements OnInit {
     this.service.machine( this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
         console.log(res);
         this.machine_response=res;
-        console.log(this.machine_response[0].machine_id)
-        console.log(localStorage.getItem('token'));
-        this.login.patchValue({
-            machine_id: this.machine_response[0].machine_id
-        });
+        
+       
 
       
     })
@@ -175,19 +172,18 @@ export class CycleTimeStartToStartComponent implements OnInit {
       
   }
   time_start_view(){
-          
+           
     console.log(this.login.value);
-    // let register = this.login.value;
-    // register.tenant_id = this.tenant;
-    let register = {'machine_id': this.macname['id'], 'shift_id':this.shiftname['id'], 'date':this.login.value['date']}
-    register['tenant_id'] = this.tenant;
+   let register = this.login.value;
+     register.tenant_id = this.tenant; 
+    
     console.log(register);
    this. myLoader = true;
 
     this.service.cycle_start_to_start(register).pipe(untilDestroyed(this)).subscribe(res => {
       console.log(res);
       this.myLoader = false;
-
+ 
       this.chartOptions = {
         chart: {
           type: 'bar'

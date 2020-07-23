@@ -28,9 +28,11 @@
                         (keypress)="keyPress($event)" type="text" required>
                 </mat-form-field>
 
-                <mat-form-field>
+                <mat-form-field>   
                     <mat-label>Old Password</mat-label>
-                    <input matInput formControlName="old_password" type="password" [(ngModel)]="oldPassword" (change)="checkPassword()" required>
+                    <input matInput formControlName="old_password" [type]=" flock ? 'text' : 'password'" [(ngModel)]="oldPassword" (change)="checkPassword()" required>
+                    <mat-icon class="eye" matSuffix (click)="flock = !flock">{{flock ? 'visibility' : 'visibility_off'}}
+                    </mat-icon> 
                 </mat-form-field>
 
                 <mat-form-field>
