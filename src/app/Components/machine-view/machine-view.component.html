@@ -13,24 +13,33 @@
                                     <i class="material-icons">
                                         fiber_manual_record
                                     </i>
-                                    <span>Running</span>
+                                    <span class="running">
+                                    </span>
+                                    <span class="mac_ut_bar_red" *ngIf="machie_status?.machine_status =='100'">Stop
+                                    </span>
+                                    <span class="running" *ngIf="machie_status?.machine_status =='3'">Running
+                                    </span>
+                                    <span class="machine_status" *ngIf="machie_status?.machine_status !='3' && machie_status?.machine_status !='100' && machie_status?.machine_status != null " >Idle
+                                    </span>
+                                    <span class="machine_status" *ngIf="machie_status?.machine_status =='null'">No Data
+                                    </span>
                                 </p>
                                 <div class="col-lg-5 col-md-4 col-xs-12 v_mid">
-                                    <h2 class="title">SBE/TC/BA/M-M123(E) </h2>
-                                    <span class="shift_time">Shift:2(12:00PM - 04:00PM) </span>
+                                    <h2 class="title">{{machie_status?.machine_name}} </h2>
+                                    <span class="shift_time">{{machie_status?.shift_no}}({{machie_status?.shift_time}}) </span>
                                 </div>
                                 <div class="col-lg-3 col-md-2 col-xs-12 clock_all">
                                     <div class="clock_top date">
                                         <h4>
                                             Date:
-                                            <span> 03-07-2020</span>
+                                            <span> {{today | date:'dd-MM-yyyy'}}</span>
                                         </h4>
                                     </div>
                                     <div class="clock_top time">
                                         <!-- <span>Time:</span> -->
                                         <h4>
-                                            01:22:49
-                                            <span>PM</span>
+                                           
+                                            {{today | date:'h:mm:ss a'  }}
                                         </h4>
                                     </div>
                                 </div>
@@ -43,17 +52,17 @@
                                             <div class="col">
                                                 <span class="mac_ut_bar_green"></span>
                                                 <h5>Run Time</h5>
-                                                <div class="mac_ut_time">00:00:00</div>
+                                                <div class="mac_ut_time">{{machie_status?.run_time}}</div>
                                             </div>
                                             <div class="col brdr_mid">
                                                 <span class="mac_ut_bar_yellow"></span>
                                                 <h5>Idle Time</h5>
-                                                <div class="mac_ut_time">00:00:00</div>
+                                                <div class="mac_ut_time">{{machie_status?.idle_time}}</div>
                                             </div>
                                             <div class="col">
                                                 <span class="mac_ut_bar_red"></span>
                                                 <h5>Stop Time</h5>
-                                                <div class="mac_ut_time">00:00:00</div>
+                                                <div class="mac_ut_time">{{machie_status?.stop_time}}</div>
                                             </div>
                                         </div>
                                     </div>
@@ -63,9 +72,9 @@
                         <div class="time_desc">
                             <p> <b>Operator Name : </b>
                                 <span>
-                                    Name not Entered
+                                   {{machie_status?.operator_allocation}}
                                 </span></p>
-                            <p><b>Last Updated Time : </b> <span>03-07-2020 / 12:54 </span>PM
+                            <p><b>Last Updated Time : </b> <span>{{machie_status?.last_update | date:'dd-MM-yyyy ; HH:mm:ss a'}} </span>
                             </p>
                         </div>
 
@@ -133,7 +142,7 @@
                                         <h5 class="brdr_botm"><i class="material-icons">
                                                 notification_important
                                             </i>Recent Alarms</h5>
-                                        <div class="brdr_top mac_alarm_innr">(X) OVERTRAVEL ( SOFT 1 )</div>
+                                        <div class="brdr_top mac_alarm_innr"> {{machie_status?.alarm}}</div>
                                     </div>
                                 </div>
                                 <div class="bg_grad">
@@ -185,15 +194,15 @@
                                 <div class="bg_grad donut_small bg_grad_temp time_sec">
                                     <div class="mac_ut">
                                         <h5>Last Cycle time</h5>
-                                        <span class="mac_ut_time">00:00:00</span>
+                                        <span class="mac_ut_time">{{machie_status?.cycle_time}}</span>
                                     </div>
                                     <div class="mac_ut brdr_mid">
                                         <h5>Last cutting time</h5>
-                                        <span class="mac_ut_time">00:00:00</span>
+                                        <span class="mac_ut_time">{{machie_status?.cutting_time}}</span>
                                     </div>
                                     <div class="mac_ut">
                                         <h5>total run time</h5>
-                                        <span class="mac_ut_time">00:00:00</span>
+                                        <span class="mac_ut_time">{{machie_status?.total_run_time}}</span>
                                     </div>
                                 </div>
                                 <div class="bg_grad donut_small bg_grad_temp">

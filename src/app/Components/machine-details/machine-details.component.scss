@@ -1,0 +1,197 @@
+
+::ng-deep tspan {
+    font-weight: 600;
+    fill: #626262;
+}
+
+#page_area {
+    &.page{
+        background-color: #fafafa;
+        .page_title_sec {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            border-bottom: 1px solid #DEDEDE;
+            margin-bottom: 15px;
+            .table_search{
+                .form-control {
+                    height: 35px;
+                }
+            }
+            .sub_title {
+                font-size: 18px;
+                font-weight: 600;
+                color: #1A1F3D;
+                margin-bottom: 15px;
+            }
+            .machine_identifier{
+                list-style: none;
+                display: flex;
+                li{
+                    display: flex;
+                    align-items: center;
+                    margin-left: 5px;
+                   .add_btn{
+                    background-color: #fb8c0c;
+                    color:#fff;
+                   }
+                }
+            }
+        }
+
+        #machine_details_sec{
+            &.machines_details{
+                .machine_item_details{
+                    display: flex;
+                    border: 1px solid #DEDEDE;
+                    .machine_img{
+                        display: flex;
+                        align-items: center;
+                        background: #fff;
+                        padding: 15px;
+                        img{
+                            width: 180px;
+                            min-height: 150px;
+                            height: 150px;
+                            object-fit: contain;
+                            object-position: center;
+                        }
+                    }
+                    .machine_info{
+                        background: #F1F5F4;
+                        padding: 10px;
+                        border-left: 1px solid #DEDEDE;
+                        width: 100%;
+                        h3{
+                            font-size: 16px;
+                            color: #6B6A6A;
+                            text-transform: capitalize;
+                            font-weight: 300;
+                            margin-bottom: 15px;
+                        }
+                        .info_box{
+                            background: #ffffff;
+                            padding: 10px;
+                            position: relative;
+                            border-left: 8px solid #DBDDDD;
+                            display: flex;
+                            align-items: flex-end;
+                            justify-content: space-between;
+                            .status{
+                                display: flex;
+                                align-items: center;
+                                top: 10px;
+                                right: 10px;
+                                position: absolute;
+                                i{
+                                    font-size: 16px;
+                                    padding-right: 4px;
+                                }
+                                span{
+                                    font-size: 12px;
+                                    text-transform: capitalize;
+                                }
+                                &.active{
+                                    i{
+                                        color: #11d525;
+                                    }
+                                   
+                                }
+                            }
+                            .left_side{
+                                .info_title{
+                                    h2{
+                                        font-size: 16px;
+                                        text-transform: uppercase;
+                                        color: #1A1F3D;
+                                        margin-bottom: 2px;
+                                        font-weight: 600;
+                                    }
+                                    p{
+                                        font-size: 12px;
+                                        text-transform: uppercase;
+                                        color: #1A1F3D;
+                                        span{
+                                            font-size: 12px;
+                                            font-weight: 600;  
+                                        }
+                                    }
+                                }
+                                .assigned_info{
+                                    .assigned_box{
+                                        border: 1px solid #F7941D;
+                                        display: flex;
+                                        align-items: center;
+                                        padding: 10px;
+                                        color: #F7941D;
+                                        margin: 35px 0 0px 0;
+                                        i{
+                                            border: 1px solid #F7941D;
+                                            font-size: 12px;
+                                            padding: 2px;
+                                        }
+                                        h4{
+                                            font-size: 14px;
+                                            font-weight: 400;
+                                            margin: 0;
+                                        }
+                                        span{
+                                            color: #989898;
+                                            font-size: 12px;
+                                        }
+                                    }
+                                    .view_link{
+                                        color: #5080B1;
+                                        font-size: 12px;
+                                        text-decoration: underline;
+                                    }
+                                }
+                                .right_side{
+                                    display: flex;
+                                    align-items: flex-end;
+                                    .progress_bar{
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.spinner {
+    background: #262932;
+    height: 100vh;
+    opacity: 0.9;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    z-index: 999;
+  }
+  
+  .spinner img {
+    width: 90px;
+    margin-top: -130px;
+  }
+  
+
+// Responsive Style
+@media only screen and (max-width:600px) {
+    .machine_item_details{
+        flex-wrap: wrap;
+    }
+    .info_box{
+        flex-wrap: wrap;
+    }
+    .machine_img{
+        width: 100%;
+        justify-content: center;
+    }
+}

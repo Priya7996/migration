@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarService} from '../../Nav/navbar.service';
+import { ActivatedRoute } from '@angular/router';
+import { MachineViewService} from '../../Service/app/machine-view.service';
 
 declare var Highcharts: any;
 
@@ -11,10 +13,21 @@ declare var Highcharts: any;
 })
 export class MachineViewComponent implements OnInit {
   Highcharts = Highcharts;
-  constructor(private nav:NavbarService) {
-    this.nav.show()
+  myLoader = false;
+  constructor(private nav:NavbarService,private route:ActivatedRoute,private service:MachineViewService) {
+    this.nav.show();
+    setInterval(() => {this.today = Date.now()}, 1);
+    console.log(localStorage.getItem('machine_id'))
+    this.machine = localStorage.getItem('machine_id');
+    console.log(this.machine)
+    this.myLoader = true;
+    this.service.dashboard_full(this.machine).subscribe(res =>{
+      this.machie_status =res;
+      this.myLoader = false;
+      console.log(res);
+    });
    }
-
+   today: number = Date.now();
   ngOnInit() {
     
 
