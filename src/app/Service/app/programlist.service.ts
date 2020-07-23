@@ -15,6 +15,9 @@ export class  ProgramListService {
   machine(tenantId):Observable<any>{
     return this.http.get('machines?tenant_id='+tenantId)
   }
+  file_upload(value):Observable<any>{
+    return this.http.post('file_upload',value)
+  }
   // filelist(id):Observable<any>{
   //   return this.http.get('file_list?id='+id)
   // }

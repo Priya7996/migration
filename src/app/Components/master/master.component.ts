@@ -113,6 +113,13 @@ export class Dialog {
   onNoClick(): void {
     this.dialogRef.close();
   }
+
+  fileUpload1(event){
+    this.file2 = event.target.files[0];
+    console.log(this.file2);
+    
+    
+}
   ngOnInit()
   {
     this.test=this.fb.group ({
@@ -135,14 +142,32 @@ export class Dialog {
   {
     console.log(this.test.value);
     this.test.reset();
+
+    var fd = new FormData();
+    fd.append('machine_id', this.test.value.machine_id);
+    // fd.append('user_id', this.sample_test.user_id);
+    fd.append('user_name', this.test.value.user_name);
+    fd.append('file',this.file2);
+    fd.append('date',this.date);
+
+    console.log(fd)
+
+    this.service.file_upload(fd).pipe(untilDestroyed(this)).subscribe(res =>{
+      console.log(res)
+
+    })
+
+    // fd.append('file_name', this.filName);
+    // fd.append('old_revision_no', this.login.value.old_revision_no);
+    // fd.append('new_revision_no', this.login.value.new_revision_no);
   }
-  keyPress(event: any) {
-    const pattern = /[0-9\+\-\ ]/;
-    let inputChar = String.fromCharCode(event.charCode);
-    if (event.keyCode != 8 && !pattern.test(inputChar)) {
-    event.preventDefault();
-    }
-   }
+  // keyPress(event: any) {
+  //   const pattern = /[0-9\+\-\ ]/;
+  //   let inputChar = String.fromCharCode(event.charCode);
+  //   if (event.keyCode != 8 && !pattern.test(inputChar)) {
+  //   event.preventDefault();
+  //   }
+  //  }
    ngOnDestroy(){
 
   }
