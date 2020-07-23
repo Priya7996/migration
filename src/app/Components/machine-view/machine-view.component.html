@@ -126,7 +126,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr ng-repeat="(key,val) in datas.job_wise_parts" class="ng-scope">
+                                                    <tr  class="ng-scope">
                                                         <td>6140</td>
                                                         <td>12</td>
                                                     </tr>
@@ -147,38 +147,22 @@
                                 </div>
                                 <div class="bg_grad">
                                     <h2>Servo Load</h2>
-                                    <div class="axis_display">
-                                        <p> x_axis
-                                        </p>
-                                        <span>49 %</span>
-                                    </div>
-                                    <div class="axis two">
-                                        <div>
-                                            <span class="green"></span>
-                                        </div>
-                                        <div>
-                                            <span class="green"></span>
-                                        </div>
-                                        <div>
-                                            <span class="green"></span>
-                                        </div>
-                                    </div>
-                                    <div class="axis_display">
-                                        <p> z_axis
-                                        </p>
-                                        <span>47 %</span>
-                                    </div>
-                                    <div class="axis two">
-                                        <div>
-                                            <span class="green"></span>
-                                        </div>
-                                        <div>
-                                            <span class="green"></span>
-                                        </div>
-                                        <div>
-                                            <span class="green"></span>
-                                        </div>
-                                    </div>
+
+
+                                    <div style="font-size:14px; height: 227px">
+                                        <div *ngFor = "let mach of testgokul | keyvalue"> {{mach.key }}
+                                          <span class="axis_txt float-right">{{mach.value}} %</span>
+
+                                           <div *ngFor = "let mach of repeatchart; index as keyvalue" style="display: block;"></div>
+                                                   
+                                            <div class="axis" [ngClass]="{'ax_three' :testgokul.axis_tem_count == null, 'ax_three' :testgokul.axis_tem_count =='3', 'two' :testgokul.axis_tem_count =='2', 'sd' :testgokul.axis_tem_count =='4', 'sdj' :testgokul.axis_tem_count =='5'}">
+                                                <div *ngFor="let no of repeatchart; let i = index" [attr.data-index]="i">
+                                             <span [ngClass]="no < 100 ? ( no < 80 ? 'green' : 'yellow' ) : 'red'"></span>
+                                           </div>
+                                          </div>
+                                        </div> 
+                                      </div>
+                                    
                                 </div>
 
                                 <div class="speed_sec">

@@ -9,7 +9,6 @@ import { Router, RouterModule } from '@angular/router';
   styleUrls: ['./machine-details.component.scss']
 })
 export class MachineDetailsComponent implements OnInit {
-  dashboard:any;
   machine_response:any;
   tenant: string;
   myLoader = false;
