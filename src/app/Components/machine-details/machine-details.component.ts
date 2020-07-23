@@ -20,7 +20,7 @@ export class MachineDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.myLoader = true;
-    this.service.dashboard(this.tenant).subscribe(res =>{
+    this.service.dashboard_lock(this.tenant).subscribe(res =>{
       console.log(res);
       this.myLoader = false;
       this.machine_response=res;
