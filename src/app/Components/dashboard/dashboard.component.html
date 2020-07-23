@@ -14,15 +14,19 @@
               </i>
             </a>
             <div>
-              <div class="mac_stat" *ngFor = "let machine of machine_response?.data | keyvalue">
+              <div class="mac_stat" *ngFor = "let machine of machine_response.data | keyvalue">
             <h1>{{machine.key}} </h1>
-
-            <ul class="mac_list">
+            <!-- <div *ngFor = "let test of machine_response.count | keyvalue">
+              {{test.value.running | json }}
+            </div> -->
+            <div *ngFor = "let ma of machine_response.count | keyvalue">
+            <ul class="mac_list" >
               <li><a>All ({{machine.value.length}})</a></li>
-              <li><a>Running ({{machine?.running || 0}})</a></li>
-              <li><a>Idle ({{machine?.idle1 || 0}})</a></li>
-              <li><a>Stop ({{machine?.stop || 0}})</a></li>
+              <li><a>Running ({{ma.value.running || 0}})</a></li>
+              <li><a>Idle ({{ ma.value.idle1 || 0}})</a></li>
+              <li><a>Stop ({{ma.value.stop || 0}})</a></li>
             </ul>
+          </div>
             <div class="clearfix"></div>
             <ul class="mac_disp" *ngFor ="let mac of machine.value">
               <li (click)="activeclick(mac.machine_id)"><a *ngIf="mac.machine_status =='3'"><img src="../../../assets/images/machine_running.png">

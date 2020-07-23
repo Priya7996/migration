@@ -45,16 +45,13 @@ connectionlog: any;
       this.connectionlog=res;
       this.dataSource=new MatTableDataSource(this.connectionlog)
       for(let i = 0; i <= res.length; i++){ 
-        console.log(res[i].status)
-        if(res[i].status != 'Connected'){
+        if(this.connectionlog.status != 'Connected'){
         this.connectionStatus.push(res[i]);
         }else{
          this.powerStatus.push(res[i])
          }
         
     }
-    // console.log( this.powerStatus)
-    // console.log( this.connectionStatus)
     })
   
 
