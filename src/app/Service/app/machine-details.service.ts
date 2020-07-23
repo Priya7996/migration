@@ -12,7 +12,7 @@ export class MachineDetailsService {
 
   tenantId = this.token.getTenantID();
 
-  dashboard(tenant_id):Observable<any>{
+  dashboard_lock(tenant_id):Observable<any>{
     return this.http.get('latest_dashboard?tenant_id='+tenant_id)
   }
 }

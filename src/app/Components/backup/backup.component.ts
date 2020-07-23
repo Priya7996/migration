@@ -57,9 +57,9 @@ export class BackupComponent implements OnInit {
      this. myLoader = false;
       this.backup=res;
       this.dataSource=new MatTableDataSource(this.backup)
-      if (res['status'] != null) {
-        Swal.fire(res['status'])
-      }
+      // if (res['status'] != null) {
+      //   Swal.fire(res['status'])
+      // }
     })   
   }
   testform(val)
@@ -78,7 +78,7 @@ export class Backup {
   test:FormGroup;
   machine_response:any;
   constructor(public dialogRef: MatDialogRef<Backup>,@Inject(MAT_DIALOG_DATA) public data: string,private fb:FormBuilder) {
-    this.tenant = localStorage.getItem('tenant_id')    
+    // this.tenant = localStorage.getItem('tenant_id')    
   }
 
   onNoClick(): void {
@@ -91,11 +91,11 @@ export class Backup {
 
     })
 
-    this.service.machine_lock( this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
-      console.log(res);
-      this.machine_response=res;
+    // this.service.machine_lock( this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
+    //   console.log(res);
+    //   this.machine_response=res;
       
-    });
+    // });
   }
   testform(val)
   { 

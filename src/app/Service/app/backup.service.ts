@@ -16,7 +16,7 @@ export class BackupService {
   display_reason(id):Observable<any>{
     return this.http.get('backup_file_list?id='+id)
   }
-  machine_lock(tenantId):Observable<any>{
-    return this.http.get('machines?tenant_id='+tenantId)
-  }
+  // machine_lock(tenantId):Observable<any>{
+  //   return this.http.get('machines?tenant_id='+tenantId)
+  // }
 }
