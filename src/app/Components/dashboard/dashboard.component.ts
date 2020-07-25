@@ -16,6 +16,8 @@ export class DashboardComponent implements OnInit {
   machie_status:any;
   myLoader = false;
   status:any;
+  machie_status_new:any;
+  machie_status_val:any;
   constructor(private nav:NavbarService,private service:DashboardService) {
     this.nav.show()
     setInterval(() => {this.today = Date.now()}, 1);
@@ -24,32 +26,34 @@ export class DashboardComponent implements OnInit {
   }
   today: number = Date.now();
 
-  ngOnInit() {
-   this.myLoader = true;
-    this.service.dashboard(this.tenant).subscribe(res =>{
-      console.log(res);
-      this.myLoader = false;
-      this.machine_response=res;
-      // if(this.machine_response.data['Unit - 1'][0]['machine_status']==100){
-      //   this.status = 'Stop';
-      // }else if(this.machine_response.data['Unit - 1'][0]['machine_status']==3){
-      //   this.status = 'Running';  
-      // }
-      // else if(this.machine_response.data['Unit - 1'][0]['machine_status']!=null){
-      //   this.status = 'Idle';  
-      // }else if(this.machine_response.data['Unit - 1'][0]['machine_status']==null){
-      //   this.status = 'No Data';  
-      // }
-      console.log(this.machine_response)
-      console.log(this.machine_response.data['Unit - 1'][0]['machine_id'])
-      this.service.dashboard_full(this.machine_response['data']['Unit - 1'][0]['machine_id']).subscribe(res =>{
-      this.machie_status =res;
-        this.myLoader = false;
-      console.log(res);
-  
-    
-
-  // The speed gauge
+  ngOnInit() { 
+    this.machie_status_new = [{"data":{"Unit - 1":[{"tenant_name":"Bakgiyam","unit":"Unit - 1","mac_name":"SBE/TC/BA/M-M123(E)","machine_id":6,"machine_status":3,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 1","mac_name":"SBE/TC/BA/M-M124(E)","machine_id":7,"machine_status":1,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 1","mac_name":"SBE/VMC/BA/M-M029(E)","machine_id":8,"machine_status":3,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 1","mac_name":"SBE/HMC/BA/M-M107(E)","machine_id":9,"machine_status":100,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 1","mac_name":"SBE/HMC/BA/M-M027(E)","machine_id":35,"machine_status":100,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 1","mac_name":"SBE/VMC/BA/M-M028(E)","machine_id":72,"machine_status":3,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 1","mac_name":"SBE/VMC/BA/M-M108(E)","machine_id":81,"machine_status":3,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 1","mac_name":"SBE/VMC/BA/M-M120(R)","machine_id":32,"machine_status":1,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 1","mac_name":"SBE/HMC/BA/M-M008(R)","machine_id":33,"machine_status":null,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 1","mac_name":"SBE/VMC/BA/M-M021(R)","machine_id":36,"machine_status":null,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 1","mac_name":"SBE/TC/BA/M-M010(R)","machine_id":69,"machine_status":1,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 1","mac_name":"SBE/HMC/BA/M-M132(R)","machine_id":71,"machine_status":3,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"}],"Unit - 2":[{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/TC/BA/M-M001(E)","machine_id":46,"machine_status":null,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/VTL/BA/M-M032(E)","machine_id":47,"machine_status":null,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/TC/BA/M-M034(E)","machine_id":49,"machine_status":null,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/TC/BA/M-M011(E)","machine_id":74,"machine_status":null,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/VTL/BA/M-M031(E)","machine_id":75,"machine_status":null,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/TC/BA/M-M033(E)","machine_id":76,"machine_status":null,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/TC/BA/M-M105(E)","machine_id":77,"machine_status":null,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/TC/BA/M-M106(E)","machine_id":78,"machine_status":null,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/TC/BA/M-M119(E)","machine_id":79,"machine_status":null,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/TC/BA/M-M122(E)","machine_id":80,"machine_status":null,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/VMC/BA/M-M004(R)","machine_id":43,"machine_status":null,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/VMC/BA/M-M126(R)","machine_id":44,"machine_status":null,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/TC/BA/M-M014(R)","machine_id":45,"machine_status":3,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/VMC/BA/M-M125(R)","machine_id":65,"machine_status":null,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/TC/BA/M-M015(R)","machine_id":66,"machine_status":3,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/TC/BA/M-M013(R)","machine_id":67,"machine_status":1,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/VMC/BA/M-M023(R)","machine_id":82,"machine_status":null,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"},{"tenant_name":"Bakgiyam","unit":"Unit - 2","mac_name":"SBE/VMC/BA/M-M024(R)","machine_id":83,"machine_status":null,"shift_no":4,"start_time":"2020-07-09T20:00:00.000+05:30"}]},"count":{"Unit - 1":{"running":5,"idle1":3,"stop":2,"waste":2},"Unit - 2":{"waste":15,"running":2,"idle1":1}}}]
+    this.machine_response = this.machie_status_new[0]
+    this.machie_status_val = [{"last_update":"2020-07-09T21:24:24.000+05:30","shift_no":4,"shift_time":"08:00PM - 12:00AM","machine_name":"SBE/TC/BA/M-M123(E)","machine_id":6,"utilization":25,"run_time":"01:07:41","idle_time":"00:18:43","stop_time":"00:00:00","cycle_time":"00:08:48","cutting_time":"00:07:47","machine_status":1,"machine_disply":425,"parts_count":7,"job_name":"953-(R921180953","total_run_time":"15:30:53","alarm":"(X)  OVERTRAVEL ( SOFT 1 )","job_wise_parts":{"953":7},"feed_rate":0,"spindle_load":0,"spindle_speed":0,"sp_temp":"34","axis_load":{"x_axis":"30","z_axis":"8"},"axis_tem":{"x_axis":"0","z_axis":"0"},"puls_code":{"x_axis":"45","z_axis":"36"},"axis_tem_count":2,"start_time":"2020-07-09T20:00:00.000+05:30","operator_allocation":"Name not Entered"}]
+    this.machie_status = this.machie_status_val[0]
+//     this.myLoader = true;
+//     this.service.dashboard(this.tenant).subscribe(res =>{
+//       this.machine_response=res;
+//       this.myLoader = false;
+//       this.service.dashboard_full(this.machine_response['data']['Unit - 1'][0]['machine_id']).subscribe(res =>{
+//       this.machie_status =res;
+//       console.log(this.machie_status)
+//       this.myLoader = false;
+//       this.chart()
+//   })
+// })
+  }
+  activeclick(id){
+    this.myLoader = true;
+      this.m_id = id;
+      this.service.dashboard_full(this.m_id).subscribe(res =>{
+        this.machie_status =res;
+        console.log(this.machie_status)
+          this.myLoader = false;
+      })
+    }
+  chart(){
+    // The speed gauge
     var container = Highcharts.chart('container', {
       credits: {
         enabled: false
@@ -151,7 +155,7 @@ export class DashboardComponent implements OnInit {
           valueSuffix: ' RPM'
         },
         series: [{
-          data: res.spindlespeed
+          data: this.machie_status.spindlespeed
         }],
       }],
 
@@ -258,26 +262,10 @@ export class DashboardComponent implements OnInit {
           valueSuffix: 'm/min'
         },
         series: [{
-          data: res.feedrate
+          data: this.machie_status.feedrate
         }],
       }]
 
     });
-    console.log(res.feedrate)
-  })
-})
-console.log('test')
   }
-  activeclick(id){
-    console.log(id)
-  this.myLoader = true;
-    this.m_id = id;
-    this.service.dashboard_full(this.m_id).subscribe(res =>{
-      this.machie_status =res;
-      console.log( res.spindlespeed);
-        this.myLoader = false;
-      console.log(res);
-    })
-  }
-
 }

@@ -35,18 +35,13 @@ export class ReportComponent implements OnInit {
 
 
   ngOnInit() {
-
-    
     this.login = this.fb.group({
-      
       machine_id:["",Validators.required],
       shift_id:["",Validators.required],
       operator_id:["",Validators.required],
       start_date:["",Validators.required],
       end_date:["",Validators.required],
       report_type:["",Validators.required],
-
-
     })
     
     this.service.tenant_id(this.tenant).pipe(untilDestroyed(this)).subscribe(res => {

@@ -811,4 +811,70 @@
         }
       }
   }
+  
   }
+  .axis.ax_three { 
+    height:48px!important;
+ }  
+ .axis.ax_three span.green{
+    height:42px;
+ }
+ .axis.ax_three span.green, .axis.ax_three span.yellow, .axis.ax_three span.red {
+  height: 42px;
+  }
+  .axis.two { 
+    height:52px!important;
+ }  
+ .axis.two span.green{
+    height:47px;
+ }
+.axis.two span.green, .axis.two span.yellow, .axis.two span.red {
+height: 47px;
+}
+.axis{
+  width: 100%;
+  height:19px;
+  background-image:linear-gradient(#1a1d24, #383c49);
+  border-radius:5px;
+  border: 1px solid #171a22;
+  padding:2px;
+  margin-bottom: 5px;
+}  
+.axis span.green{
+  width:9.7px;
+  height:14px;
+  display: block;
+  background-image:linear-gradient(#41ad3f, #58dc55);
+  border-radius:3px;
+  box-shadow: 0px 0px 4px rgba(89, 255, 96, .8);
+  float: left;
+  margin-right:1px;
+  border: 1px solid #2d3654;
+}
+.axis span.yellow{
+  width:9.7px;
+  height: 14px;
+  display: block;
+  background-image:linear-gradient(#ffc01d, #fffb5f);
+  border-radius:3px;
+  box-shadow: 0px 0px 4px rgba(179, 146, 41, .8);
+  float: left;
+  margin-right:1px;
+  border: 1px solid #2d3654;
+} 
+.axis span.red{
+  width:9.7px;
+  height: 14px;
+  display: block;
+  background-image:linear-gradient(#c91f1f, #fd6262);
+  border-radius:3px;
+  box-shadow: 0px 0px 4px rgba(178, 45, 48, .8);
+  float: left;
+  margin-right:1px;
+  border: 1px solid #2d3654;
+}
+@media(max-width: 1700px){
+  .axis span.green, .axis span.yellow, .axis span.red{
+    width: 2.14%;
+  }
+}
