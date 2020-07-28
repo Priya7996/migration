@@ -18,7 +18,7 @@ export class AdminUserComponent implements OnInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
     
   }
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['position', 'name', 'weight', ];
   
   // dataSource = [
   // ];

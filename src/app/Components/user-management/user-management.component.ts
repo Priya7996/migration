@@ -118,7 +118,7 @@ export class User {
   role: any;
   add_val: any;
   show_status: any;
-
+  hide: boolean = true;
   constructor(private service: UserService, public dialogRef: MatDialogRef<User>, @Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder, ) {
 
     this.tenant = localStorage.getItem('tenant_id');

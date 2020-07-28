@@ -17,6 +17,7 @@ export class BackupComponent implements OnInit {
   tenant: any;
   reason_response: any;
   backup: any;
+  machine_id:any;
   myLoader = false;
   constructor(public dialog: MatDialog,private fb :FormBuilder,private nav:NavbarService,private service :BackupService) { 
     this.tenant=localStorage.getItem('tenant_id')
@@ -43,24 +44,29 @@ export class BackupComponent implements OnInit {
     this.service.machine(this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
       console.log(res);
       this. myLoader = false;
-      this.reason_response=res;
-      console.log(this.reason_response)
-      this.code_compare(this.reason_response[0].id)
-     
-    });
+      this.machine_response=res;
+        console.log(res);
+        this.machine_id = this.machine_response[0].id;
+        console.log(this.machine_id)
+        this.getmachine(this.machine_response[0].id)
+      });
   }
   
-  code_compare(id) {
+
+
+
+  getmachine(id) {
     this.myLoader = true;
-    this.service.display_reason(id).pipe(untilDestroyed(this)).subscribe(res =>{
+     this.service.display_reason(id).pipe(untilDestroyed(this)).subscribe(res =>{
       console.log(res)
-     this. myLoader = false;
+      this.myLoader = false;
+
       this.backup=res;
       this.dataSource=new MatTableDataSource(this.backup)
-      // if (res['status'] != null) {
-      //   Swal.fire(res['status'])
-      // }
-    })   
+      if (res['status'] != null) {
+        Swal.fire(res['status'])
+      }
+    })  
   }
   testform(val)
   {

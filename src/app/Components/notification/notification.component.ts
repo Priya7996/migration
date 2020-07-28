@@ -58,7 +58,15 @@ export class NotificationComponent implements OnInit {
       this.updatedTimeInterval = res.time_interval
       this.interval.setValue({
         timeintervel: res.time_interval
+        
       })
+      if(res)
+              {
+                Swal.fire("Updated Succesfully !")
+              }
+              else{
+                Swal.fire("Updated Failed")
+              }
     });
   //  this.ngOnInit()
 

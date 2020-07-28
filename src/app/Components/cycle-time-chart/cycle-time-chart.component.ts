@@ -53,7 +53,7 @@ export class CycleTimeChartComponent implements OnInit {
       this.machine_response = res;
       this.service.current_status(this.tenant).pipe(untilDestroyed(this)).subscribe(res =>{
         this.currentstatus=res;
-        this.shiftNo = this.currentstatus.shift_id;
+        this.shiftNo = this.currentstatus.shift_no;
         console.log(this.shiftNo)
         this.machineID = this.currentstatus.machine;
         this.date = this.currentstatus.date;
@@ -81,6 +81,7 @@ export class CycleTimeChartComponent implements OnInit {
     this.service.shiftidentity(this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
       this.service.shift(res.id).subscribe(res => {
         this.shift_response = res;
+        
       })
     })
   }
@@ -90,6 +91,7 @@ export class CycleTimeChartComponent implements OnInit {
   this.tableview()
   }
   getshift(shift){
+    console.log(shift)
   this.shiftNo = shift;
   this.tableview()
   }
@@ -117,7 +119,7 @@ export class CycleTimeChartComponent implements OnInit {
         subtitle: {
 
           // text: 'Machine ID : '+ this.macname['machine_name']+',Shift:'+ res.shift_no+' Date : 04-02-20 ',
-          text: 'Machine ID : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftNo + ',Time : ' + '' + ', PartsCount:' + '' + ',Program No : ' + '',
+          text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftNo + ',Time : ' + '' + ', PartsCount:' + '' + ',Program No : ' + '',
           style: {
             fontSize: '16px',
             color: '#f58632',
@@ -125,9 +127,9 @@ export class CycleTimeChartComponent implements OnInit {
           }
         },
         xAxis: {
-          categories: [''],
+          categories: [res.parts_count],
           title: {
-            text: null
+            text: 'Parts Count'
           }
         },
         yAxis: {
@@ -166,9 +168,11 @@ export class CycleTimeChartComponent implements OnInit {
         //   enabled: true
         // },
         colors: ['#f58632', '#f58632', '#f58632', '#f58632'],
-        // series: [{
-        //   data: [res.parts_count],[res.cycle_time]
-        // }],
+        series: [{
+          name: 'Parts Count',
+          data: [res.cycle_time],
+          // data: [res.parts_count],[res.cycle_time]
+        }],
 
         legend: {
           layout: 'vertical',
@@ -202,7 +206,7 @@ export class CycleTimeChartComponent implements OnInit {
           text: 'Hour Wise Parts Count Chart(Nos)'
         },
         subtitle: {
-          text: 'Machine ID : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftNo + ',Time : ' + '' + ', PartsCount:' + '' + ',Program No : ' + '',
+          text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftNo + ',Time : ' + '' + ', PartsCount:' + '' + ',Program No : ' + '',
 
           style: {
             fontSize: '16px',
@@ -272,7 +276,7 @@ export class CycleTimeChartComponent implements OnInit {
           text: ' Machine Status Chart'
         },
         subtitle: {
-          text: 'Machine ID : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftNo + ',Time : ' + '' + ', PartsCount:' + '' + ',Program No : ' + '',
+          text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftNo + ',Time : ' + '' + ', PartsCount:' + '' + ',Program No : ' + '',
 
           style: {
             fontSize: '16px',
@@ -342,7 +346,7 @@ export class CycleTimeChartComponent implements OnInit {
           text: 'Machine Status With Utilization(%) Chart'
         },
         subtitle: {
-          text: 'Machine ID : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftNo + ',Time : ' + '' + ', PartsCount:' + '' + ',Program No : ' + '',
+          text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftNo + ',Time : ' + '' + ', PartsCount:' + '' + ',Program No : ' + '',
 
           style: {
             fontSize: '16px',

@@ -39,7 +39,7 @@ export class OeeComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.myLoader = true;
+    this.myLoader = false;
     this.service.oee(this.tenant).pipe(untilDestroyed(this)).subscribe(res =>{
       this.myLoader = false;
       // console.log(res);
@@ -183,7 +183,7 @@ sampletest:any;
   this.service.oee_show(this.data_array).subscribe(res =>{
   console.log(res);
   Swal.fire("Value Entered Succesfully !")
-  // this.dialogRef.close();
+   this.dialogRef.close();
 
    })
    

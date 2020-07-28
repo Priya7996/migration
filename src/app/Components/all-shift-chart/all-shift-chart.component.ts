@@ -71,7 +71,8 @@ machineName:any;
   
         this.service.current_status(this.tenant).pipe(untilDestroyed(this)).subscribe(res =>{
             this.currentstatus=res;
-            this.shiftNo = this.currentstatus.shift_id;
+            this.shiftNo = this.currentstatus.shift_no;
+            console.log( this.shiftNo)
             this.machineID = this.currentstatus.machine;
             this.date = this.currentstatus.date;
            for(let i=0; i<this.machine_response.length; i++){
@@ -108,13 +109,14 @@ machineName:any;
     this.chart_view()
     }
     getshift(shift){
-        this.shiftNo = shift;
-        this.chart_view()
-        }
+        console.log(shift)
+      this.shiftNo = shift;
+      this.chart_view()
+      }
   
   chart_view(){
     //   let register = this.login.value;
-      let register = {'machine_id': this.machineID , 'shift_id':this.login.value['shift_id'], 'date':this.login.value['date']}
+      let register = {'machine_id': this.machineID , 'shift_id':this.shiftNo, 'date':this.login.value['date']}
      register['tenant_id'] = this.tenant;
      this.myLoader1= true;
      this.service.shift_machine_status_chart(register).pipe(untilDestroyed(this)).subscribe(res => {
@@ -137,7 +139,7 @@ machineName:any;
       text: 'Machine Status Chart'
   },
   subtitle: {
-    text: 'Machine ID : '+ this.macname['machine_name']+', Shift:'+ res.shift_no+' Date : 04-02-20 ',
+    text: 'Machine ID : '+ this.machineName +', Shift No:'+ res.shift_no+' Date :'+this.login.value['date']+',',
     style: {
         fontSize: '16px',
         color: '#f58632',
@@ -379,7 +381,7 @@ exporting:{
           text: 'Machine Status With Utilization(%) Chart'
       },
       subtitle: {
-        text: 'Machine ID : '+ this.macname['machine_name']+',Shift:'+ res.shift_no+' Date : 04-02-20 ',
+        text: 'Machine ID : '+ this.machineName+',Shift No:'+ res.shift_no+' Date :'+this.login.value['date']+',',
         style: {
             fontSize: '16px',
             color: '#f58632',
@@ -445,55 +447,55 @@ exporting:{
     
     colors: ['#292b2c','#ec5550', '#e8a249', '#2cbe63'],
 
-    series: [
-        {
-            name: 'Nodata',
-            data: this.noarryul1.reverse()
-        },
-        {
-        name: 'Stop',
-        data: this.stoparryul1.reverse()
-    }, {
-        name: 'idle',
-        data: this.idlearryul1.reverse()
-    }, {
-        name: 'Run',
-        data: this.runarryul1.reverse()
-    }],
-
-    //   series: [{
-    //       name: 'Nodata',
-    //       color: '#292b2c',
-    //       data: res.no_data.map(Number),
-    //       dataLabels: {
-    //         enabled: true,
-    //         // rotation: -90,
-    //         color: '#292b2c',
-    //         align: 'center',
-    //         valueDecimals: 2,
-    //         // format: '{point.y:.2f}', 
-    //         y: 0, // 10 pixels down from the top
-    //         style: {
-    //             fontSize: '10px',
-    //             fontWeight: 'normal'
-    //         }
+    // series: [
+    //     {
+    //         name: 'Nodata',
+    //         data: this.noarryul1.reverse()
     //     },
-    //   }
-    // , {
-    //       name: 'Idle',
-    //       color: '#e8a249',
-    //       data:  res.idle_time.map(Number)
-    //   }, {
-    //       name: 'Run',
-    //       color: '#2cbe63',
-    //       data: res.run_time.map(Number)
-    //   },
-    //   {
+    //     {
     //     name: 'Stop',
-    //     color: '#ec5550',
-    //     data: res.stop_time.map(Number)
-    // }
-// ]
+    //     data: this.stoparryul1.reverse()
+    // }, {
+    //     name: 'idle',
+    //     data: this.idlearryul1.reverse()
+    // }, {
+    //     name: 'Run',
+    //     data: this.runarryul1.reverse()
+    // }],
+
+      series: [{
+          name: 'Nodata',
+          color: '#292b2c',
+          data: res.no_data.map(Number),
+          dataLabels: {
+            enabled: true,
+            // rotation: -90,
+            color: '#292b2c',
+            align: 'center',
+            valueDecimals: 2,
+            // format: '{point.y:.2f}', 
+            y: 0, // 10 pixels down from the top
+            style: {
+                fontSize: '10px',
+                fontWeight: 'normal'
+            }
+        },
+      }
+    , {
+          name: 'Idle',
+          color: '#e8a249',
+          data:  res.idle_time.map(Number)
+      }, {
+          name: 'Run',
+          color: '#2cbe63',
+          data: res.run_time.map(Number)
+      },
+      {
+        name: 'Stop',
+        color: '#ec5550',
+        data: res.stop_time.map(Number)
+    }
+]
       }
  })
 

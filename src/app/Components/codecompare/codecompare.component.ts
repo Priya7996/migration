@@ -67,7 +67,7 @@ export class CodecompareComponent implements OnInit {
   file_name: any;
   machine: any;
   compare: any;
-
+  machine_id:any;
   Text1: any;
   me: any;
   Text: any;
@@ -88,9 +88,22 @@ export class CodecompareComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+
+    this.login = this.fb.group({
+      name:["",Validators.required],
+      reason: ["", Validators.required],
+      old_revision_no:["",Validators.required],
+      new_revision_no:["",Validators.required],
+    })
+
+    
     this.service.machine(this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
       this.reason_response=res;
+      this.machine_id = this.reason_response[0].id;
+      console.log(this.machine_id)
        this.code_compare(this.reason_response[0].id)
+     
      
     });
     

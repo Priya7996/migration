@@ -36,9 +36,12 @@ searchText:any
 ploh:any;
 
 connectionStatus:any[]=[];
+valuable:any[]=[];
 powerStatus:any[]=[];
+powerhook:any[]=[];
 data:any;
 connectionlog: any;
+interanet:any;
   log: unknown[];
   logfh: any;
   logjvh: any;
@@ -51,13 +54,29 @@ connectionlog: any;
 
   ngOnInit() {
     this.myLoader=true;
-    this.service.internet(this.tenant).pipe(untilDestroyed(this)).subscribe(res =>{
+    this.service.internet(this.tenant).pipe(untilDestroyed(this)).subscribe(result =>{
+      this.myLoader=false
+      this.interanet = result;
+      console.log(this.interanet )
+      for(let l = 0; l <= result.length; l++){ 
+        if(this.interanet[l].status != 'Power Connected'){
+        this.valuable.push(result[l]);
+        console.log(this.valuable)
+       
+        this.dataSource=new MatTableDataSource(this.valuable)
+
+        }
+    }
+
+      
+    })
+
+    this.myLoader=true;
+    this.service.power(this.tenant).pipe(untilDestroyed(this)).subscribe(res =>{
       this.myLoader=false
       this.connectionlog=res;
-      console.log(res)
-      this.dataSource=new MatTableDataSource(this.connectionlog)
       for(let i = 0; i <= res.length; i++){ 
-        if(this.connectionlog.status != 'Connected'){
+        if(this.connectionlog[i].status === 'Power Connected'){
         this.connectionStatus.push(res[i]);
         console.log(this.connectionStatus)
         this.logfh = this.connectionStatus

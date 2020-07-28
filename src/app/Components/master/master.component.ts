@@ -10,7 +10,7 @@ import { untilDestroyed } from 'ngx-take-until-destroy';
   selector: 'app-master',
   templateUrl: './master.component.html',
   styleUrls: ['./master.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  // encapsulation: ViewEncapsulation.None
 
 })
 export class MasterComponent implements OnInit {
@@ -35,6 +35,7 @@ export class MasterComponent implements OnInit {
   machine_response: any;
   tenant: any;
   reason: any;
+  machine_id:any;
   constructor(private fb:FormBuilder,public dialog: MatDialog,private nav:NavbarService,private service:ProgramListService) {
     this.nav.show();
     this.tenant = localStorage.getItem('tenant_id')
@@ -60,6 +61,8 @@ export class MasterComponent implements OnInit {
       this.machine_response=res;
       // this.service.filelist( this.machine_response.id).subscribe(res =>{
         console.log(res);
+        this.machine_id = this.machine_response[0].id;
+        console.log(this.machine_id)
         this.getmachine(this.machine_response[0].id)
       });
    
@@ -106,6 +109,7 @@ export class Dialog {
   fileName1:any;
   machine_response: any;
   tenant: string;
+  file2:any;
   constructor(public dialogRef: MatDialogRef<Dialog>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,private service:ProgramListService) {
   this.tenant = localStorage.getItem('tenant_id')  
   }
@@ -114,12 +118,12 @@ export class Dialog {
     this.dialogRef.close();
   }
 
-//   fileUpload1(event){
-//     this.file2 = event.target.files[0];
-//     console.log(this.file2);
+  fileUpload1(event){
+    this.file2 = event.target.files[0];
+    console.log(this.file2);
+   
     
-    
-// }
+}
   ngOnInit()
   {
     this.test=this.fb.group ({
@@ -147,15 +151,22 @@ export class Dialog {
     // fd.append('machine_id', this.test.value.machine_id);
     // // fd.append('user_id', this.sample_test.user_id);
     // fd.append('user_name', this.test.value.user_name);
-    // // fd.append('file',this.file2);
+    // fd.append('file',this.file2);
     // fd.append('date',this.date);
 
     // console.log(fd)
+    var fd = new FormData();
+    fd.append('file',this.file2);
+    console.log(this.file2)
+    fd.append('machine_id', this.test.value.machine_id);
+    fd.append('user_name', this.test.value.user_name);
+    fd.append('old_revision_no', this.test.value.old_revision_no);
+    fd.append('new_revision_no', this.test.value.new_revision_no);
+    console.log(fd)
+    this.service.file_upload(fd).pipe(untilDestroyed(this)).subscribe(res =>{
+      console.log(res)
 
-    // this.service.file_upload(fd).pipe(untilDestroyed(this)).subscribe(res =>{
-    //   console.log(res)
-
-    // })
+    })
 
     // fd.append('file_name', this.filName);
     // fd.append('old_revision_no', this.login.value.old_revision_no);

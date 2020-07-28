@@ -42,7 +42,7 @@ export class OperatorAllocationComponent implements OnInit {
    }
    user():void{
 
-    const dialogRef = this.dialog.open(Add, {
+    const dialogRef = this.dialog.open(New, {
       width: '450px',
       height:'auto'
     });
@@ -59,9 +59,10 @@ export class OperatorAllocationComponent implements OnInit {
     this.myLoader = true;
     this.service.list(this.tenant).pipe(untilDestroyed(this)).subscribe(res =>{
     console.log(res);
-    this.myLoader = false;
 
       this.allocation=res;
+      this.myLoader = false;
+
       this.dataSource=new MatTableDataSource(this.allocation)
 
     })
@@ -100,22 +101,84 @@ export class OperatorAllocationComponent implements OnInit {
 
   }
 }
+// @Component({
+//   selector: 'add-page',
+//   templateUrl: 'add.html',
+//   styleUrls: ['./operator-allocation.component.scss']
+
+
+// })
+// export class Add {
+//   login:FormGroup;
+//   tenant: any;
+//   machine_response: any;
+//   shift_response: any;
+//   operator_response: any;
+//   dialogRef: any;
+//   constructor(private service:OperatorAllocationService, ) {
+//     this.tenant=localStorage.getItem('tenant_id')
+  
+//   }
+
+  // onNoClick() {
+  //   this.dialogRef.close();
+  // }
+  // ngOnInit()
+  // { 
+    // this.login=this.fb.group({
+    // machine_id:["",Validators.required],
+    // operator_id:["",Validators.required],
+    // shifttransaction_id:["",Validators.required],
+    // description:["",Validators.required],
+    // target:["",Validators.required],
+    // date: ["",Validators.required]
+    // })
+
+
+    // this.service.machine().pipe(untilDestroyed(this)).subscribe(res => {
+    //   console.log(res);
+    //   this.machine_response=res;
+    //   console.log(localStorage.getItem('token'));})
+     
+      // this.service.shift(this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
+      //   console.log(res);
+      //   this.shift_response=res;
+      //   this.service.shifttransaction(this.shift_response.id).subscribe(res =>{
+      //   })
+    
+      //   console.log(localStorage.getItem('token'));})
+
+      //   this.service.operator().pipe(untilDestroyed(this)).subscribe(res => {
+      //     console.log(res);
+      //     this.operator_response=res;
+      //     console.log(localStorage.getItem('token'));})
+     
+     
+//   }
+ 
+//   ngOnDestroy(){
+
+//   }
+// }
+
 @Component({
-  selector: 'add-page',
-  templateUrl: 'add.html',
+  selector: 'new-page',
+  templateUrl: 'new.html',
   styleUrls: ['./operator-allocation.component.scss']
 
 
 })
-export class Add {
-  login:FormGroup;
-  tenant: any;
+
+export class New {
   machine_response: any;
-  shift_response: any;
   operator_response: any;
-  constructor(private service:OperatorAllocationService,public dialogRef: MatDialogRef<Add>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,) {
-    this.tenant=localStorage.getItem('tenant_id')
+  shift_response: any;
+  tenant: string;
+  dialogRef: any;
+  login: any;
   
+  constructor(private service:OperatorAllocationService,private fb:FormBuilder) {
+    this.tenant=localStorage.getItem('tenant_id')
   }
 
   onNoClick() {
@@ -123,51 +186,56 @@ export class Add {
   }
   ngOnInit()
   { 
+  
+
     this.login=this.fb.group({
-    machine_id:["",Validators.required],
-    operator_id:["",Validators.required],
-    shifttransaction_id:["",Validators.required],
-    description:["",Validators.required],
-    target:["",Validators.required],
-    date: ["",Validators.required]
-    })
+      machine_id:["",Validators.required],
+      operator_id:["",Validators.required],
+      shifttransaction_id:["",Validators.required],
+      description:["",Validators.required],
+      target:["",Validators.required],
+      date: ["",Validators.required]
+      })
 
-
+      
     this.service.machine().pipe(untilDestroyed(this)).subscribe(res => {
       console.log(res);
       this.machine_response=res;
-      console.log(localStorage.getItem('token'));})
-     
-      this.service.shift(this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
-        console.log(res);
-        this.shift_response=res;
-        this.service.shifttransaction(this.shift_response.id).subscribe(res =>{
-        })
     
-        console.log(localStorage.getItem('token'));})
-
-        this.service.operator().pipe(untilDestroyed(this)).subscribe(res => {
-          console.log(res);
-          this.operator_response=res;
-          console.log(localStorage.getItem('token'));})
-     
-     
-  }
-  logintest() {
-
-    console.log(this.login.value);
-    let register = this.login.value;
-    register.from_date = this.login.value.date[0];
-    register.to_date = this.login.value.date[1];
-    register.tenant_id = this.tenant;
-    console.log(register);
-    this.service.operator_create(register).pipe(untilDestroyed(this)).subscribe(res=>{
-      console.log(res);
-      this.dialogRef.close();
-    })
-
-  }
   
+    this.service.shift(this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
+      console.log(res);
+      this.shift_response=res;
+      this.service.shifttransaction(this.shift_response.id).subscribe(res =>{
+      })
+  
+      console.log(localStorage.getItem('token'));})
+
+      this.service.operator().pipe(untilDestroyed(this)).subscribe(res => {
+        console.log(res);
+        this.operator_response=res;
+        console.log(localStorage.getItem('token'));})
+   
+    
+     
+  })
+}
+ 
+logintest() {
+
+  console.log(this.login.value);
+  let register = this.login.value;
+  register.from_date = this.login.value.date[0];
+  register.to_date = this.login.value.date[1];
+  register.tenant_id = this.tenant;
+  console.log(register);
+  this.service.operator_create(register).pipe(untilDestroyed(this)).subscribe(res=>{
+    console.log(res);
+    this.dialogRef.close();
+  })
+
+}
+
   ngOnDestroy(){
 
   }

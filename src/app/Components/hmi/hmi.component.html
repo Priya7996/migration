@@ -137,9 +137,11 @@
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
         </table>
        
       </mat-card-content>
+      
       <mat-card-content *ngIf="reports.length==0">
         <h2><b>No data found</b></h2>
       </mat-card-content>

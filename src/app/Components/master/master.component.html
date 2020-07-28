@@ -14,7 +14,7 @@
     <div class="filter_sec">
       <div class="filter_field">
         <mat-form-field appearance="outline">
-          <mat-select placeholder="Select Machine"  (selectionChange)="getmachine($event.value)" matNativeControl required formControlName="machine_id">
+          <mat-select placeholder="Select Machine"  [(ngModel)]="machine_id" (selectionChange)="getmachine($event.value)" matNativeControl required >
             <mat-option *ngFor="let machine of machine_response" [value]="machine.id">
                 {{machine.machine_name}}
             </mat-option>

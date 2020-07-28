@@ -17,6 +17,10 @@ export class LogService {
     return this.http.get('connection_logs?tenant_id='+tenantId)
   }
 
+  power(tenantId):Observable<any> {
+    return this.http.get('connection_logs?tenant_id='+tenantId)
+  }
+  
   ethernet(tenantId):Observable<any> {
     return this.http.get('ethernet_logs?tenant_id='+tenantId)
   }

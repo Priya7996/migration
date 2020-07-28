@@ -189,26 +189,44 @@
                                         <span class="mac_ut_time">{{machie_status?.total_run_time}}</span>
                                     </div>
                                 </div>
+
+
+                              
                                 <div class="bg_grad donut_small bg_grad_temp">
                                     <h2>Pulse Coder Temperature</h2>
-                                    <div class="row_sec temperature">
-                                        <div class="col brdr_right axis_display">
+                                   <div *ngFor = "let machh of testsample | keyvalue"> 
+                                    <div class="row_sec temperature" *ngFor = "let machh of repeatpulse; index as keyvalue" style="display: block;">
+
+                                        <div class="col brdr_right axis_display"  [ngClass]="{col_sm_4 :testsample.axis_tem_count =='3', col_sm_6 :testsample.axis_tem_count =='2', col_sm_3 :testsample.axis_tem_count =='4', col_sm_2 :testsample.axis_tem_count =='5'}" >
+                                            <div *ngFor="let no of repeatpulse; let i = index" [attr.data-index]="i">
+                                                <span [ngClass]="no < 100 ? ( no < 80 ? 'green' : 'yellow' ) : 'red'"></span>
                                             <div class="gradient-wrapper pulse_coder_chart">
-                                                <circle-progress [percent]="100" [radius]="100" [outerStrokeWidth]="16"
+                                                <circle-progress [percent]=val [radius]="100" [outerStrokeWidth]="16"
                                                     [innerStrokeWidth]="false" [outerStrokeColor]="'#48ba46'"
                                                     [animation]="true" [animationDuration]="300"></circle-progress>
                                             </div>
-                                            <p>x-axis</p>
+                                            
                                         </div>
-                                        <!-- <div class="col axis_display">
-                              <div class="gradient-wrapper">
-                                <circle-progress [percent]="100" [radius]="100" [outerStrokeWidth]="16" [innerStrokeWidth]="false"
-                                    [outerStrokeColor]="'#48ba46'" [animation]="true" [animationDuration]="300"></circle-progress>
-                              </div>
-                              <p>y_axis</p>
-                            </div> -->
+                                            <p>{{machh.key}}</p>
+                                        </div>
+                           
+                                    </div>
                                     </div>
                                 </div>
+
+                                <!-- <div class="bg_grad donut_small bg_grad_temp">
+                                    <h5 style="font-size: 20px">{{'pulsecodetemperature' | translate }}</h5>
+                                    <div class="row align-items-center">
+                                      <div class="text-center brdr_right" ng-class="{col_sm_4 :datas.axis_tem_count =='3', col_sm_6 :datas.axis_tem_count =='2', col_sm_3 :datas.axis_tem_count =='4', col_sm_2 :datas.axis_tem_count =='5'}" ng-repeat="(key,val) in datas.puls_code">
+                                        <div class="gradient-wrapper2">
+                                         <percent-display percent=val  side="50" colors="#27272e " class="spnload"></percent-display>
+                                        </div>
+                                        <p>{{key}}</p>
+                                      </div>                                                                                
+                                     </div>
+                                  </div> -->
+
+
                                 <div class="bg_grad donut_small bg_grad_temp">
                                     <h2>Servo Motor Temperature</h2>
                                     <div class="row_sec temperature">

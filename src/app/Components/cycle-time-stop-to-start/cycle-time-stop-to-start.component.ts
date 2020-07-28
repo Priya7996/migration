@@ -66,7 +66,9 @@ export class CycleTimeStopToStartComponent implements OnInit {
               text: 'Cycle Start to Cycle Start(Mins)'
           },
           subtitle: {
-              text: 'Machine ID : SBE/TC/BA/M-M123(E), Shift : 2, Date : 04-02-2020',
+            //   text: 'Machine Name : SBE/TC/BA/M-M123(E), Shift : 2, Date : 04-02-2020',
+              text: 'Machine ID : '+ this.login.value.machine_id+',Shift No:'+ this.login.value.shift_id+' Date :'+this.login.value['date']+',',
+
               style: {
                 fontSize: '16px',
                 color: '#f58632',

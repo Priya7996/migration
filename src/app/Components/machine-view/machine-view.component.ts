@@ -17,9 +17,13 @@ export class MachineViewComponent implements OnInit {
   machine:any;
   machie_status:any;
   repeatchart;
+  repeatpulse;
   spindlespeed;
   feedrate;
   testgokul;
+  semicircle;
+  fullcircle;
+  testsample;
   constructor(private nav:NavbarService,private route:ActivatedRoute,private service:MachineViewService) {
     this.nav.show();
     setInterval(() => {this.today = Date.now()}, 1);
@@ -27,11 +31,18 @@ export class MachineViewComponent implements OnInit {
     this.myLoader = true;
     this.service.dashboard_full(this.machine).subscribe(res =>{
       this.machie_status =res;
+      this.semicircle = res.spindle_speed;
+      this.fullcircle = res.feed_rate
+      console.log(this.fullcircle);
+      console.log(this.semicircle);
       this.testgokul = this.machie_status.axis_load;
-      console.log(this.machie_status)
+      this.testsample = this.machie_status.puls_code;
+      console.log(this.machie_status.puls_code)
       this.myLoader = false;
       this.spindle();
       this.repeatchart = [];
+      this.repeatpulse = [];
+     
       // if(this.machie_status.spindle_load <= 0){
       //   $scope.pop = "false";
       //   console.log($scope.pop);
@@ -42,6 +53,12 @@ export class MachineViewComponent implements OnInit {
    for (let i = 0; i < Object.values(this.machie_status.axis_load).length; i++) {
     this.repeatchart.push(this.vall(this.axis(Object.values(this.machie_status.axis_load)[i])))
     }
+
+    // for (let i = 0; i < Object.values(this.machie_status.puls_code).length; i++) {
+    //   this.repeatpulse.push(this.val(this.pul(Object.values(this.machie_status.puls_code)[i])))
+    //   }
+
+  
      this.feedrate = this.machie_status.feed_rate;
      this.spindlespeed = this.machie_status.spindle_speed; 
 
@@ -52,6 +69,19 @@ export class MachineViewComponent implements OnInit {
     return data
   }
   vall(end_value){
+    var ans = [];
+    for (let i = 1; i <= end_value; i++) {
+        ans.push(i*5);
+    }
+    return ans;
+   }
+
+
+   pul(ax){
+    var data = ax <= 5 ? (ax == 0 ? 0 : 1) : Math.ceil(ax/5);
+    return data
+  }
+  val(end_value){
     var ans = [];
     for (let i = 1; i <= end_value; i++) {
         ans.push(i*5);

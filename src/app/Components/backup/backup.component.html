@@ -16,11 +16,13 @@
           <div class="filter_field">
             <div class="filter_field">
               <mat-form-field appearance="outline">
-                <mat-select placeholder="Select Machine"  required 
-                [(ngModel)]="machine_id" (selectionChange)="code_compare($event.value)">
-                  <mat-option *ngFor="let file of reason_response" [value]="file.id">{{file.machine_name}}</mat-option>
+                <mat-select placeholder="Select Machine"  [(ngModel)]="machine_id" (selectionChange)="getmachine($event.value)" matNativeControl required >
+                  <mat-option *ngFor="let machine of machine_response" [value]="machine.id">
+                      {{machine.machine_name}}
+                  </mat-option>
                 </mat-select>
               </mat-form-field>
+      
             </div>
           </div>
           <div class="form-button">

@@ -200,7 +200,9 @@ export class CycleTimeStartToStartComponent implements OnInit {
           text: 'Cycle Start to Cycle Start(Mins)'
       },
       subtitle: {
-          text: 'Machine ID :' + this.macname['machine_name']+', Shift : ' +this.shiftname['shift_no'] +', Date : 04-02-2020',
+        text: 'Machine ID : '+ this.login.value.machine_id+',Shift No:'+ this.login.value.shift_id+' Date :'+this.login.value['date']+',',
+
+          // text: 'Machine ID :' + this.macname['machine_name']+', Shift : ' +this.shiftname['shift_no'] +', Date : 04-02-2020',
           style: {
             fontSize: '16px',
             color: '#f58632',
@@ -258,7 +260,7 @@ export class CycleTimeStartToStartComponent implements OnInit {
       colors: ['#2cbe63', '#2cbe63', '#2cbe63', '#2cbe63'],
       series: [{
           name: 'Time',
-          data: res
+          data:res
       }]
       }
   })
