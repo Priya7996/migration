@@ -26,6 +26,13 @@ export class CycleTimeStartToStartComponent implements OnInit {
   shiftname: any;
   showdate: any;
   shiftNo: any;
+  timestart: any[];
+  countstart: any[];
+  onepoint: any;
+  data:any;
+  run: number;
+  connectionlog: any;
+  connectionStatus: any;
   constructor(private nav:NavbarService,private service:CycleStartService,private fb :FormBuilder) {
     this.nav.show();
     this.tenant = localStorage.getItem('tenant_id')
@@ -182,8 +189,10 @@ export class CycleTimeStartToStartComponent implements OnInit {
 
     this.service.cycle_start_to_start(register).pipe(untilDestroyed(this)).subscribe(res => {
       console.log(res);
+      this.onepoint =res.data;
       this.myLoader = false;
  
+      
       this.chartOptions = {
         chart: {
           type: 'bar'
@@ -260,7 +269,7 @@ export class CycleTimeStartToStartComponent implements OnInit {
       colors: ['#2cbe63', '#2cbe63', '#2cbe63', '#2cbe63'],
       series: [{
           name: 'Time',
-          data:res
+          data:res.reverse()
       }]
       }
   })

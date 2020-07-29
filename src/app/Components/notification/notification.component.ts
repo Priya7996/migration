@@ -45,13 +45,11 @@ export class NotificationComponent implements OnInit {
   test(i,id){
     this.updatedTimeInterval = ""
     this.hide = true;
-    console.log(i,id)
     this.notification_id = id;
     this.interval_index = i;
   }
   edit_view(time) {
     let data = {time_interval: time}
-    // console.log(data,this.notification_id);
     this.service.timeinterval(this.notification_id,data).pipe(untilDestroyed(this)).subscribe(res =>{
       this.hide = false;
       this.timeChanged = res;
@@ -78,9 +76,7 @@ export class NotificationComponent implements OnInit {
       id: n.id,
       active: e.checked
     };
-    console.log(data);
     this.service.setStatus(data).pipe(untilDestroyed(this)).subscribe(res => {
-      console.log(res);
       if(res === true)
       {
         Swal.fire("Updated Successfully");

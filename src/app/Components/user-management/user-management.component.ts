@@ -33,7 +33,7 @@ export class UserManagementComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+     
       this.ngOnInit();
 
     });
@@ -46,9 +46,8 @@ export class UserManagementComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    
       this.ngOnInit();
-      console.log('The dialog was closed');
              this.ngOnInit();
  
 
@@ -56,12 +55,10 @@ export class UserManagementComponent implements OnInit {
   }
   ngOnInit() {
     this.service.operator().pipe(untilDestroyed(this)).subscribe(res => {
-      console.log(res);
       this.roles_list = res;
     })
     this.myLoader = true;
     this.service.list(this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
-      console.log(res);
      this. myLoader = false;
       this.back = res;
       this.roleid = this.back.role_id
@@ -71,7 +68,7 @@ export class UserManagementComponent implements OnInit {
   }
 
   user_delete(id) {
-    console.log(id)
+    
     Swal.fire({
       title: 'Are you sure want to delete?',
       // type: 'warning',
@@ -85,7 +82,6 @@ export class UserManagementComponent implements OnInit {
         }).then((destroy) => {
           if (destroy.value) {
             this.service.delete_row(id).pipe(untilDestroyed(this)).subscribe(res => {
-              console.log(res);
               alert("Deleted Successfully!")
               this.ngOnInit()
             })
@@ -157,7 +153,6 @@ export class User {
     })
 
     this.service.operator().subscribe(res => {
-      console.log(res);
       this.operator_role = res;
     }
 
@@ -167,7 +162,6 @@ export class User {
   }
 
   logintest() {
-    console.log(this.login.value);
     this.add_val = this.login.value;
     this.add_val["tenant_id"] = this.tenant;
     this.add_val["usertype_id"] = this.user;
@@ -175,7 +169,6 @@ export class User {
     this.add_val["role_id"] = this.role;
 
     this.service.user(this.login.value).pipe(untilDestroyed(this)).subscribe(res => {
-      console.log(res);
       Swal.fire("Created Successfully!")
       this.dialogRef.close();
 
@@ -203,7 +196,7 @@ export class Edit {
   role: any;
   edit_data: any;
   constructor(private service: UserService, public dialogRef: MatDialogRef<Edit>, @Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder, ) {
-    console.log(data);
+ 
     this.edit_data = data;
   }
 
@@ -230,7 +223,6 @@ export class Edit {
     })
 
     this.service.operator().pipe(untilDestroyed(this)).subscribe(res => {
-      console.log(res);
       this.operator_role = res;
 
     })
@@ -238,19 +230,12 @@ export class Edit {
   }
 
   editdata() {
-    console.log(this.login.value);
-    // this.add_val=this.login.value;
-    // this.add_val["tenant_id"] =this.tenant;
-    // this.add_val["usertype_id"] =this.user;
-    // this.add_val["approval_id"] =this.approval;
-    // this.add_val["role_id"] =this.role;
-    // this.service.edit(this.login.value).subscribe(res => {
-    //   console.log(res);
+    
     this.add_val = this.login.value
     this.add_val["tenant_id"] = this.tenant;
-    console.log(this.add_val)
+   
     this.service.edit(this.edit_data.id, this.add_val).pipe(untilDestroyed(this)).subscribe(res => {
-      console.log(res);
+    
       Swal.fire("Updated Successfully!")
       this.dialogRef.close();
     })

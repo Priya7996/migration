@@ -35,14 +35,14 @@ export class OeeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // console.log('The dialog was closed');
+     
     });
   }
   ngOnInit() {
     this.myLoader = false;
     this.service.oee(this.tenant).pipe(untilDestroyed(this)).subscribe(res =>{
       this.myLoader = false;
-      // console.log(res);
+
       this.oee_get = res;
       this.dataSource=new MatTableDataSource(this.oee_get)
 
@@ -118,11 +118,11 @@ sampletest:any;
 
     
     this.service.shiftidentity(this.tenant).pipe(untilDestroyed(this)).subscribe(res =>{
-      // console.log(res);
+     
       this.service.shift(res.id).subscribe(res => {
-      //  console.log(res);
+  
        this.shift_response=res; 
-      //  console.log(localStorage.getItem('token'));
+     
       })
     })
   }
@@ -140,7 +140,7 @@ sampletest:any;
   }
   shiftChange(id){
     this.shiftID = id;
-    console.log(this.shiftID)
+  
     this.service.oeeshift(id).pipe(untilDestroyed(this)).subscribe(res => {
       this.login.patchValue({
         duration: res.duration,
@@ -154,7 +154,7 @@ sampletest:any;
   }
   logintest(){
     this.array=this.login.value.items;
-    console.log(this.array)
+    
     for(let i=0;i<this.array.length;i++){
    this.data1={
         "programe_number":this.array[i].name,
@@ -181,7 +181,7 @@ sampletest:any;
    
    
   this.service.oee_show(this.data_array).subscribe(res =>{
-  console.log(res);
+ 
   Swal.fire("Value Entered Succesfully !")
    this.dialogRef.close();
 

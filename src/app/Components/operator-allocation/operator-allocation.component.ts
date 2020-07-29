@@ -19,6 +19,11 @@ export class OperatorAllocationComponent implements OnInit {
   public dongly = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
+  dialogRef: any;
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
   tenant: any;
   myLoader = false;
   public today: Date = new Date(new Date().toDateString());
@@ -181,7 +186,7 @@ export class New {
     this.tenant=localStorage.getItem('tenant_id')
   }
 
-  onNoClick() {
+  onNoClick():void{
     this.dialogRef.close();
   }
   ngOnInit()

@@ -20,6 +20,7 @@ export class CycleTimeChartComponent implements OnInit {
   chartOptions3: any;
   chartOptions: any;
   macname: any;
+  allcycletime:any;
   myLoader1 = false
  tenant: any;
   machine_response: any;
@@ -106,6 +107,33 @@ export class CycleTimeChartComponent implements OnInit {
     this.myLoader=true;
     this.service.all_time_chart(register).pipe(untilDestroyed(this)).subscribe(res => {
       this.myLoader=false;
+    
+      this.allcycletime = res;
+  
+    //   this.allcycletime=res;
+    //   for(let i = 0; i <= res.length; i++){ 
+    //     if(this.allcycletime[i].parts_count ){
+    //     this.allcycletime.push(res[i]);
+    //     console.log(this.allcycletime)
+     
+    //     }
+    // }
+
+
+    
+  //   for (var i in $scope.allcycletime) {
+  //     var part = i * 1 + 1;
+  //     $scope.parts.push(part);
+
+  //     var cycle1 = secondsToMinutes($scope.allcycletime[i].cycle_time);
+  //     var cycle = parseFloat(cycle1);
+     
+  //     var pro_number = $scope.allcycletime[i].program_number;
+  //     $scope.c_time.push(cycle);
+  //     $scope.pro_number.push(pro_number);
+  //     var ShiftNo = $scope.allcycletime[i].shift_no;
+  //     var Time = $scope.allcycletime[i].time;
+  // }
       this.chartOptions = {
         chart: {
           type: 'column',

@@ -162,7 +162,6 @@ export class Sedit {
   add_val:any;
   constructor(private service:ShiftService,public dialogRef: MatDialogRef<Sedit>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,) {
     this.edit_data1 = data;
-    console.log(this.edit_data1)
     this.tenant = localStorage.getItem('tenant_id')
  
   }

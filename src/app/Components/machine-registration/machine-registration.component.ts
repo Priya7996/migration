@@ -26,7 +26,6 @@ export class MachineRegistrationComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.ngOnInit();
     });
   }
@@ -38,7 +37,6 @@ export class MachineRegistrationComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
       this.ngOnInit();
 
     });
@@ -51,7 +49,7 @@ export class MachineRegistrationComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+ 
       this.ngOnInit();
 
     });
@@ -60,16 +58,13 @@ export class MachineRegistrationComponent implements OnInit {
   ngOnInit() {
     this.myLoader = true;
     this.service.card(this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
-      console.log(res);
       this.myLoader = false;
 
       this.machine_response=res;
-      console.log(localStorage.getItem('token'));
     })
   }
   
   delete_view(id) {
-    console.log(id)
     Swal.fire({
       title: 'Are you sure want to delete?',
       // type: 'warning',
@@ -83,7 +78,6 @@ export class MachineRegistrationComponent implements OnInit {
         }).then((destroy) => {
           if (destroy.value) {
             this.service.delete_row(id).pipe(untilDestroyed(this)).subscribe(res => {
-              console.log(res);
                if(res === true)
               {
                 Swal.fire("Deleted Succesfully !")
@@ -140,7 +134,6 @@ export class Add {
   }
   form()
   {
-    console.log(this.login.value);
      this.add_val = this.login.value;
      this.add_val["tenant_id"] = this.tenant
      this.add_val["machine_model"]=this.machine_model;
@@ -173,7 +166,6 @@ export class Edit {
   edit_data1:any;
   constructor(public dialogRef: MatDialogRef<Edit>,@Inject(MAT_DIALOG_DATA) public data1: any,private fb:FormBuilder,private service:MachineService) {
      this.edit_data1 = data1;
-     console.log(this.edit_data1)
   }
 
   onNoClick(): void {
@@ -194,13 +186,9 @@ export class Edit {
   }
   loginforum()
   {
-    console.log(this.login.value)
     this.add_val = this.login.value 
     this.add_val["tenant_id"] = this.tenant;
-    console.log(this.add_val)
-    console.log(this.edit_data1.id)
     this.service.edit(this.edit_data1.id,this.add_val).pipe(untilDestroyed(this)).subscribe(res => {
-      console.log(res);
       Swal.fire("Updated Successfully!")
       if(res === true){
         Swal.fire("Updated Suceesfully")
@@ -232,7 +220,6 @@ export class Settings {
   toggle_id:any;
   constructor(public dialogRef: MatDialogRef<Add>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,private service:MachineService) {
     this.tenant=localStorage.getItem('tenant_id');
-    console.log(data);
     this.settings_data=data;
   
   }
@@ -243,19 +230,15 @@ export class Settings {
   ngOnInit()
   {
      this.service.settinglist(this.settings_data.id,this.tenant).pipe(untilDestroyed(this)).subscribe(res =>{
-       console.log(res);
       this.status=res
      })
 
      
   }
   notify(e,s){
-    console.log(s)
     this.toggle_id=s.id
-    console.log(e)
     this.toggle_status=e.checked;
     this.service.statuschange(this.toggle_id,this.toggle_status).pipe(untilDestroyed(this)).subscribe(res =>{
-      console.log(res);
       if(res === true)
       {
         Swal.fire("Updated Succesfully !")

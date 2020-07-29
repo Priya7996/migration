@@ -40,7 +40,7 @@ export class AlertComponent implements OnInit {
     this.myLoader=true;
     this.pageNo =1;
    this.service.alert(this.tenant,this.pageNo,).pipe(untilDestroyed(this)).subscribe(res => {
-      // console.log(res);
+      
       this.myLoader=false;
 
       this.alertreport=res;
@@ -51,17 +51,16 @@ export class AlertComponent implements OnInit {
       // this.length = 1;
       // this.dataSource.paginator = this.paginator;
       this.total_count =res.alertreport;
-      // console.log( this.total_count )
 
 
     })
 
   } 
   pageEvent(e){
-   console.log(e);
+ 
     this.pageNo = e.pageIndex+1;
     this.service.alert(this.tenant,this.pageNo).pipe(untilDestroyed(this)).subscribe( res => {
-      console.log(res);
+   
      this.alertreport = res;
       this.dataSource = new MatTableDataSource(this.alertreport);
     })

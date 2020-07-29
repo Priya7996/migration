@@ -13,14 +13,14 @@
 <div class="container-fluid">
 <div class="file-path">
   <h4>{{user_name}}</h4>
-  <div class="filter_field">
+  <!-- <div class="filter_field">
     <mat-form-field appearance="outline">
       <mat-select placeholder="Select Machine"  required 
       [(ngModel)]="machine_id" (selectionChange)="code_compare($event.value)">
         <mat-option *ngFor="let file of reason_response" [value]="file.id">{{file.machine_name}}</mat-option>
       </mat-select>
     </mat-form-field>
-  </div> 
+  </div>  -->
    <p>  <span>File Path :</span> {{file_status?.file_path}} </p>
 </div>
 <div class="page-title">
@@ -95,7 +95,7 @@
     </div> 
   </div>
     <div >
-        <form [formGroup]="login" (ngSubmit)="logintest(login.value)" *ngIf="Compare">
+        <!-- <form [formGroup]="login" (ngSubmit)="logintest(login.value)" *ngIf="Compare">
           <div class="container">
             <div class="row">
               <div class="col-md-6">
@@ -149,7 +149,7 @@
     
       
       </form>
-    
+     -->
   
 
 </div>

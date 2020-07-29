@@ -24,7 +24,6 @@ show_status:any;
   this.tenant=localStorage.getItem('tenant_id')
   }
   operator_edit(data): void{
-  console.log(data)
       const dialogRef = this.dialog.open(Add, {
       width: '450px',
       height:'auto',
@@ -33,14 +32,12 @@ show_status:any;
 
     dialogRef.afterClosed().subscribe(result => {
       this.ngOnInit();
-      console.log('The dialog was closed');
     });
   }
 
   ngOnInit() {
     this.myLoader= true;
        this.service.operator(this.tenant).pipe(untilDestroyed(this)).subscribe(res =>{
-       console.log(res);
        this.myLoader= false;
        this.list=res;
        this.dataSource=new MatTableDataSource(this.list)
@@ -49,16 +46,9 @@ show_status:any;
 
 
   // operator_delete(id)
-  // {
-  //   console.log(id)
-  //   Swal.fire('Are you sure want to delete?')
-  //   this.service.delete_row(id).subscribe(res =>{
-  //     console.log(res);
-  //     this.ngOnInit()
-  //   })
-  // }
+  
   operator_delete(id) {
-    console.log(id)
+   
     Swal.fire({
       title: 'Are you sure want to delete?',
       // type: 'warning',
@@ -72,7 +62,7 @@ show_status:any;
         }).then((destroy) => {
           if (destroy.value) {
             this.service.delete_row(id).pipe(untilDestroyed(this)).subscribe(res => {
-              console.log(res);
+            
               if(res === true)
               {
                 Swal.fire("Deleted Succesfully !")
@@ -94,8 +84,7 @@ show_status:any;
       height:'auto'
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
-      console.log('The dialog was closed');
+     
              this.ngOnInit();
  
       
@@ -126,7 +115,6 @@ export class Edit {
 
   ngOnInit()
   { this.tenant=localStorage.getItem('tenant_id');
-  console.log(this.tenant);
     this.login=this.fb.group({
       operator_name:["",Validators.required],
       operator_spec_id:["",Validators.required],
@@ -134,12 +122,9 @@ export class Edit {
     })
   }
   logintest() {
-    console.log(this.login.value)
     this.add_val=this.login.value;
     this.add_val["tenant_id"] =this.tenant ;
-    console.log(this.add_val)
     this.service.post(this.add_val).pipe(untilDestroyed(this)).subscribe(res => {
-    console.log(res);
     Swal.fire("Created Successfully!")
     this.dialogRef.close(status);
    
@@ -164,7 +149,6 @@ export class Add {
 
   constructor(public dialogRef: MatDialogRef<Add>,@Inject(MAT_DIALOG_DATA) public data: any,private fb:FormBuilder,private service:OperatorService) 
   {
-    console.log(data);
     this.edit_data=data;
   }
 
@@ -174,7 +158,6 @@ export class Add {
   ngOnInit()
   {
     this.tenant=localStorage.getItem('tenant_id');
-    console.log(this.tenant);
     this.login=this.fb.group({
     operator_name:[this.edit_data.operator_name],
     operator_spec_id:[this.edit_data.operator_spec_id],
@@ -185,9 +168,7 @@ export class Add {
   editdata() {
     this.add_val=this.login.value
     this.add_val["tenant_id"] =this.tenant ;
-    console.log(this.add_val)
     this.service.put(this.edit_data.id,this.add_val).pipe(untilDestroyed(this)).subscribe(res =>{
-    console.log(res);
     Swal.fire("Updated Successfully!")
     this.dialogRef.close();
 })

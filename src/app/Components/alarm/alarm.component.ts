@@ -49,18 +49,18 @@ export class AlarmComponent implements OnInit {
     this.myLoader1 = true;
     this.pageNo =1;
     this.service.alarm_history(this.tenant,this.pageNo).pipe(untilDestroyed(this)).subscribe(res =>{
-      // console.log(res);
-      this.myLoader1= false;
+    
+      this.myLoader1= false;  
 
       this.alarmhistory=res['alarm_history'];
       this.dataSource=new MatTableDataSource(this.alarmhistory)
-      console.log(this.dataSource);
+    
       this.length =res['count'];
       this.dataSource.paginator = this.paginator;
     })
     this.myLoader = true;
     this.service.alarm(this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
-      // console.log(res);
+     
       this.myLoader= false;
       this.alarm=res;
       this.alarm1=new MatTableDataSource(this.alarm)
@@ -71,7 +71,7 @@ export class AlarmComponent implements OnInit {
   pagination(e){
     this.myLoader = false;
     this.pageNo = e.pageIndex+1;
-    console.log(e,this.pageNo);
+   
     this.service.alarm_history(this.tenant,this.pageNo).pipe(untilDestroyed(this)).subscribe( res => {
       this.alarmhistory=res['alarm_history'];
       this.length =res['count'];

@@ -46,17 +46,17 @@ export class RegisterComponent implements OnInit {
    }
    logintest(val)
    {
-     console.log(val)
+    
      this.add_val=val;
      this.add_val["tenant_id"] =this.tenant;
      this.add_val["usertype_id"] =this.user;
      this.add_val["approval_id"] =this.approval;
      this.add_val["role_id"] =this.role;
 
-     console.log(this.add_val)
+    
      this.login.reset();
      this.register.senddata(this.add_val).subscribe(res =>{
-       console.log(res);
+    
        if (res === true) {
         Swal.fire('Thank You for registering with Yantra24x7')
       }
