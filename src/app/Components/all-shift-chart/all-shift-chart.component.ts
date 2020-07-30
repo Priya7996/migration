@@ -447,21 +447,21 @@ exporting:{
     
     colors: ['#292b2c','#ec5550', '#e8a249', '#2cbe63'],
 
-    // series: [
-    //     {
-    //         name: 'Nodata',
-    //         data: this.noarryul1.reverse()
-    //     },
-    //     {
-    //     name: 'Stop',
-    //     data: this.stoparryul1.reverse()
-    // }, {
-    //     name: 'idle',
-    //     data: this.idlearryul1.reverse()
-    // }, {
-    //     name: 'Run',
-    //     data: this.runarryul1.reverse()
-    // }],
+    series: [
+        {
+            name: 'Nodata',
+            data: this.noarryul1.reverse()
+        },
+        {
+        name: 'Stop',
+        data: this.stoparryul1.reverse()
+    }, {
+        name: 'idle',
+        data: this.idlearryul1.reverse()
+    }, {
+        name: 'Run',
+        data: this.runarryul1.reverse()
+    }],
 
       series: [{
           name: 'Nodata',
