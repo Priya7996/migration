@@ -113,12 +113,24 @@
                                 background: #fff;
                                 padding: 10px;
                                 position: relative;
-                                border-left: 8px solid #DBDDDD;
+                                border-left: 8px solid #ddd;
                                 position: relative;
                                 cursor: pointer;
-                                &:hover{
-                                    border-left: 8px solid #a5a5a5;
+                                &.running{
+                                    background: #d0f3c7;
+                                    border-left: 8px solid #0f591a;
                                 }
+                                &.stop{
+                                    background: #fecaca;
+                                    border-left: 8px solid #c91f1f;
+                                }
+                                &.idle{
+                                    background: #fef4d8;
+                                    border-left: 8px solid #f2c12b;
+                                }
+                                // &:hover{
+                                //     border-left: 8px solid #a5a5a5;
+                                // }
                                 .info_title{
                                     h2{
                                         font-size: 16px;

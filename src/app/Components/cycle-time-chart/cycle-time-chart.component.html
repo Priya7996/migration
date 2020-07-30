@@ -35,10 +35,7 @@
                   </mat-form-field>
             </div>
             <button mat-raised-button class="filter_btn btn_orange" (click)="tableview()">
-              <i class="material-icons">
-                remove_red_eye
-              </i>
-              View Report</button>
+              Report</button>
           </div>
         </form>
       </div>
@@ -47,10 +44,10 @@
           <img src="assets/images/spinner.gif">
         </div>
         <mat-card class="example-card card_sec">
-          <mat-card-content>
+          <!-- <mat-card-content>
             <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptionstest"
               style="width: 100%; height: 400px; display: block;"></highcharts-chart>
-          </mat-card-content>
+          </mat-card-content> -->
           <mat-card-content>
             <highcharts-chart [Highcharts]="Highcharts" [options]="chartOptions"
               style="width: 100%; height: 400px; display: block;"></highcharts-chart>
@@ -90,7 +87,7 @@
         <!-- </div> -->
         </div>
       </div>
-      <div class="section_top_padding">
+      <div>
         <div *ngIf="myLoader3" class="spinner">
           <img src="assets/images/spinner.gif">
         </div>

@@ -191,8 +191,8 @@
           </a>
         </li>
 
-        <li routerLinkActive="active-link" class="">
-          <a (click)="toggle()">
+        <li routerLinkActive="active-link" onclick="myFunction2()">
+          <a (click)="toggle()"  id="drop_down2">
             <i class="fa fa-list-alt" aria-hidden="true"></i>
             <span>Master</span>
             <i class="material-icons rotate">
@@ -239,11 +239,11 @@
           </li>
         </div>
          <div *ngIf="tenant === '14'">
-        <li routerLinkActive="active-link">
-          <a (click)="view()">
+        <li routerLinkActive="active-link"  onclick="myFunction()">
+          <a (click)="view()" id="drop_down">
             <i class="fa fa-file" aria-hidden="true"></i>
             <span>File Compare</span>
-            <i class="material-icons">
+            <i class="material-icons rotate">
               keyboard_arrow_down
             </i>
           </a>

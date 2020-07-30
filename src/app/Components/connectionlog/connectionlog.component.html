@@ -22,7 +22,7 @@
                   [(ngModel)]="searchText" placeholder="Search">
               </div>
             </div>
-            <mat-card class="card_sec">
+            <mat-card class="card_sec table_card_sec">
               <mat-card-content *ngIf="connectionlog.status === Connected">
                 <table class="row" mat-table [dataSource]="dataSource" class="mat-elevation-z0">
 
@@ -79,7 +79,7 @@
             <div *ngIf="myLoader1" class="spinner">
               <img src="assets/images/spinner.gif">
             </div>
-            <mat-card class="card_sec">
+            <mat-card class="card_sec table_card_sec">
               <mat-card-content>
                 <table class="row" mat-table [dataSource]="dataSource1" class="mat-elevation-z0">
 
@@ -128,7 +128,7 @@
 
           </div>
         </div>
-        <div class="log_sec">
+        <div class="log_sec_new">
           <div class="col">
             <div class="page_title_sec">
               <h2 class="sub_title">
@@ -140,7 +140,7 @@
                   [(ngModel)]="searchText" placeholder="Search">
               </div>
             </div>
-            <mat-card class="card_sec">
+            <mat-card class="card_sec table_card_sec">
               <mat-card-content>
                 <table class="row" mat-table [dataSource]="power" class="mat-elevation-z0">
 

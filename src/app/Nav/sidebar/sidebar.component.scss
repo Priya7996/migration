@@ -103,8 +103,9 @@
           font-size: 1.2em;
         }
         span{
-          font-size: 12px;
+          font-size: 11px;
           display: block;
+          margin-top: 5px;
         }
 
       }
@@ -222,14 +223,21 @@
 }
 
 .rotate {
-  -moz-transition: all .5s linear;
-  -webkit-transition: all .5s linear;
-  transition: all .5s linear;
   transform:rotate(-90deg);
-
 }
 .down {
+ .rotate{
   -moz-transform:rotate(0deg);
   -webkit-transform:rotate(0deg);
   transform:rotate(0deg);
+ }
 }
+
+::ng-deep.password_align{
+  display: flex;
+  .old_pwd{
+    margin-right: 10px;
+  }
+}
+
+

@@ -19,22 +19,22 @@
                                     </span>
                                     <span class="idle machine_status_view">
                                     </span> -->
-                                <p class="stop machine_status_view" *ngIf="machie_status?.machine_status =='100'">
-                                    <span class="mac_ut_bar_red" >Stop
+                                    <p class="stop machine_status_view" *ngIf="machie_status?.machine_status =='100'">
+                                        <span class="mac_ut_bar_red">Stop
+                                        </span>
+                                    </p>
+                                    <p class="running machine_status_view" *ngIf="machie_status?.machine_status =='3'">
+                                        <span class="">Running
+                                        </span>
+                                    </p>
+                                    <p class="idle machine_status_view"
+                                        *ngIf="machie_status?.machine_status !='3' && machie_status?.machine_status !='100' && machie_status?.machine_status != null ">
+                                        <span class="machine_status">Idle
+                                        </span>
+                                    </p>
+                                    <span class="machine_status" *ngIf="machie_status?.machine_status =='null'">No Data
                                     </span>
-                                </p>
-                                <p class="running machine_status_view" *ngIf="machie_status?.machine_status =='3'">
-                                <span class="" >Running
-                                </span>
-                                </p>
-                                <p class="idle machine_status_view"  *ngIf="machie_status?.machine_status !='3' && machie_status?.machine_status !='100' && machie_status?.machine_status != null ">
-                                <span class="machine_status"
-                                   >Idle
-                                </span>
-                                </p>
-                                <span class="machine_status" *ngIf="machie_status?.machine_status =='null'">No Data
-                                </span>
-                            </div>
+                                </div>
                                 <div class="col-lg-5 col-md-4 col-xs-12 v_mid">
                                     <h2 class="title">{{machie_status?.machine_name}} </h2>
                                     <span class="shift_time">{{machie_status?.shift_no}}({{machie_status?.shift_time}})
@@ -161,21 +161,21 @@
                                 <div class="bg_grad">
                                     <h2>Servo Load</h2>
 
-
                                     <div>
-                                        <div *ngFor="let mach of testgokul | keyvalue"> {{mach.key }}
-                                            <span class="axis_txt float-right">{{mach.value}} %</span>
+                                        <div class="axis_txt">
+                                            <p *ngFor="let mach of testgokul | keyvalue"> {{mach.key }}
+                                                <span>{{mach.value}} %</span>
+                                            </p>
+                                        </div>
 
-                                            <div *ngFor="let mach of repeatchart; index as keyvalue"
-                                                style="display: block;"></div>
+                                        <div *ngFor="let mach of repeatchart; index as keyvalue"
+                                            style="display: block;"></div>
 
-                                            <div class="axis"
-                                                [ngClass]="{'ax_three' :testgokul.axis_tem_count == null, 'ax_three' :testgokul.axis_tem_count =='3', 'two' :testgokul.axis_tem_count =='2', 'sd' :testgokul.axis_tem_count =='4', 'sdj' :testgokul.axis_tem_count =='5'}">
-                                                <div *ngFor="let no of repeatchart; let i = index"
-                                                    [attr.data-index]="i">
-                                                    <span
-                                                        [ngClass]="no < 100 ? ( no < 80 ? 'green' : 'yellow' ) : 'red'"></span>
-                                                </div>
+                                        <div class="axis"
+                                            [ngClass]="{'ax_three' :testgokul.axis_tem_count == null, 'ax_three' :testgokul.axis_tem_count =='3', 'two' :testgokul.axis_tem_count =='2', 'sd' :testgokul.axis_tem_count =='4', 'sdj' :testgokul.axis_tem_count =='5'}">
+                                            <div *ngFor="let no of repeatchart; let i = index" [attr.data-index]="i">
+                                                <span
+                                                    [ngClass]="no < 100 ? ( no < 80 ? 'green' : 'yellow' ) : 'red'"></span>
                                             </div>
                                         </div>
                                     </div>
