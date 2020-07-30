@@ -64,10 +64,8 @@ export class HmiComponent implements OnInit {
       this.machine_response=res;
     })
     
-      // this.service.shift(this.tenant).subscribe(res => {
-      //   console.log(res);
-      //   this.shift_response=res;
-      //   console.log(localStorage.getItem('token'));})
+      
+         
       this.service.shiftidentity(this.tenant).pipe(untilDestroyed(this)).subscribe(res =>{
           this.service.shift(res.id).subscribe(res => {
 
@@ -102,7 +100,6 @@ export class HmiComponent implements OnInit {
      register.tenant_id = this.tenant;
     this.myLoader1 = true;
     this.service.chart(register).pipe(untilDestroyed(this)).subscribe(res => {
-    console.log(res.time)
       this.myLoader1 = false;
 
       this.new_date=new DatePipe('en-US').transform(res.date, 'yyyy-dd-MM');

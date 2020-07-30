@@ -1,0 +1,161 @@
+<!-- <div class="container-fluid">
+  <header>
+    <div class="container">
+      <h1>NGX Text Diffs</h1>
+    </div>
+  </header>
+  <div class="main-content">
+    <div class="container">
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="leftContent" class="font-weight-bold">Left Content:</label>
+            <tda-code-editor
+              [options]="options"
+              [ngModel]="content.leftContent"
+              [name]="'leftContent'"
+              [autoFocus]="true"
+              (ngModelChange)="handleChange('left',$event)"
+            ></tda-code-editor>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="rightContent" class="font-weight-bold">Right Content:</label>
+            <tda-code-editor
+              [options]="options"
+              [ngModel]="content.rightContent"
+              [name]="'rightContent'"
+              [autoFocus]="false"
+              (ngModelChange)="handleChange('right',$event)"
+            ></tda-code-editor>
+          </div>
+        </div>
+        <button type="submit" (click)="submitComparison()" class="btn btn-primary">Compare</button>
+      </form>
+      <div *ngIf="submitted">
+        <td-ngx-text-diff
+          [left]="content.leftContent"
+          [right]="content.rightContent"
+          [loading]="!submitted"
+          [diffContent]="contentObservable$"
+          [synchronizeScrolling]="true"
+          [compareRowsStyle]="{'max-height': '500px', 'overflow': 'auto'}"
+          (compareResults)="onCompareResults($event)"
+        >
+        </td-ngx-text-diff>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <header>
+    <div class="container">
+      <h2><b>File Compare</b></h2>
+    </div>
+  </header>
+  <div class="main-content">
+    <div class="container">
+      <form>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="leftContent" class="font-weight-bold"> <input id="file-upload" 
+              type="file" 
+              accept=".txt" 
+              (change)="fileUpload($event)">
+              <div>
+               <textarea rows="10" cols="50">{{FileText}}</textarea> -->
+              <header class="header ng-scope">
+                  <div class="container-fluid">
+                      <div class="navbar-header d-flex align-items-center justify-content-between">
+                        <div class="brand-logo">
+                          <img src="assets/images/yantra_logo.jpg">
+                        </div>
+                          <!-- <img ng-show="tenant_id == 1" src="assets/images/logo_nd.jpg" alt="person"> -->
+                        <div class="company_name"> 
+                          <h4>RABWIN INDUSTRIES&nbsp;PVT.LTD</h4>
+                        </div>
+                      </div>
+                  </div>
+              </header>
+              <div class="container-fluid">
+                <div class="page-title">
+                  
+                    <h2>File Compare</h2>
+                    <button type="submit" (click)="submitComparison()" class="btn btn-primary">Compare</button>
+                </div>
+                <div class="main-content">
+                
+                    <form>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <div for="leftContent" class="left_content"> 
+                          <div class="input-group">
+                              <div class="custom-file">
+                                <input type="file" [(ngModel)]="fileName" [ngModelOptions]="{standalone: true}" class="custom-file-input" aria-describedby="inputGroupFileAddon01" id="file-upload"  accept=".txt" (change)="fileUpload($event)">
+                                <label class="custom-file-label" for="inputGroupFile01">{{filName || "Choose file"}}</label>
+                              </div>
+                          </div>
+                            <div>
+                            <!-- <textarea rows="10" cols="50">{{FileText}}</textarea> -->
+                            </div>
+                          </div>
+                         <!-- <tda-code-editor
+                            [options]="options"
+                            [ngModel]="content.leftContent"
+                            [name]="'leftContent'"
+                            [autoFocus]="true"
+                            (focus)="handleChange('left',content.leftContent)"
+                            (ngModelChange)="handleChange('left',$event)"
+                          ></tda-code-editor>  -->
+                        </div>
+                        <div class="form-group col-md-6">
+                          <div for="rightContent" class="right_content">
+                            <div class="input-group">
+                                <div class="custom-file">
+                                  <input type="file" [(ngModel)]="fileName1" [ngModelOptions]="{standalone: true}" class="custom-file-input" aria-describedby="inputGroupFileAddon01" id="file-upload" type="file" accept=".txt" (change)="fileUpload1($event)">>
+                                  <label class="custom-file-label" for="inputGroupFile01">{{filName1 || "Choose file"}}</label>
+                                </div>
+                            </div>
+                            <div>
+                            <!-- <textarea rows="10" cols="50">{{filetext1}}</textarea> -->
+                            </div></div>
+                          <!-- <tda-code-editor
+                            [options]="options"
+                            [ngModel]="content.rightContent"
+                            [name]="'rightContent'"
+                            [autoFocus]="false"
+                            (focus)="handleChange('right',content.rightContent)"
+                            (ngModelChange)="handleChange('right',$event)"
+                          ></tda-code-editor> -->
+                        </div>
+                        
+                      </div>
+                      
+                    </form>
+                    <div class="compare_table" *ngIf="submitted">
+                      <td-ngx-text-diff
+                        [left]="content.leftContent"
+                        [right]="content.rightContent"
+                        [loading]="!submitted"
+                        [diffContent]="contentObservable$"
+                        [synchronizeScrolling]="true"
+                        [compareRowsStyle]="{'max-height': '500px', 'overflow': 'auto'}"
+                        (compareResults)="onCompareResults($event)"
+                      >
+                      </td-ngx-text-diff>
+                    </div>
+               
+                </div>
+              </div>
+              <footer class="main-footer ng-scope">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-lg-12 text-right">
+                      <p>Powered by <a target="blank" href="https://www.altiussolution.com" class="external"><img src="/assets/images/favicon.png" style="height: 25px;">Yantra24x7</a></p>
+                    </div>
+                  </div>
+                </div>
+              </footer>
+              <div ng-include="'footer.html'"></div>
+              
+ 
+ 

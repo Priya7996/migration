@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CompareService} from '../../Service/app/compare.service';
 import Swal from 'sweetalert2';
 import { untilDestroyed } from 'ngx-take-until-destroy';
+// import { DiffResults } from '../../../projects/ngx-text-diff/ngx-text-diff.model';
 
 export interface DiffResults {
   hasDiff: boolean;
@@ -211,23 +212,23 @@ export class CodecompareComponent implements OnInit {
     //this.handleChange('right',right)
     this.Text1 = me.filetext1
   }
-  logintest(val) {
-    this.Compare = false;
-    this.submitted = false;
-    this.login.reset();
-    this.filName = "";
-    this.Compare = false;
-    this.slave_file="";
-    this.filName1 = "";
-    this.file_path = "";
-    this.file_name = "";
-    this.fileName1 = "";
-    this.filetext1 = "";
-    this.FileText = "";
-    this.compareResults = "";
-    this.machinesArray = "";
+  // logintest(val) {
+  //   this.Compare = false;
+  //   this.submitted = false;
+  //   this.login.reset();
+  //   this.filName = "";
+  //   this.Compare = false;
+  //   this.slave_file="";
+  //   this.filName1 = "";
+  //   this.file_path = "";
+  //   this.file_name = "";
+  //   this.fileName1 = "";
+  //   this.filetext1 = "";
+  //   this.FileText = "";
+  //   this.compareResults = "";
+  //   this.machinesArray = "";
 
-  }
+  // }
   old(arg0: string, old: any) {
     throw new Error("Method not implemented.");
   }

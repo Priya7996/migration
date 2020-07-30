@@ -7,7 +7,7 @@
     </mat-toolbar>
     <div class="dialog-form">
         <div class="filter_sec">
-            <form [formGroup]="test" (ngSubmit)="testform()" class="form_sec">
+            <form [formGroup]="test" (ngSubmit)="testform(test.value)" class="form_sec">
                 <div class="filter_field">
                     <mat-form-field appearance="outline">
                       <mat-select placeholder="Select Machine"   matNativeControl required formControlName="machine_id">

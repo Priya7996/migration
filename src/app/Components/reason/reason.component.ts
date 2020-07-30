@@ -31,7 +31,6 @@ export class ReasonComponent implements OnInit {
     this.service.tenant_id(this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
       this.reason_response=res;
       this.machine_id = this.reason_response[0].id;
-      console.log(this.machine_id)
       this.service.display_reason(this.machine_id).pipe(untilDestroyed(this)).subscribe(res =>{
         this.reason=res;
         this.dataSource=new MatTableDataSource(this.reason)
@@ -40,7 +39,6 @@ export class ReasonComponent implements OnInit {
   }
 
   code_compare(id) {
-    console.log(id)
     this.service.display_reason(id).pipe(untilDestroyed(this)).subscribe(res =>{
       this.reason=res;
       this.dataSource=new MatTableDataSource(this.reason)

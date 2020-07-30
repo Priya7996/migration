@@ -34,7 +34,7 @@ myLoader = false;
 myLoader1 = false;
 searchText:any
 ploh:any;
-
+status:any
 connectionStatus:any[]=[];
 valuable:any[]=[];
 powerStatus:any[]=[];
@@ -57,11 +57,9 @@ interanet:any;
     this.service.internet(this.tenant).pipe(untilDestroyed(this)).subscribe(result =>{
       this.myLoader=false
       this.interanet = result;
-      console.log(this.interanet )
       for(let l = 0; l <= result.length; l++){ 
         if(this.interanet[l].status != 'Power Connected'){
         this.valuable.push(result[l]);
-        console.log(this.valuable)
        
         this.dataSource=new MatTableDataSource(this.valuable)
 
@@ -78,9 +76,7 @@ interanet:any;
       for(let i = 0; i <= res.length; i++){ 
         if(this.connectionlog[i].status === 'Power Connected'){
         this.connectionStatus.push(res[i]);
-        console.log(this.connectionStatus)
         this.logfh = this.connectionStatus
-        console.log(this.logfh)
         this.power=new MatTableDataSource(this.logfh)
         }else{
          this.powerStatus.push(res[i])
@@ -97,18 +93,7 @@ interanet:any;
       this.dataSource1=new MatTableDataSource(this.log)
     })
   }
-    // search(term) {
-      // const filterValue = (event.target as HTMLInputElement).value;
-      // this.dataSource.filter = term.trim().toLowerCase();
-    //   console.log(term)
-    //   if(term){
-    //   this.dataSource.filter = term.trim().toLowerCase();
-    //   }
-    //   else{
-    //     this.data = "No data Found";
-    //   }
-    // }
-    
+   
     ngOnDestroy(){
 
     }

@@ -44,6 +44,7 @@ const routes: Routes = [
   { path: 'machine_view', loadChildren: () => import('./Components/machine-view/machine-view.module').then(m => m.MachineViewModule) },
   { path: 'machine_details', loadChildren: () => import('./Components/machine-details/machine-details.module').then(m => m.MachineDetailsModule) },
   { path: 'part_documentation', loadChildren: () => import('./Components/part-doucumentation/part-doucumentation.module').then(m => m.PartDoucumentationModule) },
+  { path: 'home', loadChildren: () => import('./Components/home/home.module').then(m => m.HomeModule) },
   
 ];
 

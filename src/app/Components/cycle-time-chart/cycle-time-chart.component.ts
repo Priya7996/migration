@@ -13,13 +13,18 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 })
 export class CycleTimeChartComponent implements OnInit {
   startDate = new Date(2020, 0, 1);
+  parts = [];
+   sec: any;
 
+  c_time  = [];
+ pro_number :[]= [];
   Highcharts = Highcharts;
   chartOptions2: any;
   chartOptions4: any;
   chartOptions3: any;
   chartOptions: any;
   macname: any;
+  allcycletime:any []= [];
   myLoader1 = false
  tenant: any;
   machine_response: any;
@@ -36,6 +41,15 @@ export class CycleTimeChartComponent implements OnInit {
   machineID:any;
   shiftNo:any;
   date:any;
+
+   secondsToMinutes(time) {
+    let min = Math.floor(time / 60);
+   this.sec = Math.floor(time % 60);
+    if (this.sec.toString().length == 1) {
+    this.sec = '0' + this.sec;
+    }
+    return min + '.' + this.sec;
+}
   constructor(private nav: NavbarService, private service: CycleTimeService, private fb: FormBuilder) {
     this.nav.show();
     this.tenant = localStorage.getItem('tenant_id');
@@ -85,6 +99,9 @@ export class CycleTimeChartComponent implements OnInit {
       })
     })
   }
+
+
+  
   getmachine(machine,id){
   this.machineName = machine;
   this.machineID = id;
@@ -106,9 +123,39 @@ export class CycleTimeChartComponent implements OnInit {
     this.myLoader=true;
     this.service.all_time_chart(register).pipe(untilDestroyed(this)).subscribe(res => {
       this.myLoader=false;
+    
+      this.allcycletime = res;
+      console.log(this.allcycletime)
+
+      for(let i = 0; i < this.allcycletime.length; i++){ 
+        let part = i * 1 + 1;
+        this.parts.push(part);
+                
+       let cycle1 = this.secondsToMinutes(this.allcycletime[i].cycle_time);
+       let cycle = parseFloat(cycle1);
+       console.log(this.allcycletime)
+       let pro_number = this.allcycletime[i].program_number;
+       this.c_time.push(cycle);
+        
+    }
+
+
+    
+  //   for (var i in $scope.allcycletime) {
+  //     var part = i * 1 + 1;
+  //     $scope.parts.push(part);
+
+  
+  //     var pro_number = $scope.allcycletime[i].program_number;
+  //     $scope.c_time.push(cycle);
+  //     $scope.pro_number.push(pro_number);
+  //     var ShiftNo = $scope.allcycletime[i].shift_no;
+  //     var Time = $scope.allcycletime[i].time;
+  // }
       this.chartOptions = {
         chart: {
           type: 'column',
+        
           style: {
             fontFamily: 'roboto'
           }
@@ -127,7 +174,7 @@ export class CycleTimeChartComponent implements OnInit {
           }
         },
         xAxis: {
-          categories: [res.parts_count],
+          categories: this.parts,
           title: {
             text: 'Parts Count'
           }
@@ -170,7 +217,7 @@ export class CycleTimeChartComponent implements OnInit {
         colors: ['#f58632', '#f58632', '#f58632', '#f58632'],
         series: [{
           name: 'Parts Count',
-          data: [res.cycle_time],
+          data: this.c_time,
           // data: [res.parts_count],[res.cycle_time]
         }],
 

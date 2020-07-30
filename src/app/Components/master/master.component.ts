@@ -145,28 +145,17 @@ export class Dialog {
   testform(val)
   {
     console.log(this.test.value);
-    this.test.reset();
 
-    // var fd = new FormData();
-    // fd.append('machine_id', this.test.value.machine_id);
-    // // fd.append('user_id', this.sample_test.user_id);
-    // fd.append('user_name', this.test.value.user_name);
-    // fd.append('file',this.file2);
-    // fd.append('date',this.date);
+    var formdata = new FormData();
+    formdata.append('machine_id', this.test.value.machine_id);
+    formdata.append('user_name', this.test.value.user_name);
+    formdata.append('date',this.test.value.date);
+    formdata.append('file', this.file2);
+    console.log(formdata)
+    // this.service.file_upload(fd).pipe(untilDestroyed(this)).subscribe(res =>{
+    //   console.log(res)
 
-    // console.log(fd)
-    var fd = new FormData();
-    fd.append('file',this.file2);
-    console.log(this.file2)
-    fd.append('machine_id', this.test.value.machine_id);
-    fd.append('user_name', this.test.value.user_name);
-    fd.append('old_revision_no', this.test.value.old_revision_no);
-    fd.append('new_revision_no', this.test.value.new_revision_no);
-    console.log(fd)
-    this.service.file_upload(fd).pipe(untilDestroyed(this)).subscribe(res =>{
-      console.log(res)
-
-    })
+    // })
 
     // fd.append('file_name', this.filName);
     // fd.append('old_revision_no', this.login.value.old_revision_no);
