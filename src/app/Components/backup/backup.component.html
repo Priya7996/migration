@@ -86,8 +86,8 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
         </mat-card-content>
-        <mat-card-content *ngIf="backup.length==0">
-          <h2><b>No data found</b></h2>
+        <mat-card-content *ngIf="backup.length==0" class="no_data_found">
+          <h2>No data found</h2>
         </mat-card-content>
       </mat-card>
 

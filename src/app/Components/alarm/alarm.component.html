@@ -49,8 +49,8 @@
           <!-- <mat-paginator [pageSizeOptions]="[20]" [length]="length" showFirstLastButtons (page)="test($event)"></mat-paginator> -->
 
         </mat-card-content>
-        <mat-card-content *ngIf="alarm?.length==0">
-          <h2><b>No data found</b></h2>
+        <mat-card-content *ngIf="alarm?.length==0" class="no_data_found">
+          <h2>No data found</h2>
         </mat-card-content>
       </mat-card>  
     </div>
@@ -124,8 +124,8 @@
               (page)="pagination($event)">
           </mat-paginator>
           </mat-card-content>
-          <!-- <mat-card-content *ngIf="alarmhistory.length==0">
-            <h2><b>No data found</b></h2>
+          <!-- <mat-card-content *ngIf="alarmhistory.length==0" class="no_data_found">
+            <h2>No data found</h2>
           </mat-card-content> -->
       </mat-card>
     </div>

@@ -495,8 +495,7 @@ exporting:{
         color: '#ec5550',
         data: res.stop_time.map(Number)
     }
-]
-      }
+]}
  })
 
 

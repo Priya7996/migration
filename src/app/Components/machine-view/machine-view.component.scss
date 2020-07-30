@@ -373,11 +373,11 @@
   
                 .axis {
                   width: 100%;
-                  height: 19px;
+                  height: 50px;
+                  padding: 7px 5px 0 5px;
                   background-image: linear-gradient(#1a1d24, #383c49);
                   border-radius: 5px;
                   border: 1px solid #171a22;
-                  padding: 2px;
                   margin-bottom: 5px;
   
                   &.two {
@@ -828,16 +828,16 @@ height: 47px;
 }
 .axis{
   width: 100%;
-  height:19px;
+  height:50px;
   background-image:linear-gradient(#1a1d24, #383c49);
   border-radius:5px;
   border: 1px solid #171a22;
-  padding:2px;
+  padding: 7px 5px 0 5px;
   margin-bottom: 5px;
 }  
 .axis span.green{
-  width:9.7px;
-  height:14px;
+  width:4px;
+  height:44px;
   display: block;
   background-image:linear-gradient(#41ad3f, #58dc55);
   border-radius:3px;
@@ -847,8 +847,8 @@ height: 47px;
   border: 1px solid #2d3654;
 }
 .axis span.yellow{
-  width:9.7px;
-  height: 14px;
+  width:4px;
+  height:44px;
   display: block;
   background-image:linear-gradient(#ffc01d, #fffb5f);
   border-radius:3px;
@@ -858,8 +858,8 @@ height: 47px;
   border: 1px solid #2d3654;
 } 
 .axis span.red{
-  width:9.7px;
-  height: 14px;
+  width:4px;
+  height: 44px;
   display: block;
   background-image:linear-gradient(#c91f1f, #fd6262);
   border-radius:3px;
@@ -870,7 +870,7 @@ height: 47px;
 }
 @media(max-width: 1700px){
   .axis span.green, .axis span.yellow, .axis span.red{
-    width: 2.14%;
+    // width: 2.14%;
   }
 }
 
@@ -903,4 +903,12 @@ height: 47px;
       }
     }
   }
+}
+
+// Custom styles
+.axis_txt{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
 }
