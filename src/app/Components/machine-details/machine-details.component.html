@@ -84,7 +84,32 @@
                                             <a *ngIf="mac.machine_status=='100'">
                                                 <span>{{mac.mac_name }}</span>
                                               </a></li> -->
-
+                                              <div class="current_running">
+                                                <!-- <i class="material-icons">
+                                                    fiber_manual_record
+                                                </i> -->
+                                                <!-- <span class="running machine_status_view">
+                                                </span> -->
+                                                <!-- <span class="stop machine_status_view">
+                                                </span>
+                                                <span class="idle machine_status_view">
+                                                </span> -->
+                                            <p class="stop machine_status_view" *ngIf="mac?.machine_status =='100'">
+                                                <span class="mac_ut_bar_red" >Stop
+                                                </span>
+                                            </p>
+                                            <p class="running machine_status_view" *ngIf="mac?.machine_status =='3'">
+                                            <span class="" >Running
+                                            </span>
+                                            </p>
+                                            <p class="idle machine_status_view"  *ngIf="mac?.machine_status !='3' && mac?.machine_status !='100' && mac?.machine_status != null ">
+                                            <span class="machine_status"
+                                               >Idle
+                                            </span>
+                                            </p>
+                                            <span class="machine_status" *ngIf="mac?.machine_status =='null'">No Data
+                                            </span>
+                                        </div>
 
                                                 <h2>{{mac.mac_name }}</h2>
                                                 <!-- <p>Doosan2: <span>SSS32786AX </span></p> -->

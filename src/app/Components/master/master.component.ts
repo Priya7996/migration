@@ -151,11 +151,62 @@ export class Dialog {
     formdata.append('user_name', this.test.value.user_name);
     formdata.append('date',this.test.value.date);
     formdata.append('file', this.file2);
+    formdata.append('revision_no', this.test.value.revision_no);
     console.log(formdata)
-    // this.service.file_upload(fd).pipe(untilDestroyed(this)).subscribe(res =>{
-    //   console.log(res)
+    formdata.forEach((value, key) => {
+       console.log(key + value)
+      });
+    this.service.file_upload(formdata).pipe(untilDestroyed(this)).subscribe(res =>{
+      console.log(res)
 
-    // })
+    })
+
+
+    // var machine: FormData = new FormData();
+    // this.image.map((image, index) => {
+    // console.log(index)
+    // machine.append('machine[machine_assets_attributes]' + index + '[pic_url]', image);
+    // });
+    // machine.append('machine[make]', data.make);
+    // machine.append('machine[mac_model]', data.mac_model);
+    // machine.append('machine[capacity_id]', data.capacity_id);
+    // machine.append('machine[accuracy_id]', data.accuracy_id);
+    // machine.append('machine[machine_class_id]', data.machine_class_id);
+    // machine.append('machine[sl_no]', data.sl_no);
+    // machine.append('machine[stamp_quarters]', data.stamp_quarters);
+    // machine.append('machine[stamping_city]', data.stamping_city);
+    // // machine.append('machine[si_circle]', data.si_circle);
+    // machine.append('machine[customer_id]', data.customer_id)
+    // machine.append('machine[distributor_id]', data.distributor_id)
+    // machine.append('machine[stamping_dues_attributes][0][customer_id]', data.customer_id);
+    // machine.append('machine[stamping_dues_attributes][0][stamp_due_date]', data.stamping_dues_attributes.stamp_due_date);
+    // machine.append('machine[stamping_dues_attributes][0][status]', "Open");
+    // machine.append('machine[stamping_dues_attributes][0][distributor_id]', data.distributor_id);
+    // machine.forEach((value, key) => {
+    // console.log(key + value)
+    // });
+    
+    // this.customer.machine_create(machine).pipe(untilDestroyed(this)).subscribe(res => {
+    // this.clicked = false;
+    // this.toast.success('Created Successfully');
+    // // this.ngOnInit();
+    // this.dialogRef.close();
+    // }, error => {
+    // this.clicked = false;
+    // this.toast.error(Object.keys(error.error) + ' ' + Object.values(error.error));
+    // });
+    // } else {
+    // this.customer.machine_put(data, this.value.machine_id).pipe(untilDestroyed(this)).subscribe(res => {
+    // this.clicked = false;
+    // this.toast.success('Updated Successfully');
+    // // this.ngOnInit();
+    // this.dialogRef.close();
+    // }, error => {
+    // this.clicked = false;
+    // this.toast.error(Object.keys(error.error) + ' ' + Object.values(error.error));
+    // });
+    // }
+
 
     // fd.append('file_name', this.filName);
     // fd.append('old_revision_no', this.login.value.old_revision_no);
