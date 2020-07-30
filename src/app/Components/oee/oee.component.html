@@ -9,15 +9,16 @@
           <mat-icon class="v-align-middle display">laptop</mat-icon>
           <span class="v-align-middle">OEE</span>
         </h2>
-        <div class="add_new">
-          <mat-icon class="circle" (click)="add_shift_registartion()">add</mat-icon>
+        <div class="page_title_sec align_right">
+          <div class="add_new">
+            <mat-icon class="circle" (click)="add_shift_registartion()">add</mat-icon>
+          </div>
+          <div class="table_search ml-2">
+            <input class="form-control" (keyup)="dolly($event.target.value)" type="text" name="search" [(ngModel)]="searchText" placeholder="Search">
+          </div>
         </div>
       </div>
-      <div class="page_title_sec align_right">
-        <div class="table_search">
-          <input class="form-control" (keyup)="dolly($event.target.value)" type="text" name="search" [(ngModel)]="searchText" placeholder="Search">
-        </div>
-      </div>
+    
 
       <mat-card class="card_sec">
         <mat-card-content>

@@ -9,24 +9,36 @@
                     <div class="wrapper_inner">
                         <div class="mec_head">
                             <div class="row_sec main_header">
-                                <p class="current_running">
-                                    <i class="material-icons">
+                                <div class="current_running">
+                                    <!-- <i class="material-icons">
                                         fiber_manual_record
-                                    </i>
-                                    <span class="running">
+                                    </i> -->
+                                    <!-- <span class="running machine_status_view">
+                                    </span> -->
+                                    <!-- <span class="stop machine_status_view">
                                     </span>
-                                    <span class="mac_ut_bar_red" *ngIf="machie_status?.machine_status =='100'">Stop
-                                    </span>
-                                    <span class="running" *ngIf="machie_status?.machine_status =='3'">Running
-                                    </span>
-                                    <span class="machine_status" *ngIf="machie_status?.machine_status !='3' && machie_status?.machine_status !='100' && machie_status?.machine_status != null " >Idle
-                                    </span>
-                                    <span class="machine_status" *ngIf="machie_status?.machine_status =='null'">No Data
+                                    <span class="idle machine_status_view">
+                                    </span> -->
+                                <p class="stop machine_status_view" *ngIf="machie_status?.machine_status =='100'">
+                                    <span class="mac_ut_bar_red" >Stop
                                     </span>
                                 </p>
+                                <p class="running machine_status_view" *ngIf="machie_status?.machine_status =='3'">
+                                <span class="" >Running
+                                </span>
+                                </p>
+                                <p class="idle machine_status_view"  *ngIf="machie_status?.machine_status !='3' && machie_status?.machine_status !='100' && machie_status?.machine_status != null ">
+                                <span class="machine_status"
+                                   >Idle
+                                </span>
+                                </p>
+                                <span class="machine_status" *ngIf="machie_status?.machine_status =='null'">No Data
+                                </span>
+                            </div>
                                 <div class="col-lg-5 col-md-4 col-xs-12 v_mid">
                                     <h2 class="title">{{machie_status?.machine_name}} </h2>
-                                    <span class="shift_time">{{machie_status?.shift_no}}({{machie_status?.shift_time}}) </span>
+                                    <span class="shift_time">{{machie_status?.shift_no}}({{machie_status?.shift_time}})
+                                    </span>
                                 </div>
                                 <div class="col-lg-3 col-md-2 col-xs-12 clock_all">
                                     <div class="clock_top date">
@@ -38,7 +50,7 @@
                                     <div class="clock_top time">
                                         <!-- <span>Time:</span> -->
                                         <h4>
-                                           
+
                                             {{today | date:'h:mm:ss a'  }}
                                         </h4>
                                     </div>
@@ -72,9 +84,10 @@
                         <div class="time_desc">
                             <p> <b>Operator Name : </b>
                                 <span>
-                                   {{machie_status?.operator_allocation}}
+                                    {{machie_status?.operator_allocation}}
                                 </span></p>
-                            <p><b>Last Updated Time : </b> <span>{{machie_status?.last_update | date:'dd-MM-yyyy ; HH:mm:ss a'}} </span>
+                            <p><b>Last Updated Time : </b>
+                                <span>{{machie_status?.last_update | date:'dd-MM-yyyy ; HH:mm:ss a'}} </span>
                             </p>
                         </div>
 
@@ -126,7 +139,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr  class="ng-scope">
+                                                    <tr class="ng-scope">
                                                         <td>6140</td>
                                                         <td>12</td>
                                                     </tr>
@@ -135,7 +148,7 @@
                                         </div>
                                     </div>
                                 </div>
-                              </div>
+                            </div>
                             <div class="col-lg-4 col-md-12 col-xs-12 main_col sec_center">
                                 <div class="bg_grad">
                                     <div class="mac_alarm">
@@ -149,28 +162,32 @@
                                     <h2>Servo Load</h2>
 
 
-                                    <div style="font-size:14px; height: 227px">
-                                        <div *ngFor = "let mach of testgokul | keyvalue"> {{mach.key }}
-                                          <span class="axis_txt float-right">{{mach.value}} %</span>
+                                    <div>
+                                        <div *ngFor="let mach of testgokul | keyvalue"> {{mach.key }}
+                                            <span class="axis_txt float-right">{{mach.value}} %</span>
 
-                                           <div *ngFor = "let mach of repeatchart; index as keyvalue" style="display: block;"></div>
-                                                   
-                                            <div class="axis" [ngClass]="{'ax_three' :testgokul.axis_tem_count == null, 'ax_three' :testgokul.axis_tem_count =='3', 'two' :testgokul.axis_tem_count =='2', 'sd' :testgokul.axis_tem_count =='4', 'sdj' :testgokul.axis_tem_count =='5'}">
-                                                <div *ngFor="let no of repeatchart; let i = index" [attr.data-index]="i">
-                                             <span [ngClass]="no < 100 ? ( no < 80 ? 'green' : 'yellow' ) : 'red'"></span>
-                                           </div>
-                                          </div>
-                                        </div> 
-                                      </div>
-                                    
+                                            <div *ngFor="let mach of repeatchart; index as keyvalue"
+                                                style="display: block;"></div>
+
+                                            <div class="axis"
+                                                [ngClass]="{'ax_three' :testgokul.axis_tem_count == null, 'ax_three' :testgokul.axis_tem_count =='3', 'two' :testgokul.axis_tem_count =='2', 'sd' :testgokul.axis_tem_count =='4', 'sdj' :testgokul.axis_tem_count =='5'}">
+                                                <div *ngFor="let no of repeatchart; let i = index"
+                                                    [attr.data-index]="i">
+                                                    <span
+                                                        [ngClass]="no < 100 ? ( no < 80 ? 'green' : 'yellow' ) : 'red'"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
 
                                 <div class="speed_sec">
                                     <figure class="highcharts-figure">
-                                      <div id="container" class="chart-container"></div>
-                                      <div id="container2" class="chart-container"></div>
+                                        <div id="container" class="chart-container"></div>
+                                        <div id="container2" class="chart-container"></div>
                                     </figure>
-                                  </div>
+                                </div>
 
                             </div>
 
@@ -191,26 +208,32 @@
                                 </div>
 
 
-                              
+
                                 <div class="bg_grad donut_small bg_grad_temp">
                                     <h2>Pulse Coder Temperature</h2>
-                                   <div *ngFor = "let machh of testsample | keyvalue"> 
-                                    <div class="row_sec temperature" *ngFor = "let machh of repeatpulse; index as keyvalue" style="display: block;">
+                                    <div *ngFor="let machh of testsample | keyvalue">
+                                        <div class="row_sec temperature"
+                                            *ngFor="let machh of repeatpulse; index as keyvalue"
+                                            style="display: block;">
 
-                                        <div class="col brdr_right axis_display"  [ngClass]="{col_sm_4 :testsample.axis_tem_count =='3', col_sm_6 :testsample.axis_tem_count =='2', col_sm_3 :testsample.axis_tem_count =='4', col_sm_2 :testsample.axis_tem_count =='5'}" >
-                                            <div *ngFor="let no of repeatpulse; let i = index" [attr.data-index]="i">
-                                                <span [ngClass]="no < 100 ? ( no < 80 ? 'green' : 'yellow' ) : 'red'"></span>
-                                            <div class="gradient-wrapper pulse_coder_chart">
-                                                <circle-progress [percent]=val [radius]="100" [outerStrokeWidth]="16"
-                                                    [innerStrokeWidth]="false" [outerStrokeColor]="'#48ba46'"
-                                                    [animation]="true" [animationDuration]="300"></circle-progress>
+                                            <div class="col brdr_right axis_display"
+                                                [ngClass]="{col_sm_4 :testsample.axis_tem_count =='3', col_sm_6 :testsample.axis_tem_count =='2', col_sm_3 :testsample.axis_tem_count =='4', col_sm_2 :testsample.axis_tem_count =='5'}">
+                                                <div *ngFor="let no of repeatpulse; let i = index"
+                                                    [attr.data-index]="i">
+                                                    <span
+                                                        [ngClass]="no < 100 ? ( no < 80 ? 'green' : 'yellow' ) : 'red'"></span>
+                                                    <div class="gradient-wrapper pulse_coder_chart">
+                                                        <circle-progress [percent]=val [radius]="100"
+                                                            [outerStrokeWidth]="16" [innerStrokeWidth]="false"
+                                                            [outerStrokeColor]="'#48ba46'" [animation]="true"
+                                                            [animationDuration]="300"></circle-progress>
+                                                    </div>
+
+                                                </div>
+                                                <p>{{machh.key}}</p>
                                             </div>
-                                            
+
                                         </div>
-                                            <p>{{machh.key}}</p>
-                                        </div>
-                           
-                                    </div>
                                     </div>
                                 </div>
 

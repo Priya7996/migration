@@ -13,12 +13,11 @@
   .px-16{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
   }
  .example-card{
-   position: relative;
-   width: calc(100% /5);
-   margin-bottom: 30px;
+  position: relative;
+  width: 21%;
+  margin: 15px 10px 15px 0;
   h2{
     margin-top: 16px;
     color: #000;
@@ -150,3 +149,23 @@
   width: 90px;
   margin-top: -130px;
 }
+
+
+// Resposnive styles
+@media only screen and (max-width:768px) {
+
+}
+@media only screen and (max-width:600px) {
+  .cards_collections{
+   .example-card{
+    position: relative;
+    width: 21%;
+    margin: 15px 10px 15px 0;
+  }
+  }
+}
+@media only screen and (min-device-width: 320px) 
+                   and (max-device-width: 1024px) 
+                   and (orientation: landscape) {
+
+                   }

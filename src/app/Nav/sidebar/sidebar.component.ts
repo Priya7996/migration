@@ -18,10 +18,12 @@ export class SidebarComponent implements OnInit,OnChanges {
   show2: boolean;
   last_name: any;
   first_name: any;
+  public keyboard_arrow_down: any = 'Compare';
   tenant: any;
   email:any;
+  Compare :any;
   // first: any;
-  // last: any;
+  // last: any; 
     hide: boolean = true;
     flock: boolean = true;
   constructor(private nav: NavbarService, private route: Router,private dialog:MatDialog) { }
@@ -54,6 +56,18 @@ open(): void {
 }
 toggle() {
   this.show1 = !this.show1
+}
+
+
+toggle_menu(){
+  this.Compare = !this.Compare;
+
+  // CHANGE THE NAME OF THE BUTTON.
+  console.log(this.Compare)
+  if (this.Compare)
+    this.keyboard_arrow_down = "Compare";
+  else
+    this.keyboard_arrow_down = "Compare"; 
 }
   close() {
     Swal.fire({

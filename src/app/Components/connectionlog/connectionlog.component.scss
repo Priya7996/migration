@@ -1,7 +1,8 @@
 .log_sec {
-  display: flex;
+    display: flex;
+    flex-wrap: wrap;
   .col{
-      width: calc(100% /1);
+    width: 49%;
       &:first-child{
           margin-right: 20px;
       }
@@ -76,3 +77,13 @@ table{
     margin-top: -130px;
   }
 
+  @media only screen and (max-width:768px) {
+    .log_sec{
+        .col{
+            width: 100%;
+            &:first-child {
+                margin-right: 0px;
+            }
+        }
+    }
+  }

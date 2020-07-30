@@ -154,7 +154,10 @@ export class HmiComponent implements OnInit {
         },
         exporting: {
           enabled: true
-        },
+      },
+      credits: {
+        enabled: false
+    },
         plotOptions: {
           bar: {  
             dataLabels: {

@@ -9,13 +9,13 @@
           <span class="v-align-middle">Alarm History Report</span>
         </h2>
          <div class="table_export">
-            <button class="export_btn"  (click)="export()" mat-raised-button> Export</button>
-            <!-- <a href="" class="export_btn">
+            <!-- <a class="export_btn"  (click)="export()" mat-raised-button> Export</a> -->
+            <a (click)="export()" class="export_btn">
                     <i class="material-icons">
                         file_copy
                     </i>
                     Export
-                </a> -->
+                </a>
         </div>
       </div>
       <!-- filter_sec start-->
@@ -79,9 +79,7 @@
                   </mat-select>
                 </mat-form-field>
               </div>
-              <button mat-raised-button class="filter_btn btn_success"><i class="material-icons">
-                  remove_red_eye
-                </i> View Report</button>
+              <button mat-raised-button class="filter_btn btn_success">Report</button>
               </form>
           </div>
         </mat-card-content>
