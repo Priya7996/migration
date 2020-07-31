@@ -20,12 +20,16 @@ export class OperatorAllocationComponent implements OnInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   }
   dialogRef: any;
+  get_report: any;
+  IsVisible: boolean;
+  subid: any;
 
   onNoClick(): void {
     this.dialogRef.close();
   }
   tenant: any;
   myLoader = false;
+  statusColapse:any;
   public today: Date = new Date(new Date().toDateString());
   public weekStart: Date = new Date(new Date(new Date().setDate(new Date().getDate() - (new Date().getDay() + 7) % 7)).toDateString());
   public weekEnd: Date = new Date(new Date(new Date().setDate(new Date(new Date().setDate((new Date().getDate()
@@ -64,7 +68,7 @@ export class OperatorAllocationComponent implements OnInit {
     this.myLoader = true;
     this.service.list(this.tenant).pipe(untilDestroyed(this)).subscribe(res =>{
     console.log(res);
-
+this.get_report = res;
       this.allocation=res;
       this.myLoader = false;
 
@@ -72,6 +76,19 @@ export class OperatorAllocationComponent implements OnInit {
 
     })
   }
+  allocate(res){
+
+    if(this.statusColapse == res){
+                                          this.IsVisible = this.IsVisible ? false : true;
+                                          return;
+                                       }else{
+                                         this.IsVisible=true;
+                                       }
+                                       this.statusColapse= res;
+
+
+                                       this.subid=res;
+}
   operator_delete(id) {
     console.log(id)
     Swal.fire({

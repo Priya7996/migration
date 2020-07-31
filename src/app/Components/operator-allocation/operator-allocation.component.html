@@ -118,6 +118,52 @@
         </mat-card>
       </div>
     </div>
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Operator Name</th>
+        <th>Operator Id</th>
+        <th>Machine Name</th>
+        <th>Machine Id</th>
+        <th>Shift</th>
+        <th>Shift Time</th>
+        <th>Description</th>
+        <th>From To Date</th>
+        <th>created</th>
+        <th>Action</th>
+      </tr>
+      <tr *ngFor="let show_report of get_report" (click)="alocate(operator.id)" [ngClass]="{'active': operator.id == subid && IsVisible }">
+        <td>1</td>
+        <td>{{show_report?.operator.operator_name}}</td>
+        <td>{{show_report?.operator.operator_spec_id}}</td>
+        <td>{{show_report?.machine.machine_name}}</td>
+        <td>{{show_report?.machine.machine_type}}</td>
+        <td>{{show_report?.shifttransaction.shift_no }}</td>
+        <td>{{show_report?.shifttransaction.shift_start_time}}-{{show_report?.shifttransaction.shift_start_time}}</td>
+        <td>{{show_report?.description}}</td>
+        <td>{{show_report?.from_date }}-{{show_report?.to_date }}</td>
+        <td>{{show_report?.created_at}}</td>
+        <td>edit</td>
+      </tr>
+
+      <tr *ngIf="operator.id == subid" *ngShow="IsVisible" *ngFor="operator1 in operator.operator_mapping_allocations">
+        <td>2</td>
+        <td>{{ operator1.operator.operator_name}}</td>
+        <td>{{ operator1.operator.operator_spec_id}}</td>
+        <td>{{ operator.machine.machine_name}}</td>
+        <td>{{ operator.machine.machine_type}}</td>
+        <td>{{operator.shifttransaction.shift_no}}</td>
+        <td>{{operator.shifttransaction.shift_start_time}} - {{operator.shifttransaction.shift_end_time}}</td>
+        <td>{{ operator.description }}</td>
+        <td>{{ operator1.date }}</td>
+        <td>{{ operator1.created_at }}</td>
+        <!-- <td ng-show="{{todaydat <= operator1.date}}">
+          <a ngHide="role_Setup == 'operator' || role_Setup == 'supervisor'" class="edit" data-toggle="modal"  data-target="#exampleModalLabel" title="Edit" (click)="edit(operator.id,operator1)"> <i class="fa fa-pencil"></i></a>
+        </td> -->
+        
+      </tr>
+      
+    </table>
   </section>
 
 
