@@ -22,6 +22,11 @@
   <script src="https://code.highcharts.com/modules/export-data.js"></script>
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+  
+  <!-- Customscoll -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.js">
+  </script>
 </head>
 
 <body>
@@ -40,5 +45,11 @@
        var element = document.getElementById("drop_down2");
        element.classList.toggle("down");
     }
+
+    jQuery(document).ready(function(){
+    jQuery('.scrollbar-macosx').scrollbar();
+});
     </script>
+
+    
 </html>

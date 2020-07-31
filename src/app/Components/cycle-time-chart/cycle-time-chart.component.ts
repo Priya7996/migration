@@ -164,7 +164,6 @@ export class CycleTimeChartComponent implements OnInit {
           text: 'Cycle Time Chart(Mins)'
         },
         subtitle: {
-
           // text: 'Machine ID : '+ this.macname['machine_name']+',Shift:'+ res.shift_no+' Date : 04-02-20 ',
           text: 'Machine Name : ' + this.machineName + ', Date : ' +this.date + ',Shift :'  + this.shiftNo + ',Time : ' + '' + ', PartsCount:' + '' + ',Program No : ' + '',
           style: {
@@ -191,14 +190,11 @@ export class CycleTimeChartComponent implements OnInit {
         },
         exporting: {
           enabled: true
-        },
+      },
         navigation: {
           buttonOptions: {
-            align: 'center'
+            enabled: true
           }
-        },
-        tooltip: {
-          //valueSuffix: ' certificates'
         },
         plotOptions: {
           bar: {
@@ -211,9 +207,7 @@ export class CycleTimeChartComponent implements OnInit {
         credits: {
           enabled: false
         },
-        // exporting: {
-        //   enabled: true
-        // },
+      
         colors: ['#f58632', '#f58632', '#f58632', '#f58632'],
         series: [{
           name: 'Parts Count',

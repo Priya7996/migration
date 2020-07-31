@@ -1,52 +1,52 @@
 <mat-toolbar class="header" *ngIf="nav.visible">
   <!-- <div class="container-fluid"> -->
-    <mat-toolbar-row class="header_area">
-      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <div class="company_name">
-        <h3>{{first_name}} {{last_name}}</h3>
+  <mat-toolbar-row class="header_area">
+    <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+      *ngIf="isHandset$ | async">
+      <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+    </button>
+    <div class="company_name">
+      <h3>{{first_name}} {{last_name}}</h3>
+    </div>
+    <!-- <p class="cust-email">{{email}}</p> -->
+    <div class="setting_sec">
+      <div class="action_menus">
+        <a [matMenuTriggerFor]="menu" class="menu_open">
+          <i class="material-icons">
+            settings
+          </i>
+        </a>
+        <mat-menu #menu="matMenu" class="actions">
+          <button mat-menu-item (click)="open()">
+            <i class="material-icons">
+              edit
+            </i>
+            Edit
+          </button>
+          <button mat-menu-item (click)="close()">
+            <i class="material-icons">
+              power_settings_new
+            </i>
+            logout</button>
+        </mat-menu>
       </div>
-      <!-- <p class="cust-email">{{email}}</p> -->
-      <div class="setting_sec">
-        <div class="action_menus">
-          <a [matMenuTriggerFor]="menu" class="menu_open">
-              <i class="material-icons">
-                settings
-              </i>
-          </a>
-          <mat-menu #menu="matMenu" class="actions">
-              <button mat-menu-item (click)="open()">
-                  <i class="material-icons">
-                      edit
-                  </i>
-                  Edit
-              </button>
-              <button mat-menu-item (click)="close()">
-                  <i class="material-icons">
-                    power_settings_new
-                  </i>
-                  logout</button>
-          </mat-menu>
-      </div>
-        
-        <!-- <a  class="user_link" (click)="open()"><mat-icon class="v-align-middle edit">edit</mat-icon></a>
+
+      <!-- <a  class="user_link" (click)="open()"><mat-icon class="v-align-middle edit">edit</mat-icon></a>
         <a class="logout" (click)="close()">
           <img src="../../../assets/images/signout.svg">
           <i class="fa fa-sign-out" aria-hidden="true"></i>
         </a> -->
-      </div>
+    </div>
 
-      <!-- <button class="logout" mat-raised-button (click)="close()">Logout</button> -->
-    </mat-toolbar-row>
+    <!-- <button class="logout" mat-raised-button (click)="close()">Logout</button> -->
+  </mat-toolbar-row>
   <!-- </div> -->
   <!-- <mat-icon (click)="openDialog()">edit</mat-icon> -->
 </mat-toolbar>
 
-<mat-sidenav-container>
-  <mat-sidenav class="sidenav" #sidenav mode="side" opened *ngIf="nav.visible" >
-    <div class="main-menu">
+<mat-sidenav-container class="">
+  <mat-sidenav class="sidenav " #sidenav mode="side" opened *ngIf="nav.visible">
+    <div class="main-menu scrollbox">
       <ul id="side-main-menu" class="side-menu">
         <!-- <li routerLinkActive="active-link">
           <a [routerLink]="['/dashboard']">
@@ -148,7 +148,7 @@
           </a>
         </li>
 
-        
+
         <li routerLinkActive="active-link">
           <a [routerLink]="['/admin_user']">
             <i class="fa fa-wrench" aria-hidden="true"></i>
@@ -192,7 +192,7 @@
         </li>
 
         <li routerLinkActive="active-link" onclick="myFunction2()">
-          <a (click)="toggle()"  id="drop_down2">
+          <a (click)="toggle()" id="drop_down2">
             <i class="fa fa-list-alt" aria-hidden="true"></i>
             <span>Master</span>
             <i class="material-icons rotate">
@@ -238,58 +238,61 @@
             </a>
           </li>
         </div>
-         <div *ngIf="tenant === '14'">
-        <li routerLinkActive="active-link"  onclick="myFunction()">
-          <a (click)="view()" id="drop_down">
-            <i class="fa fa-file" aria-hidden="true"></i>
-            <span>File Compare</span>
-            <i class="material-icons rotate">
-              keyboard_arrow_down
-            </i>
-          </a>
-        </li>
-
-        <div *ngIf="show2" >
-          <li routerLinkActive="active-link">
-            <a [routerLink]="['/filepath']">
-              <i class="fa fa-address-card-o" aria-hidden="true"></i>
-              <span>File Path</span>
-            </a>
-          </li>
-          <li routerLinkActive="active-link">
-            <a [routerLink]="['/master']">
-              <i class="fa fa-bookmark" aria-hidden="true"></i>
-              <span>Program List</span>
+        <div *ngIf="tenant === '14'">
+          <li routerLinkActive="active-link" onclick="myFunction()">
+            <a (click)="view()" id="drop_down">
+              <i class="fa fa-file" aria-hidden="true"></i>
+              <span>File Compare</span>
+              <i class="material-icons rotate">
+                keyboard_arrow_down
+              </i>
             </a>
           </li>
 
-          <li routerLinkActive="active-link">
-            <a [routerLink]="['/backup']">
-              <i class="fa fa-external-link" aria-hidden="true"></i>
-              <span>Backup Folder</span>
-            </a>
-          </li>
+          <div *ngIf="show2">
+            <li routerLinkActive="active-link">
+              <a [routerLink]="['/filepath']">
+                <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                <span>File Path</span>
+              </a>
+            </li>
+            <li routerLinkActive="active-link">
+              <a [routerLink]="['/master']">
+                <i class="fa fa-bookmark" aria-hidden="true"></i>
+                <span>Program List</span>
+              </a>
+            </li>
 
-          <li routerLinkActive="active-link">
-            <a [routerLink]="['/codecompare']">
-              <i class="fa fa-clone" aria-hidden="true"></i>
-              <span> Code Compare</span>
-            </a>
-          </li>
-          <li routerLinkActive="active-link">
-            <a [routerLink]="['/reason']">
-              <i class="fa fa-rocket" aria-hidden="true"></i>
-              <span>Reason</span>
-            </a>
-          </li>
+            <li routerLinkActive="active-link">
+              <a [routerLink]="['/backup']">
+                <i class="fa fa-external-link" aria-hidden="true"></i>
+                <span>Backup Folder</span>
+              </a>
+            </li>
+
+            <li routerLinkActive="active-link">
+              <a [routerLink]="['/codecompare']">
+                <i class="fa fa-clone" aria-hidden="true"></i>
+                <span> Code Compare</span>
+              </a>
+            </li>
+            <li routerLinkActive="active-link">
+              <a [routerLink]="['/reason']">
+                <i class="fa fa-rocket" aria-hidden="true"></i>
+                <span>Reason</span>
+              </a>
+            </li>
+          </div>
         </div>
-      </div>
       </ul>
+      <!-- <div class="cover-bar"></div> -->
     </div>
+
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
+  
 </mat-sidenav-container>
 
 
