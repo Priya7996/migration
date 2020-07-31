@@ -36,25 +36,19 @@ export class BackupComponent implements OnInit {
     });
   }
   ngOnInit() {
-    this.test=this.fb.group({
-      
-      
-    })
-    this. myLoader = true;
-    this.service.machine(this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
+  
+    this.service.machine( this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
       console.log(res);
-      this. myLoader = false;
       this.machine_response=res;
+      // this.service.filelist( this.machine_response.id).subscribe(res =>{
         console.log(res);
         this.machine_id = this.machine_response[0].id;
         console.log(this.machine_id)
         this.getmachine(this.machine_response[0].id)
       });
+   
   }
   
-
-
-
   getmachine(id) {
     this.myLoader = true;
      this.service.display_reason(id).pipe(untilDestroyed(this)).subscribe(res =>{
@@ -63,11 +57,16 @@ export class BackupComponent implements OnInit {
 
       this.backup=res;
       this.dataSource=new MatTableDataSource(this.backup)
+     
       if (res['status'] != null) {
         Swal.fire(res['status'])
       }
     })  
   }
+
+
+
+
   testform(val)
   {
     console.log(this.test.value)
@@ -83,42 +82,62 @@ export class BackupComponent implements OnInit {
 export class Backup {
   test:FormGroup;
   machine_response:any;
-  constructor(public dialogRef: MatDialogRef<Backup>,@Inject(MAT_DIALOG_DATA) public data: string,private fb:FormBuilder) {
-    // this.tenant = localStorage.getItem('tenant_id')    
+  baclog:any;
+  tenant: any;
+  user_id:any;
+  file2:any;
+  machine_id:any;
+  constructor(public dialogRef: MatDialogRef<Backup>,@Inject(MAT_DIALOG_DATA) public data: string,private fb:FormBuilder,private service :BackupService) {
+     this.tenant = localStorage.getItem('tenant_id')  
+     this.user_id = localStorage.getItem('user_id')
+     console.log(this.user_id)
+  
   }
+
+  fileUpload1(event){
+    this.file2 = event.target.files[0];
+    console.log(this.file2);
+   
+    
+}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-  ngOnInit()
-  {
+  ngOnInit() {
+
     this.test=this.fb.group ({
+      machine_id:[""],
       reason:[""],
 
     })
 
-    // this.service.machine_lock( this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
-    //   console.log(res);
-    //   this.machine_response=res;
+    this.service.machine_lock( this.tenant).pipe(untilDestroyed(this)).subscribe(res => {
+      console.log(res);
+      this.machine_response=res;
       
-    // });
+    });
   }
   testform(val)
   { 
-    console.log(this.test.value);
-    this.test.reset();
-  }
-  keyPress(event: any) { 
-    const pattern = /[0-9\+\-\ ]/;
-    let inputChar = String.fromCharCode(event.charCode);
-    if (event.keyCode != 8 && !pattern.test(inputChar)) {
-    event.preventDefault();
-    }
-   }
-   upload(event){
-     console.log(event.target.value)
+    console.log(val);
+    var fd = new FormData();
+    fd.append('machine_id', this.test.value.machine_id);
+    fd.append('reason', this.test.value.reason);
+    fd.append('user_id',  this.user_id);
+    fd.append('file', this.file2);
+    console.log(fd)
+    fd.forEach((value, key) => {
+       console.log(key + value)
+      });
 
-   }
+      this.service.backup_folder(fd).pipe(untilDestroyed(this)).subscribe(res => {
+        console.log(res);
+    
+  })
+}
+
+  
    ngOnDestroy(){
 
   }

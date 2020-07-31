@@ -144,19 +144,19 @@ export class Dialog {
   
   testform(val)
   {
-    console.log(this.test.value);
+    console.log(this.test.value.revision_no);
+    var machine:FormData = new FormData();
+    machine.append('machine_id', this.test.value.machine_id);
+    machine.append('user_name', this.test.value.user_name);
+    machine.append('revision_no', this.test.value.revision_no);
 
-    var formdata = new FormData();
-    formdata.append('machine_id', this.test.value.machine_id);
-    formdata.append('user_name', this.test.value.user_name);
-    formdata.append('date',this.test.value.date);
-    formdata.append('file', this.file2);
-    formdata.append('revision_no', this.test.value.revision_no);
-    console.log(formdata)
-    formdata.forEach((value, key) => {
+    machine.append('date',this.test.value.date);
+    machine.append('file', this.file2);
+    console.log(machine)
+    machine.forEach((value, key) => {
        console.log(key + value)
       });
-    this.service.file_upload(formdata).pipe(untilDestroyed(this)).subscribe(res =>{
+    this.service.file_upload(machine).pipe(untilDestroyed(this)).subscribe(res =>{
       console.log(res)
 
     })

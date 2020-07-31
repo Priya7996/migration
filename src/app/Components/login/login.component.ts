@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('usertype_id',res.usertype_id);
       localStorage.setItem('role_id',res.role_id);
       localStorage.setItem('id',res.id)
+      localStorage.setItem("user_id", res.id)
       localStorage.setItem('approval',res.approval_id)
       localStorage.setItem('first_name',res.user.first_name)
       localStorage.setItem('last_name',res.user.last_name);

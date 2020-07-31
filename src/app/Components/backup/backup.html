@@ -7,17 +7,12 @@
   </mat-toolbar>
   <div class="dialog-form">
     <div class="filter_sec">
-      <form [formGroup]="test" (ngSubmit)="testform()" class="form_sec">
-        <mat-form-field>
-          <mat-select placeholder="Select Machine" matNativeControl required>
-            <mat-option value="Select Machine" disabled>Select machine</mat-option>
-            <mat-option value="RIPL/VTL/BFW/EM-C44">RIPL/VTL/BFW/EM-C44</mat-option>
-            <mat-option value="RIPL/VTL/BFW/EM-C59">RIPL/VTL/BFW/EM-C59</mat-option>
-            <mat-option value="RIPL/VTL/BFW/EM-C22">RIPL/VTL/BFW/EM-C22</mat-option>
-            <mat-option value="RIPL/VTL/BFW/EM-C34">RIPL/VTL/BFW/EM-C34</mat-option>
-            <mat-option value="RIPL/VTL/BFW/EM-C21">RIPL/VTL/BFW/EM-C21</mat-option>
-            <mat-option value="RIPL/VTL/BFW/EM-C23">RIPL/VTL/BFW/EM-C23</mat-option>
-            <mat-option value="RIPL/VTL/BFW/EM-C53">RIPL/VTL/BFW/EM-C53</mat-option>
+      <form [formGroup]="test" (ngSubmit)="testform(test.value)" class="form_sec">
+        <mat-form-field appearance="outline">
+          <mat-select placeholder="Select Machine"   matNativeControl required formControlName="machine_id">
+            <mat-option *ngFor="let machine of machine_response" [value]="machine.id">
+                {{machine.machine_name}}
+            </mat-option>
           </mat-select>
         </mat-form-field>
 
@@ -25,10 +20,14 @@
           <mat-label>Reason</mat-label>
           <input matInput formControlName="reason" type="text">
         </mat-form-field>
+
+        <div class="form-group custom_file_upload">
+          <label for="file">Choose File</label><br /> <input type="file" id="file" (change)="fileUpload1($event)">
+        </div>
         
         <div class="form-button text-right">
-          <!-- <button mat-raised-button [disabled]="login.invalid" class="filter_btn btn_orange">
-            Save</button> -->
+          <button mat-raised-button [disabled]="test.invalid" class="filter_btn btn_orange">
+            Save</button>
           <button mat-raised-button (click)="onNoClick()" class="filter_btn btn_default ml-16">Close</button>
         </div>
       </form>
