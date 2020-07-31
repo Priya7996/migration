@@ -19,7 +19,7 @@
     h3{
       font-size: 25px;
     font-weight: 400;
-    text-transform: uppercase;
+    text-transform: capitalize;
     }
   }
   .cust-email{
@@ -72,9 +72,8 @@
   color: #fff;
   transition: all 0.3s linear;
   z-index: 999;
-  // scroll-behavior: smooth;
-  overflow-x: hidden;
-  overflow-y: hidden;
+  scroll-behavior: smooth;
+   overflow-y: hidden;
   &:hover{
     overflow-y: scroll; 
   }

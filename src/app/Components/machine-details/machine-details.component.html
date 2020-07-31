@@ -15,12 +15,7 @@
                         <button type="text" class="add_btn" mat-button [routerLink]="['/machine_registration']">Add
                             New</button>
                     </li>
-                    <!-- <li>
-                        <div class="table_search">
-                            <input class="form-control" (keyup)="doFilter($event.target.value)" type="text"
-                                name="search" [(ngModel)]="searchText" placeholder="Search">
-                        </div>
-                    </li> -->
+                 
                 </ul>
             </div>
             <div class="machines_details" id="machine_details_sec"
@@ -28,9 +23,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-xd-12 mb-2">
                         <div class="machine_item_details">
-                            <!-- <div class="machine_img">
-                                <img src="../../../assets/images/machine/Image 4.png" class="img-fluid" alt="machine">
-                            </div> -->
+                        
                             <div class="machine_info">
                                 <h3>
                                     {{machine.key}}
@@ -39,151 +32,52 @@
                                     <a>All ({{machine.value.length}})</a>
                                 </div>
                                 <div class="info_box_list">
-                                    <div class="info_box" *ngFor="let mac of machine.value">
-                                        <!-- <div class="status active">
-                                        <i class="material-icons">
-                                            fiber_manual_record
-                                        </i>
-                                    <span>Active</span>
-                                    </div> -->
+                                    <div class="info_box" *ngFor="let mac of machine.value" >
                                         <div class="machine_item_box running"
                                             (click)="dashboard(mac?.mac_name,mac?.machine_id)">
-                                            <div class="current_status">
-                                                <p class="status_running status">
-                                                    <i class="material-icons">
-                                                        fiber_manual_record
-                                                    </i>
-                                                    <span class="running"
-                                                        *ngIf="machie_status?.machine_status =='3'">Running
+                                            <div class="current_running">
+
+                                                <p class="stop machine_status_view" *ngIf="mac?.machine_status =='100'">
+                                                    <span class="mac_ut_bar_red">Stop
                                                     </span>
                                                 </p>
-
-                                                <p class="status_stop status">
-                                                    <span class="mac_ut_bar_red" 
-                                                        *ngIf="machie_status?.machine_status =='100'">Stop
+                                                <p class="running machine_status_view"
+                                                    *ngIf="mac?.machine_status =='3'">
+                                                    <span class="">Running
                                                     </span>
                                                 </p>
-
-                                                <p class="status_idle status">
-                                                    <span class="machine_status"
-                                                        *ngIf="machie_status?.machine_status !='3' && machie_status?.machine_status !='100' && machie_status?.machine_status != null ">Idle
+                                                <p class="idle machine_status_view"
+                                                    *ngIf="mac?.machine_status !='3' && mac?.machine_status !='100' && mac?.machine_status != null ">
+                                                    <span class="machine_status">Idle
                                                     </span>
                                                 </p>
-
-                                                <span class="machine_status"
-                                                    *ngIf="machie_status?.machine_status =='null'">No Data
+                                                <span class="machine_status" *ngIf="mac?.machine_status =='null'">No
+                                                    Data
                                                 </span>
                                             </div>
                                             <div class="info_title">
-                                                <!-- <li ><a *ngIf="mac.machine_status =='3'">
-                                                <span [routerLink]="['/machine_view']">{{mac.mac_name }}</span>
-                                              </a>
-                                              <a *ngIf="mac.machine_status != '3' && mac.machine_status !='100' && mac.machine_status != null">
-                                                <span>{{mac.mac_name }}</span>
-                                              </a>
-                                            <a *ngIf="mac.machine_status=='100'">
-                                                <span>{{mac.mac_name }}</span>
-                                              </a></li> -->
-                                              <div class="current_running">
-                                                <!-- <i class="material-icons">
-                                                    fiber_manual_record
-                                                </i> -->
-                                                <!-- <span class="running machine_status_view">
-                                                </span> -->
-                                                <!-- <span class="stop machine_status_view">
-                                                </span>
-                                                <span class="idle machine_status_view">
-                                                </span> -->
-                                            <p class="stop machine_status_view" *ngIf="mac?.machine_status =='100'">
-                                                <span class="mac_ut_bar_red" >Stop
-                                                </span>
-                                            </p>
-                                            <p class="running machine_status_view" *ngIf="mac?.machine_status =='3'">
-                                            <span class="" >Running
-                                            </span>
-                                            </p>
-                                            <p class="idle machine_status_view"  *ngIf="mac?.machine_status !='3' && mac?.machine_status !='100' && mac?.machine_status != null ">
-                                            <span class="machine_status"
-                                               >Idle
-                                            </span>
-                                            </p>
-                                            <span class="machine_status" *ngIf="mac?.machine_status =='null'">No Data
-                                            </span>
-                                        </div>
-
                                                 <h2>{{mac.mac_name }}</h2>
-                                                <!-- <p>Doosan2: <span>SSS32786AX </span></p> -->
                                             </div>
-                                            <!-- <div class="assigned_info">
-                                            <div class="assigned_box">``````````````````````
-                                                <i class="material-icons">
-                                                    priority_high
-                                                </i>
-                                                <div class="ml-3">
-                                                    <h4>NC 00048739</h4>
-                                                    <span>Assigned</span>
-                                                </div>
-                                            </div>
-                                            <a href="javascript:;" class="view_link">View 1 Open incident</a>
-                                        </div> -->
+
                                         </div>
-                                        <!-- <div class="right_side">
-                                        <div class="progress_bar">
-                                            <circle-progress [percent]="retrieved" [radius]="50" [outerStrokeColor]="'#F7941D'"
-                                                [innerStrokeColor]="'#eee'"></circle-progress>
-                                        </div>
-                                    </div> -->
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-                    <!-- <div class="col-lg-6 col-md-12 col-xd-12">
-                        <div class="machine_item_details">
-                           
-                            <div class="machine_info">
-                                <h3>
-                                    General Informations
-                                </h3>
-                                <div class="info_box">
-                                    <div class="status active">
-                                        <i class="material-icons">
-                                            fiber_manual_record
-                                        </i> 
-                                    <span>Active</span>
-                                    </div>
-                                    <div class="left_side">
-                                        <div class="info_title">
-                                            <h2> <span></span></h2>
-                                            <p>{{mac.mac_name }} <span>SSS32786AX </span></p>
-                                        </div>
-                                        <div class="assigned_info">
-                                            <div class="assigned_box">
-                                                <i class="material-icons">
-                                                    priority_high 
-                                                </i>
-                                                <div class="ml-3">
-                                                    <h4>NC 00048739</h4>
-                                                    <span>Assigned</span>
-                                                </div>
-                                            </div>
-                                            <a href="javascript:;" class="view_link">View 1 Open incident</a>
-                                        </div>
-                                    </div>
-                                    <div class="right_side">
-                                        <div class="progress_bar">
-                                            <circle-progress [percent]="retrieved" [radius]="50" [outerStrokeColor]="'#F7941D'"
-                                                [innerStrokeColor]="'#eee'"></circle-progress>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div> -->
                 </div>
             </div>
+
+
+            <!-- <div class="scroll-bar-wrap">
+                <div class="scroll-box">
+                  <p>Consectet adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+              <p>Consectet adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+                </div>
+                <div class="cover-bar"></div>
+              </div> -->
         </div>
     </div>
 </section>
