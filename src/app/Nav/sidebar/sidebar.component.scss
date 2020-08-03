@@ -73,7 +73,7 @@
   transition: all 0.3s linear;
   z-index: 999;
   scroll-behavior: smooth;
-   overflow-y: hidden;
+  // overflow-y: hidden;
   &:hover{
     overflow-y: scroll; 
   }
