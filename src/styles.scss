@@ -485,7 +485,7 @@ mat-dialog-container{
             -webkit-appearance: none;
             span{
                 font-size: 24px;
-                color: #757575;
+                color: #dcdcdc;
             }
         }
     }
@@ -527,158 +527,6 @@ mat-dialog-container{
 
 
 
-// responsive
-@media (max-width: 600px){
-    .filter_field{
-        margin-right: 0!important;
-    }
-    .table_responsive{
-        display: block;
-    width: 100%;
-    overflow-x: auto;
-    }
-.page{
-    height: calc(100vh - 93px);
-    padding-bottom: 35px;
-    padding-top: 56px;
-    .section_top_padding{
-        padding-top: 16px;
-        &.section_p0{
-            padding-bottom: 0;
-        }
-    }
-   
-  }
-
-.page_title_sec{
-   flex-wrap: wrap;
-.sub_title{
-    font-size: 16px;
-}
-}
-
-.cards_collections {
-    flex-wrap: wrap;
-    .example-card{
-        width: calc(100% /1)!important;
-    margin: 19px 0px 34px 0!important;
-    .px-16{
-        margin-bottom: 16px;
-        padding: 0!important;
-        h2{
-            font-size: 14px!important;
-        }
-        h3{
-            font-size: 14px!important;
-        }
-    }
-}
-}
-// .mat-form-field-infix {
-//     width: 140px;
-// }
-
-}
-
-@media (max-width: 768px){
-    .container-fluid {
-        padding: 0 15px;
-    }
-    .section_padding{
-        padding: 10px 0 15px 0px;
-      }
-      .filter_sec{
-        flex-wrap: wrap;
-        margin-bottom: 16px;
-      }
-      .row_sec {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .filter_sec{
-        flex-wrap: wrap;
-        }
-        mat-dialog-container{
-            height: 90%!important;
-        }
-.page_title_sec{
-    flex-wrap: wrap;
-    .filter_sec{
-    flex-wrap: wrap;
-    }
-}
-.cards_collections {
-    flex-wrap: wrap;
-    .example-card{
-        width: calc(100% /1)!important;
-    margin: 19px 0px 34px 0!important;
-    .px-16{
-        margin-bottom: 24px;
-        padding: 0!important;
-        h2{
-            font-size: 14px!important;
-        }
-        h3{
-            font-size: 14px!important;
-        }
-    }
-}
-}
-
-}
-
-
-@media (max-width: 1024px){
-    .add_new{
-    .circle{
-     font-size: 16px;
-      }
-    }
-    .d_block {
-    display: block;
-    }
-    .mat-icon{
-        width: 16px!important;
-        height: 16px!important;
-    }
-    .material-icons{
-        font-size: 16px;
-    }
-    
-    .ml-16{
-        margin-left: 5px;
-    }
-    .filter_sec{
-        .filter_field{
-            margin-right: 5px!important;
-        }
-    }
-    .page_title_sec{
-        .sub_title{
-            font-size: 16px;
-        }
-}
-.cards_collections{
-    .example-card{
-        h2{
-        font-size: 14px!important;
-        }
-        h3{
-            font-size: 12px!important;
-        }
-        p{
-        font-size: 14px!important;
-            span{
-        font-size: 14px!important;
-                
-            }
-        }
-    }
-
-} 
-    
-
-}
 
 // Custom styles
 .no_data_found{
@@ -815,12 +663,12 @@ mat-dialog-container{
     flex-wrap: wrap;
     justify-content: space-between;
     border: 1px solid #e2e2e2;
-    padding: 10px 5px 0 5px;
+    padding: 10px 10px 5px 10px;
     margin-bottom: 15px;
     .form-control {
       width: 47%;
       height: 24px;
-      margin: 0 4px 10px 0;
+      margin: 0 0px 5px 0;
   }
 }
 
@@ -860,19 +708,7 @@ mat-dialog-container{
     }  
 }
 
-@media only screen and (min-device-width: 320px) 
-                   and (max-device-width: 1024px) 
-                   and (orientation: landscape) {
-                    .log_sec {
-                      .col{
-                        width: 49%;
-                          &:first-child{
-                              margin-right: 15px!important;
-                          }
-                      }
-                    }
 
-                   }
 
 
                 //    Scrollbar
@@ -901,3 +737,205 @@ mat-dialog-container{
                       }
                     }
                   }
+
+// Custom styles
+                ::ng-deep .cdk-overlay-container{
+                    .cdk-overlay-pane {
+                        width: auto!important;
+                        height: auto!important;
+                    }
+                }
+                .table-responsive{
+                    overflow-x: auto;
+                }
+
+                //   Responsive styles
+                @media (max-width: 600px){
+                    .filter_field{
+                        margin-right: 0!important;
+                    }
+                    .table_responsive{
+                        display: block;
+                    width: 100%;
+                    overflow-x: auto;
+                    }
+                .page{
+                    height: calc(100vh - 93px);
+                    padding-bottom: 35px;
+                    padding-top: 56px;
+                    .section_top_padding{
+                        padding-top: 16px;
+                        &.section_p0{
+                            padding-bottom: 0;
+                        }
+                    }
+                   
+                  }
+                
+                .page_title_sec{
+                   flex-wrap: wrap;
+                .sub_title{
+                    font-size: 16px;
+                }
+                }
+                
+                .cards_collections {
+                    flex-wrap: wrap;
+                    .example-card{
+                        width: calc(100% /1)!important;
+                    margin: 19px 0px 34px 0!important;
+                    .px-16{
+                        margin-bottom: 16px;
+                        padding: 0!important;
+                        h2{
+                            font-size: 14px!important;
+                        }
+                        h3{
+                            font-size: 14px!important;
+                        }
+                    }
+                }
+                }
+                .password_align {
+                    flex-wrap: wrap;
+                }
+                .password_align{
+                  .old_pwd {
+                    margin-right: 0;
+                }
+                }
+                .shift_input_list {
+                    .form-control {
+                        width: 100%;
+                        height: 24px;
+                        margin: 5px 0;
+                  }
+                }
+                }
+                
+                @media (max-width: 768px){
+                    .container-fluid {
+                        padding: 0 15px;
+                    }
+                    .section_padding{
+                        padding: 10px 0 15px 0px;
+                      }
+                      .filter_sec{
+                        flex-wrap: wrap;
+                        margin-bottom: 16px;
+                      }
+                      .row_sec {
+                        display: flex;
+                        flex-wrap: wrap;
+                    }
+                    .filter_sec{
+                        flex-wrap: wrap;
+                        }
+                        mat-dialog-container{
+                            height: 90%!important;
+                        }
+                .page_title_sec{
+                    flex-wrap: wrap;
+                    .filter_sec{
+                    flex-wrap: wrap;
+                    }
+                }
+                .cards_collections {
+                    flex-wrap: wrap;
+                    .example-card{
+                        width: calc(100% /1)!important;
+                    margin: 19px 0px 34px 0!important;
+                    .px-16{
+                        margin-bottom: 24px;
+                        padding: 0!important;
+                        h2{
+                            font-size: 14px!important;
+                        }
+                        h3{
+                            font-size: 14px!important;
+                        }
+                    }
+                }
+                }
+                
+                }
+                
+                
+                @media (max-width: 1024px){
+                    .add_new{
+                    .circle{
+                     font-size: 16px;
+                      }
+                    }
+                    .d_block {
+                    display: block;
+                    }
+                    .mat-icon{
+                        width: 16px!important;
+                        height: 16px!important;
+                    }
+                    .material-icons{
+                        font-size: 16px;
+                    }
+                    
+                    .ml-16{
+                        margin-left: 5px;
+                    }
+                    .filter_sec{
+                        .filter_field{
+                            margin-right: 5px!important;
+                        }
+                    }
+                    .page_title_sec{
+                        .sub_title{
+                            font-size: 16px;
+                        }
+                }
+                .cards_collections{
+                    .example-card{
+                        h2{
+                        font-size: 14px!important;
+                        }
+                        h3{
+                            font-size: 12px!important;
+                        }
+                        p{
+                        font-size: 14px!important;
+                            span{
+                        font-size: 14px!important;
+                                
+                            }
+                        }
+                    }
+                
+                } 
+                    
+                
+                }
+                @media only screen and (min-device-width: 320px) 
+                   and (max-device-width: 1024px) 
+                   and (orientation: landscape) {
+                    .log_sec {
+                      .col{
+                        width: 49%;
+                          &:first-child{
+                              margin-right: 15px!important;
+                          }
+                      }
+                    }
+                    .cdk-overlay-pane {
+                        overflow-y: scroll;
+                    }
+                    .shift_input_list {
+                        .form-control {
+                            width: 100%;
+                            height: 24px;
+                            margin: 5px 0;
+                      }
+                    }
+                    .registaration_modal {
+                        .dialog-form {
+                            overflow-y: unset;
+                        }
+                    }
+                   }

@@ -10,7 +10,7 @@
           <span class="v-align-middle">OEE</span>
         </h2>
         <div class="add_new">
-          <mat-icon class="circle" (click)="add_shift_registartion()">add</mat-icon>
+          <mat-icon class="circle" (click)="add_shift_registartion()"  matTooltip="Add New">add</mat-icon>
         </div>
       </div>
     
@@ -21,7 +21,7 @@
       </div>
 
       <mat-card class="card_sec">
-        <mat-card-content>
+        <mat-card-content class="table-responsive">
           <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
 
 

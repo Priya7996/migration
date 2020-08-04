@@ -17,7 +17,7 @@
       <!-- <span *ngIf="(alarm1 | filter:searchText)?.length==0">No Results Found</span> -->
 
       <mat-card class="card_sec">
-        <mat-card-content>
+        <mat-card-content class="table-responsive">
           <table mat-table [dataSource]="alarm1" class="mat-elevation-z0">
              <!-- Position Column --> 
              <ng-container matColumnDef="position">
@@ -70,7 +70,7 @@
       </div>
 
       <mat-card class="card_sec">
-        <mat-card-content>
+        <mat-card-content class="table-responsive">
           <table class="row" mat-table [dataSource]="dataSource" class="mat-elevation-z0">
 
             <!--- Note that these columns can be defined in any order.

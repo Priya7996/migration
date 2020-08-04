@@ -296,3 +296,24 @@
         }
     }
 }
+
+@media only screen and (min-device-width: 320px) 
+and (max-device-width: 1024px) 
+and (orientation: landscape) {
+    #page_area.page{
+        #machine_details_sec{
+            &.machines_details {
+                .machine_item_details {
+                    .machine_info {
+                        .info_box_list{
+                            .info_box {
+                                width: 48%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}

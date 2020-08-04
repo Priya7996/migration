@@ -32,7 +32,7 @@
             }
         }
         p{
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 300;
             color: #aaa;
             margin-bottom: 0;
@@ -73,10 +73,11 @@
             text-decoration: none;
             font-size: 16px;
             display: block;
-            margin: 16px 0;
+            margin: 15px 0;
             padding-left: 5px;
             text-align: center;
             cursor: pointer;
+            font-weight: 400;
             &.sign_link{
                 margin: 0 5px;
             }
@@ -85,7 +86,7 @@
             display: flex;
             justify-content: center;
             border-top: 1px solid #ececec;
-            padding-top: 16px;
+            padding-top: 10px;
         }
     }
 }
@@ -102,7 +103,6 @@
     .form-button{
         &.text-right {
             text-align: right;
-            margin-top: 20px;
         }
     }
 }
