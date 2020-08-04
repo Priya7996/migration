@@ -6,6 +6,11 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
+require('highcharts/modules/exporting')(Highcharts);
+require('highcharts/modules/export-data')(Highcharts);
+require('highcharts/modules/annotations')(Highcharts);
+
+
 @Component({
   selector: 'app-cycle-time-chart',
   templateUrl: './cycle-time-chart.component.html',
@@ -152,6 +157,9 @@ export class CycleTimeChartComponent implements OnInit {
   //     var ShiftNo = $scope.allcycletime[i].shift_no;
   //     var Time = $scope.allcycletime[i].time;
   // }
+
+  
+
       this.chartOptions = {
         chart: {
           type: 'column',
