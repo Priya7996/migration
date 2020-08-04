@@ -95,68 +95,46 @@
       >
       </td-ngx-text-diff>
     </div> 
-  </div>
-    <div >
-        <!-- <form [formGroup]="login" (ngSubmit)="logintest(login.value)" *ngIf="Compare">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="input-label">
-                <label class='home-label'>Changed By</label>
-                <mat-form-field>
-                    <input matInput formControlName="name" type="text" placeholder="Enter Your Name">
-                </mat-form-field>
-              </div>
-              <div>
-                <label class='home-label'>Date</label>
-                <mat-form-field>
-                    <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]='date' (dateChange)='change($event)' (click)="picker.open()"   [ngModelOptions]="{standalone: true}">
-                   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                   <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
-              </div>
-              <div class="input-label">
-                <label class='home-label'>Old Revision Number</label>
-                <mat-form-field>
-                    <input matInput formControlName="old_revision_no" type="text"  (keypress)="keyPress($event)"   placeholder="Enter Your Old Revision Number">
-              </mat-form-field>
-            </div>
-              </div>
-              <div class="col-md-6">
-                <div class="input-label">
-                <label class='home-label'>New Revision Number</label>
-                <mat-form-field>
-                      <input matInput formControlName="new_revision_no" (keypress)="keyPress($event)"   type="text" placeholder="Enter Your New Revision Number">
-                </mat-form-field>
-              </div>
-              <div class="input-label">
-                <label class='home-label'>Reason</label>
-                <mat-form-field >
-                     <textarea class="base" matInput  formControlName="reason" type="text"></textarea>
-                  </mat-form-field>
-                </div>
-                <div class="submit-btn">
-                  <button class="btn btn-primary" [disabled]="login.invalid">submit</button>
-                  </div>
-              </div>
-              
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                
-              </div>
-            </div>
-          </div>
+    <!-- [formGroup]="login" (ngSubmit)="logintest(login.value)" *ngIf="Compare" -->
+    <form>
+      <div class="container compare_fileds">
+        
+          <div class="flex_lay">
+            <mat-form-field appearance="fill" class="field">
+                <mat-label class='home-label'>Changed By</mat-label>
+                <input matInput formControlName="name" type="text" placeholder="Enter Your Name">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="field">
+              <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]='date' (dateChange)='change($event)' (click)="picker.open()"   [ngModelOptions]="{standalone: true}">
+               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+               <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="field">
+              <mat-label>Old Revision Number</mat-label>
+              <input matInput formControlName="old_revision_no" type="text"  (keypress)="keyPress($event)"   placeholder="Enter Your Old Revision Number">
+            </mat-form-field>
           
-    
-      
-      </form>
-     -->
-  
-
+            <mat-form-field appearance="fill" class="field">
+                <mat-label class='home-label'>New Revision Number</mat-label>
+                <input matInput formControlName="new_revision_no" (keypress)="keyPress($event)"   type="text" placeholder="Enter Your New Revision Number">
+            </mat-form-field> 
+          </div>   
+            <mat-form-field appearance="fill" class="textarea">
+                <mat-label class='home-label'>Reason</mat-label>
+                <textarea class="base" matInput  formControlName="reason" type="text"></textarea>
+            </mat-form-field>
+            <div class="submit-btn">
+              <button class="btn btn-primary" [disabled]="login.invalid">submit</button>
+            </div>
+          
+        
+      </div>
+    </form>
+  </div>
+   
+   
 </div>
-</div><br>
-<br>
 </section>
 
 
