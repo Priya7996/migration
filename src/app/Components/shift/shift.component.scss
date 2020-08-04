@@ -68,6 +68,13 @@
     }
 }
 }
+.two_form.modal_sec .mat-form-field {
+    width: calc(96% /2);
+    margin-right: 3%;
+    &:nth-child(2n){
+      margin-right: 0;
+    }
+  }
 .spinner {
     background: #262932;
     height: 100vh;
