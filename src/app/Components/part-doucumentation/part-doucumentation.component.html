@@ -1,9 +1,37 @@
-
-
 <section class="page">
-    <div class="section_top_padding">
-        <div class="container-fluid">
-            <span class="v-align-middle">Part Doucumentation</span>
-        </div>
+    <div *ngIf="myLoader" class="spinner">
+      <img src="assets/images/spinner.gif">
     </div>
-</section>
+      <div class="section_top_padding">
+        <div class="container-fluid">
+          <div class="page_title_sec">
+            <h2 class="sub_title">
+              <mat-icon class="v-align-middle display">laptop</mat-icon>
+              <span class="v-align-middle">Operator Allocation</span>
+            </h2>
+            <div class="add_new">
+              <mat-icon class="circle">add</mat-icon>
+            </div>
+          </div>
+          <div class="page_title_sec align_right">
+            <!-- <div class="table_search">
+              <input class="form-control"(keyup)="dongly($event.target.value)" type="text" name="search" [(ngModel)]="search" placeholder="Search ">
+            </div> -->
+          </div>
+          <mat-card class="card_sec">
+            <mat-card-content class="table-responsive">
+                
+            
+            </mat-card-content>
+            <!-- <mat-card-content *ngIf="allocation.length==0" class="no_data_found">
+              <h2>No data found</h2>
+            </mat-card-content>  -->
+          </mat-card>
+        </div>
+      </div>
+     
+    </section>
+  
+  
+   
+    

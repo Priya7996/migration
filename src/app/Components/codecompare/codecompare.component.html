@@ -37,10 +37,11 @@
         <div class="form-group col-md-6">
           <div for="leftContent" class="left_content"> 
           <div class="input-group">
-              <div class="custom-file">
+             
                 <input type="file"  class="custom-file-input" aria-describedby="inputGroupFileAddon01" (change)="fileUpload($event)">
-                <!-- <label for="inputGroupFile01">{{filName || "Choose file from a master folder"}}</label> -->
-              </div>
+                <label class="custom-file-label" for="inputGroupFile01">{{filName || "Choose file from a master folder"}}</label>
+                <!--  -->
+              
           </div>
             <div>
             <!-- <textarea rows="10" cols="50">{{FileText}}</textarea> -->
@@ -60,7 +61,8 @@
             <div class="input-group">
                 <div class="custom-file">
                   <input type="file"  class="custom-file-input" aria-describedby="inputGroupFileAddon01" (change)="fileUpload1($event)">
-                  <!-- <label class="custom-file-label" for="inputGroupFile01">{{filName1 || "Choose file from a slave folder"}}</label> -->
+                  <label class="custom-file-label" for="inputGroupFile01">{{filName1 || "Choose file from a slave folder"}}</label>
+                  <!-- <label class="custom-file-label" for="inputGroupFile01"></label> -->
                 </div>
             </div>
             <div>

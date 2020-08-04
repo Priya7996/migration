@@ -26,7 +26,13 @@ body { margin: 0;  font-family: 'Rubik', sans-serif; }
     border-radius: 10px;
  }
 
- 
+ .two_form.modal_sec .mat-form-field {
+    width: calc(96% /2);
+    margin-right: 3%;
+    &:nth-child(2n){
+      margin-right: 0;
+    }
+  }
 
 
  /* SCROLL BAR  FOR TABLES*/
