@@ -26,3 +26,8 @@
   width: 90px;
   margin-top: -130px;
 }
+@media (max-width: 768px){
+  .row_sec .col{
+      width: calc(100% /1);
+  }
+}

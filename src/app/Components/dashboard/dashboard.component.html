@@ -20,24 +20,28 @@
               {{test.value.running | json }}
             </div> -->
             <div *ngFor = "let ma of machine_response.count | keyvalue">
-            <ul class="mac_list" >
-              <li><a>All ({{machine.value.length}})</a></li>
-              <li><a>Running ({{ma.value.running || 0}})</a></li>
-              <li><a>Idle ({{ ma.value.idle1 || 0}})</a></li>
-              <li><a>Stop ({{ma.value.stop || 0}})</a></li>
-            </ul>
-          </div>
+              <ul class="mac_list" >
+                <li><a>All ({{machine.value.length}})</a></li>
+                <li><a>Running ({{ma.value.running || 0}})</a></li>
+                <li><a>Idle ({{ ma.value.idle1 || 0}})</a></li>
+                <li><a>Stop ({{ma.value.stop || 0}})</a></li>
+              </ul>
+            </div>
             <div class="clearfix"></div>
-            <ul class="mac_disp" *ngFor ="let mac of machine.value">
-              <li (click)="activeclick(mac.machine_id)"><a *ngIf="mac.machine_status =='3'"><img src="../../../assets/images/machine_running.png">
-                  <span>{{mac.mac_name }}</span>
-                </a>
-                <a *ngIf="mac.machine_status != '3' && mac.machine_status !='100' && mac.machine_status != null"><img src="../../../assets/images/machine_idle_nrm.png">
-                  <span>{{mac.mac_name }}</span>
-                </a>
-              <a *ngIf="mac.machine_status=='100'"><img src="../../../assets/images/machine_stop_nrm.png">
-                  <span>{{mac.mac_name }}</span>
-                </a></li>
+            <ul class="mac_disp" matRipple *ngFor ="let mac of machine.value">
+              <li (click)="activeclick(mac.machine_id)">
+                  <a *ngIf="mac.machine_status =='3'">
+                    <img src="../../../assets/images/machine_running.png">
+                    <span>{{mac.mac_name }}</span>
+                  </a>
+                  <a *ngIf="mac.machine_status != '3' && mac.machine_status !='100' && mac.machine_status != null">
+                    <img src="../../../assets/images/machine_idle_nrm.png">
+                    <span>{{mac.mac_name }}</span>
+                  </a>
+                  <a *ngIf="mac.machine_status=='100'"><img src="../../../assets/images/machine_stop_nrm.png">
+                    <span>{{mac.mac_name }}</span>
+                  </a>
+              </li>
             </ul>
           </div>
           </div>

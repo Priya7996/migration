@@ -9,32 +9,6 @@
                     <div class="wrapper_inner">
                         <div class="mec_head">
                             <div class="row_sec main_header">
-                                <div class="current_running">
-                                    <!-- <i class="material-icons">
-                                        fiber_manual_record
-                                    </i> -->
-                                    <!-- <span class="running machine_status_view">
-                                    </span> -->
-                                    <!-- <span class="stop machine_status_view">
-                                    </span>
-                                    <span class="idle machine_status_view">
-                                    </span> -->
-                                    <p class="stop machine_status_view" *ngIf="machie_status?.machine_status =='100'">
-                                        <span class="mac_ut_bar_red">Stop
-                                        </span>
-                                    </p>
-                                    <p class="running machine_status_view" *ngIf="machie_status?.machine_status =='3'">
-                                        <span class="">Running
-                                        </span>
-                                    </p>
-                                    <p class="idle machine_status_view"
-                                        *ngIf="machie_status?.machine_status !='3' && machie_status?.machine_status !='100' && machie_status?.machine_status != null ">
-                                        <span class="machine_status">Idle
-                                        </span>
-                                    </p>
-                                    <span class="machine_status" *ngIf="machie_status?.machine_status =='null'">No Data
-                                    </span>
-                                </div>
                                 <div class="col-lg-5 col-md-4 col-xs-12 v_mid">
                                     <h2 class="title">{{machie_status?.machine_name}} </h2>
                                     <span class="shift_time">{{machie_status?.shift_no}}({{machie_status?.shift_time}})
@@ -55,30 +29,7 @@
                                         </h4>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-6 col-xs-12">
-                                    <div class="mac_ut_holder">
-                                        <h5 class="sub_title"><i class="material-icons">
-                                                access_time
-                                            </i> Current Status</h5>
-                                        <div class="row_sec">
-                                            <div class="col">
-                                                <span class="mac_ut_bar_green"></span>
-                                                <h5>Run Time</h5>
-                                                <div class="mac_ut_time">{{machie_status?.run_time}}</div>
-                                            </div>
-                                            <div class="col brdr_mid">
-                                                <span class="mac_ut_bar_yellow"></span>
-                                                <h5>Idle Time</h5>
-                                                <div class="mac_ut_time">{{machie_status?.idle_time}}</div>
-                                            </div>
-                                            <div class="col">
-                                                <span class="mac_ut_bar_red"></span>
-                                                <h5>Stop Time</h5>
-                                                <div class="mac_ut_time">{{machie_status?.stop_time}}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                         <div class="time_desc">
@@ -95,6 +46,35 @@
                         <!-- main row start -->
                         <div class="main_row">
                             <div class="col-lg-4 col-md-12 col-xs-12 main_col">
+                                <div class="bg_grad mn_status">
+                                    <div class="current_running">
+                                        <!-- <i class="material-icons">
+                                            fiber_manual_record
+                                        </i> -->
+                                        <!-- <span class="running machine_status_view">
+                                        </span> -->
+                                        <!-- <span class="stop machine_status_view">
+                                        </span>
+                                        <span class="idle machine_status_view">
+                                        </span> -->
+                                        <p class="stop machine_status_view" *ngIf="machie_status?.machine_status =='100'">
+                                            <span class="mac_ut_bar_red">Stop
+                                            </span>
+                                        </p>
+                                        <p class="running machine_status_view" *ngIf="machie_status?.machine_status =='3'">
+                                            <span class="">Running
+                                            </span>
+                                        </p>
+                                        <p class="idle machine_status_view"
+                                            *ngIf="machie_status?.machine_status !='3' && machie_status?.machine_status !='100' && machie_status?.machine_status != null ">
+                                            <span class="machine_status">Idle
+                                            </span>
+                                        </p>
+                                        <span class="machine_status" *ngIf="machie_status?.machine_status =='null'">No Data
+                                        </span>
+                                    </div>
+                                    <h5>6140-(002946140B-30 SFG-TU1)</h5>
+                                </div>
                                 <div class="gradient-wrapper">
                                     <div class="circle_progress_wrapper utilization_chart">
                                         <span>Utilization</span>
@@ -102,9 +82,6 @@
                                             outerStrokeColor="#48ba46" innerStrokeColor="#78542C" animation="true"
                                             animationDuration="300"></circle-progress>
                                     </div>
-                                </div>
-                                <div class="bg_grad">
-                                    <h5>6140-(002946140B-30 SFG-TU1)</h5>
                                 </div>
                                 <div class="bg_grad">
                                     <div class="row_sec">
@@ -148,17 +125,39 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-md-12 col-xs-12 main_col sec_center">
-                                <div class="bg_grad">
-                                    <div class="mac_alarm">
-                                        <h5 class="brdr_botm"><i class="material-icons">
-                                                notification_important
-                                            </i>Recent Alarms</h5>
-                                        <div class="brdr_top mac_alarm_innr"> {{machie_status?.alarm}}</div>
+                                <div class="col-lg-4 col-md-6 col-xs-12 bg_grad">
+                                    <div class="mac_ut_holder">
+                                        <h5 class="sub_title"><i class="material-icons">
+                                                access_time
+                                            </i> Current Status</h5>
+                                        <div class="row_sec">
+                                            <div class="col">
+                                                <span class="mac_ut_bar_green"></span>
+                                                <h5>Run Time</h5>
+                                                <div class="mac_ut_time">{{machie_status?.run_time}}</div>
+                                            </div>
+                                            <div class="col brdr_mid">
+                                                <span class="mac_ut_bar_yellow"></span>
+                                                <h5>Idle Time</h5>
+                                                <div class="mac_ut_time">{{machie_status?.idle_time}}</div>
+                                            </div>
+                                            <div class="col">
+                                                <span class="mac_ut_bar_red"></span>
+                                                <h5>Stop Time</h5>
+                                                <div class="mac_ut_time">{{machie_status?.stop_time}}</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="bg_grad">
+                            </div>
+                            <div class="col-lg-4 col-md-12 col-xs-12 main_col sec_center">
+                                <div class="speed_sec">
+                                    <figure class="highcharts-figure" style="height:200px ;overflow: hidden;">
+                                        <div id="container" class="chart-container" style="width:300px;height:300px"></div>
+                                        <div id="container2" class="chart-container" style="width:300px;height: 300px;"></div>
+                                    </figure>
+                                </div>
+                                <div class="">
                                     <h2>Servo Load</h2>
 
                                     <div>
@@ -181,13 +180,17 @@
                                     </div>
 
                                 </div>
-
-                                <div class="speed_sec">
-                                    <figure class="highcharts-figure">
-                                        <div id="container" class="chart-container"></div>
-                                        <div id="container2" class="chart-container"></div>
-                                    </figure>
+                                <div class="bg_grad">
+                                    <div class="mac_alarm">
+                                        <h5 class="brdr_botm"><i class="material-icons">
+                                                notification_important
+                                            </i>Recent Alarms</h5>
+                                        <div class="brdr_top mac_alarm_innr"> {{machie_status?.alarm}}</div>
+                                    </div>
                                 </div>
+                                
+
+                                
 
                             </div>
 

@@ -10,7 +10,7 @@
         color: #fff;
         background: #2f323b;
         height: 100%;
-        overflow: auto;
+        // overflow: auto;
         // position: fixed;
   .mac_stat{
     float: left;
@@ -32,11 +32,14 @@
           list-style: none;
           padding: 0;
           margin: 10px 0;
-          display: flex;
-          float: left;
-          flex-wrap: wrap;
+          // display: flex;
+          // float: left;
+          // flex-wrap: wrap;
   
           &.mac_list {
+             display: flex;
+              // float: left;
+              flex-wrap: wrap;
             li {
               list-style: none;
               margin-right: 5px;
@@ -48,16 +51,21 @@
           }
   
           &.mac_disp {
+            padding: 0;
+            width: auto;
+            width: 80px;
+            display: inline-block;
+            text-align: center;
             li {
-              float: left;
+              // float: left;
               list-style: none;
               padding: 7px;
               cursor: pointer;
   
               a {
                 display: block;
-                width: 50px;
-                height: 40px;
+                // width: 50px;
+                // height: 40px;
   
                 img {
                   width: 80%;
@@ -662,8 +670,9 @@
   .mat-drawer-container{
     height: 100vh;
     .machine_drawer {
-      width: 250px;
+      width: 300px;
       border: 0;
+      background: #2f323b;
     }
     .mat-drawer-content {
       position: relative;

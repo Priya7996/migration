@@ -105,8 +105,8 @@ export class MachineViewComponent implements OnInit {
         plotBackgroundImage: null,
         plotBorderWidth: 0,
         plotShadow: false,
-        height: 200,
-        width: 180,
+        // height: 200,
+        // width: 200,
         fill: 'transparent',
         backgroundColor: {
           backgroundColor: '#262932',
@@ -209,8 +209,8 @@ export class MachineViewComponent implements OnInit {
         plotBackgroundImage: null,
         plotBorderWidth: 0,
         plotShadow: false,
-        height: 200,
-        width: 180,
+        // height: 200,
+        // width: 180,
         fill: 'transparent',
         backgroundColor: {
           backgroundColor: '#262932',
