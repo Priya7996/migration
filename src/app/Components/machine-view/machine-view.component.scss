@@ -886,6 +886,9 @@ height: 47px;
     border-right: 1px solid #333742;
     padding-right: 10px;
     margin-right: 10px;
+    p span{
+      display: flex;
+    }
     
 }
 h5{
@@ -903,6 +906,13 @@ h5{
 @media only screen and (max-width:768px) {
 .sec_last .row_sec .col.brdr_right {
     border-right: 1px solid #4a5060;
+}
+.row_sec {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.row_sec.main_header .clock_all .clock_top.time h4 {
+  font-size: 16px;
 }
   .sec_padding_top{
     .dashbaord_sec{
@@ -928,7 +938,24 @@ h5{
     }
   }
 }
-
+@media only screen and (max-width:600px) {
+  .sec_last .row_sec .col.brdr_right {
+      border-right: 1px solid #4a5060;
+  }
+  .sec_padding_top .dashbaord_sec .content-inner .wrapper_inner .main_row .main_col .bg_grad .row_sec .col{
+    width: 100%;
+  }
+  .clock_top.date{
+    text-align: left;
+  }
+  #container,#container2{
+    width: 150px!important;
+  }
+  .row_sec {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
 // Custom styles
 .axis_txt{
   display: flex;
