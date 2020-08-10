@@ -35,8 +35,10 @@ export class MachineViewComponent implements OnInit {
     this.service.dashboard_full(this.machine).subscribe(res =>{
       this.machie_status =res;
       this.machie_statusnew =this.machie_status.puls_code;
+      console.log(this.machie_statusnew); 
       this.machie_statustemp =this.machie_status.axis_tem;
-      
+      console.log(this.machie_statustemp);
+
       this.testgokul = this.machie_status.axis_load;
       this.testsample = this.machie_status.puls_code;
       this.myLoader = false;

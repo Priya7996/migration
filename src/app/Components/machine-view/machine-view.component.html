@@ -210,31 +210,31 @@
                                         <span class="mac_ut_time">{{machie_status?.total_run_time}}</span>
                                     </div>
                                 </div>
-
+ 
                                 <div class="bg_grad donut_small bg_grad_temp">
                                     <h2>Pulse Coder Temperature</h2>
-                                    <div class="row_sec temperature" *ngFor="let puls of machie_statusnew | keyvalue">
+                                    <div class="row_sec temperature" *ngFor="let pu of machie_statusnew | keyvalue">
                                         <div class="col brdr_right axis_display">
                                             <div class="gradient-wrapper servo_motor_chart">
-                                                <circle-progress [percent]=puls.value [radius]="100" [outerStrokeWidth]="16"
+                                                <circle-progress [percent]=pu.value [radius]="100" [outerStrokeWidth]="16"
                                                     [innerStrokeWidth]="false" [outerStrokeColor]="'#48ba46'"
                                                     [animation]="true" [animationDuration]="300"></circle-progress>
                                             </div>
-                                            <p>x_axis</p>
+                                            <p>{{pu.key}}</p>
                                         </div>
                                       
                                     </div>
                                 </div>
                                 <div class="bg_grad donut_small bg_grad_temp">
                                     <h2>Servo Motor Temperature</h2>
-                                    <div class="row_sec temperature" *ngFor="let temp of machie_statustemp | keyvalue" >
+                                    <div class="row_sec temperature" *ngFor="let te of machie_statustemp | keyvalue" >
                                         <div class="col brdr_right axis_display">
                                             <div class="gradient-wrapper servo_motor_chart">
-                                                <circle-progress [percent]=temp.value [radius]="100" [outerStrokeWidth]="16"
+                                                <circle-progress [percent]=te.value [radius]="100" [outerStrokeWidth]="16"
                                                     [innerStrokeWidth]="false" [outerStrokeColor]="'#48ba46'"
                                                     [animation]="true" [animationDuration]="300"></circle-progress>
                                             </div>
-                                            <p>x_axis</p>
+                                            <p>{{te.key}}</p>
                                         </div>
                                       
                                     </div>
