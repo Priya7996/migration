@@ -239,6 +239,28 @@
                                       
                                     </div>
                                 </div>
+
+                    <div class="bg_grad donut_small bg_grad_temp">
+                        <h5 style="font-size: 20px">Spindle</h5>
+                        <div class="row align-items-center brdr_right">
+                          <div class="col-sm-6 text-center">
+                            <div class="gradient-wrapper2"  >
+                                <circle-progress [percent]=machie_status?.spindle_load [radius]="100" [outerStrokeWidth]="16"
+                                                    [innerStrokeWidth]="false" [outerStrokeColor]="'#48ba46'"
+                                                    [animation]="true" [animationDuration]="300"></circle-progress>
+                            </div>
+                            <p style="font-size: 14px; font-weight: 800">Load</p>
+                          </div>
+                          <div class="col-sm-6 text-center brdr_left">
+                            <div class="gradient-wrapper8">
+                                <circle-progress [percent]=machie_status?.sp_temp [radius]="100" [outerStrokeWidth]="16"
+                                                    [innerStrokeWidth]="false" [outerStrokeColor]="'#48ba46'"
+                                                    [animation]="true" [animationDuration]="300"></circle-progress>
+                            </div>
+                            <p style="font-size: 14px; font-weight: 800">Motor Temperature</p>
+                          </div>
+                        </div>
+                     </div>
                             </div>
                         </div>
                         <!-- main row end -->
