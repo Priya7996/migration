@@ -27,6 +27,7 @@ export class MachineViewComponent implements OnInit {
   machie_statusnew;
   machie_statustemp;
   sp_speed;
+  machi_job_parts;
   constructor(private nav:NavbarService,private route:ActivatedRoute,private service:MachineViewService) {
     this.nav.show();
     setInterval(() => {this.today = Date.now()}, 1);
@@ -35,10 +36,9 @@ export class MachineViewComponent implements OnInit {
     this.service.dashboard_full(this.machine).subscribe(res =>{
       this.machie_status =res;
       this.machie_statusnew =this.machie_status.puls_code;
-      console.log(this.machie_status.spindle_load); 
-      console.log(this.machie_status.sp_temp);
+      this.machi_job_parts = this.machie_status.job_wise_parts;
+      console.log(this.machi_job_parts)
       this.machie_statustemp =this.machie_status.axis_tem;
-
       this.testgokul = this.machie_status.axis_load;
       this.testsample = this.machie_status.puls_code;
       this.myLoader = false;

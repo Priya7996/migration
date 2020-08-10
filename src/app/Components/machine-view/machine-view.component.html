@@ -73,7 +73,7 @@
                                         <span class="machine_status" *ngIf="machie_status?.machine_status =='null'">No Data
                                         </span>
                                     </div>
-                                    <h5>6140-(002946140B-30 SFG-TU1)</h5>
+                                    <h5>{{machie_status?.job_name}}</h5>
                                 </div>
                                 <div class="gradient-wrapper">
                                     <div class="circle_progress_wrapper utilization_chart">
@@ -116,9 +116,9 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr class="ng-scope">
-                                                        <td>6140</td>
-                                                        <td>12</td>
+                                                    <tr class="ng-scope" *ngFor="let parts of machi_job_parts | keyvalue">
+                                                        <td>{{parts.key}}</td>
+                                                        <td>{{parts.value}}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
