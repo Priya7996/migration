@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarService} from '../../Nav/navbar.service';
 
 @Component({
   selector: 'app-part-doucumentation',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PartDoucumentationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private nav:NavbarService) {
+    this.nav.show()
+
+   }
 
   ngOnInit() {
   }
