@@ -73,7 +73,7 @@
                                         <span class="machine_status" *ngIf="machie_status?.machine_status =='null'">No Data
                                         </span>
                                     </div>
-                                    <h5>6140-(002946140B-30 SFG-TU1)</h5>
+                                    <h5>{{machie_status?.job_name}}</h5>
                                 </div>
                                 <div class="gradient-wrapper">
                                     <div class="circle_progress_wrapper utilization_chart">
@@ -116,9 +116,9 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr class="ng-scope">
-                                                        <td>6140</td>
-                                                        <td>12</td>
+                                                    <tr class="ng-scope" *ngFor="let parts of machi_job_parts | keyvalue">
+                                                        <td>{{parts.key}}</td>
+                                                        <td>{{parts.value}}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -151,12 +151,19 @@
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-12 col-xs-12 main_col sec_center">
-                                <div class="speed_sec">
-                                    <figure class="highcharts-figure" style="height:200px ;overflow: hidden;">
-                                        <div id="container" class="chart-container" style="width:300px;height:300px"></div>
-                                        <div id="container2" class="chart-container" style="width:300px;height: 300px;"></div>
-                                    </figure>
+                                <div class="rpm_holder">                          
+                                    <div class="container">
+                                      <div class="row">
+                                          <div class="col-sm-6">Spindle Speed
+                                            <div id="containergokul" style="width:100%; height:200px; margin: 0 auto"></div>
+                                          </div>
+                                          <div class="col-sm-6">Feed Rate
+                                            <div id="FeedRategokul" style="width:100%; height:200px; margin: 0 auto"></div>
+                                          </div>
+                                      </div>
+                                    </div>
                                 </div>
+<<<<<<< HEAD
                                 <div>
                                     <h2>Servo Load</h2>
 
@@ -170,12 +177,26 @@
                                         <div *ngFor="let mach of repeatchart; index as keyvalue"
                                             style="display: block;"></div>
 
+=======
+                                <div  class="col-sm-4">
+                                    <h2 style="font-size: 20px">Servo Load </h2>
+                                    <div  style="font-size:14px; height: 227px">
+                                        <div class="axis_txt" *ngFor="let mach of testgokul | keyvalue">
+                                             {{mach.key }}
+                                             <span class="axis_txt float-right">{{mach.value}} %</span>
+                                               
+                                        <div *ngFor="let mac of repeatchart; index as keyvalue"></div>
+                                        
+>>>>>>> 1dcc11e9ddffc11b60c4e85980457e922fc9f834
                                         <div class="axis"
-                                            [ngClass]="{'ax_three' :testgokul.axis_tem_count == null, 'ax_three' :testgokul.axis_tem_count =='3', 'two' :testgokul.axis_tem_count =='2', 'sd' :testgokul.axis_tem_count =='4', 'sdj' :testgokul.axis_tem_count =='5'}">
+                                            [ngClass]="{'ax_three' :testgokul?.axis_tem_count == null, 'ax_three' :testgokul?.axis_tem_count =='3', 'two' :testgokul?.axis_tem_count =='2', 'sd' :testgokul?.axis_tem_count =='4', 'sdj' :testgokul?.axis_tem_count =='5'}">
                                             <div *ngFor="let no of repeatchart; let i = index" [attr.data-index]="i">
                                                 <span
                                                     [ngClass]="no < 100 ? ( no < 80 ? 'green' : 'yellow' ) : 'red'"></span>
                                             </div>
+                                        </div>
+
+
                                         </div>
                                     </div>
 
@@ -188,10 +209,6 @@
                                         <div class="brdr_top mac_alarm_innr"> {{machie_status?.alarm}}</div>
                                     </div>
                                 </div>
-                                
-
-                                
-
                             </div>
 
                             <div class="col-lg-4 col-md-12 col-xs-12 main_col sec_last">
@@ -209,97 +226,57 @@
                                         <span class="mac_ut_time">{{machie_status?.total_run_time}}</span>
                                     </div>
                                 </div>
-
-
-
+ 
                                 <div class="bg_grad donut_small bg_grad_temp">
                                     <h2>Pulse Coder Temperature</h2>
-                                    <div *ngFor="let machh of testsample | keyvalue">
-                                        <div class="row_sec temperature"
-                                            *ngFor="let machh of repeatpulse; index as keyvalue"
-                                            style="display: block;">
-
-                                            <div class="col brdr_right axis_display"
-                                                [ngClass]="{col_sm_4 :testsample.axis_tem_count =='3', col_sm_6 :testsample.axis_tem_count =='2', col_sm_3 :testsample.axis_tem_count =='4', col_sm_2 :testsample.axis_tem_count =='5'}">
-                                                <div *ngFor="let no of repeatpulse; let i = index"
-                                                    [attr.data-index]="i">
-                                                    <span
-                                                        [ngClass]="no < 100 ? ( no < 80 ? 'green' : 'yellow' ) : 'red'"></span>
-                                                    <div class="gradient-wrapper pulse_coder_chart">
-                                                        <circle-progress [percent]=val [radius]="100"
-                                                            [outerStrokeWidth]="16" [innerStrokeWidth]="false"
-                                                            [outerStrokeColor]="'#48ba46'" [animation]="true"
-                                                            [animationDuration]="300"></circle-progress>
-                                                    </div>
-
-                                                </div>
-                                                <p>{{machh.key}}</p>
+                                    <div class="row_sec temperature" *ngFor="let pu of machie_statusnew | keyvalue">
+                                        <div class="col brdr_right axis_display">
+                                            <div class="gradient-wrapper servo_motor_chart">
+                                                <circle-progress [percent]=pu.value [radius]="100" [outerStrokeWidth]="16"
+                                                    [innerStrokeWidth]="false" [outerStrokeColor]="'#48ba46'"
+                                                    [animation]="true" [animationDuration]="300"></circle-progress>
                                             </div>
-
+                                            <p>{{pu.key}}</p>
                                         </div>
+                                      
                                     </div>
                                 </div>
-
-                                <!-- <div class="bg_grad donut_small bg_grad_temp">
-                                    <h5 style="font-size: 20px">{{'pulsecodetemperature' | translate }}</h5>
-                                    <div class="row align-items-center">
-                                      <div class="text-center brdr_right" ng-class="{col_sm_4 :datas.axis_tem_count =='3', col_sm_6 :datas.axis_tem_count =='2', col_sm_3 :datas.axis_tem_count =='4', col_sm_2 :datas.axis_tem_count =='5'}" ng-repeat="(key,val) in datas.puls_code">
-                                        <div class="gradient-wrapper2">
-                                         <percent-display percent=val  side="50" colors="#27272e " class="spnload"></percent-display>
-                                        </div>
-                                        <p>{{key}}</p>
-                                      </div>                                                                                
-                                     </div>
-                                  </div> -->
-
-
                                 <div class="bg_grad donut_small bg_grad_temp">
                                     <h2>Servo Motor Temperature</h2>
-                                    <div class="row_sec temperature">
+                                    <div class="row_sec temperature" *ngFor="let te of machie_statustemp | keyvalue" >
                                         <div class="col brdr_right axis_display">
                                             <div class="gradient-wrapper servo_motor_chart">
-                                                <circle-progress [percent]="100" [radius]="100" [outerStrokeWidth]="16"
+                                                <circle-progress [percent]=te.value [radius]="100" [outerStrokeWidth]="16"
                                                     [innerStrokeWidth]="false" [outerStrokeColor]="'#48ba46'"
                                                     [animation]="true" [animationDuration]="300"></circle-progress>
                                             </div>
-                                            <p>x_axis</p>
+                                            <p>{{te.key}}</p>
                                         </div>
-                                        <div class="col axis_display">
-                                            <div class="gradient-wrapper servo_motor_chart">
-                                                <circle-progress [percent]="100" [radius]="100" [outerStrokeWidth]="16"
-                                                    [innerStrokeWidth]="false" [outerStrokeColor]="'#48ba46'"
-                                                    [animation]="true" [animationDuration]="300"></circle-progress>
-                                            </div>
-                                            <p>y_axis</p>
-                                        </div>
+                                      
                                     </div>
                                 </div>
 
-                                <!-- <div class="bg_grad donut_small bg_grad_temp">
-                                    <h2>Spindle</h2>
-                                    <div class="row_sec temperature">
-                                        <div class="col brdr_right axis_display">
-                                            <div class="gradient-wrapper">
-                                                <circle-progress [percent]="100" [radius]="100" [outerStrokeWidth]="16"
+                    <div class="bg_grad donut_small bg_grad_temp">
+                        <h5 style="font-size: 20px">Spindle</h5>
+                        <div class="row align-items-center brdr_right">
+                          <div class="col-sm-6 text-center">
+                            <div class="gradient-wrapper2"  >
+                                <circle-progress [percent]=machie_status?.spindle_load [radius]="100" [outerStrokeWidth]="16"
                                                     [innerStrokeWidth]="false" [outerStrokeColor]="'#48ba46'"
                                                     [animation]="true" [animationDuration]="300"></circle-progress>
-                                            </div>
-
-                                            <p>Load</p>
-                                        </div>
-                                        <div class="col axis_display">
-                                            <div class="gradient-wrapper">
-                                                <circle-progress [percent]="100" [radius]="100" [outerStrokeWidth]="16"
+                            </div>
+                            <p style="font-size: 14px; font-weight: 800">Load</p>
+                          </div>
+                          <div class="col-sm-6 text-center brdr_left">
+                            <div class="gradient-wrapper8">
+                                <circle-progress [percent]=machie_status?.sp_temp [radius]="100" [outerStrokeWidth]="16"
                                                     [innerStrokeWidth]="false" [outerStrokeColor]="'#48ba46'"
                                                     [animation]="true" [animationDuration]="300"></circle-progress>
-                                            </div>
-                                            <p>Motor Temperature</p>
-                                        </div>
-                                    </div>
-
-                                </div> -->
-
-
+                            </div>
+                            <p style="font-size: 14px; font-weight: 800">Motor Temperature</p>
+                          </div>
+                        </div>
+                     </div>
                             </div>
                         </div>
                         <!-- main row end -->

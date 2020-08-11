@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NavbarService} from '../../Nav/navbar.service';
+
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-part-doucumentation',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./part-doucumentation.component.scss']
 })
 export class PartDoucumentationComponent implements OnInit {
+  dataSource  = new MatTableDataSource;
+  constructor(private nav:NavbarService) {
+    this.nav.show()
 
-  constructor() { }
+   }
 
   ngOnInit() {
+  
   }
 
 }

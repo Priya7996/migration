@@ -37,8 +37,8 @@
                                             (click)="dashboard(mac?.mac_name,mac?.machine_id)" [ngClass]="{
                                                 'stop_wrap': mac?.machine_status =='100',
                                                 'running_wrap': mac?.machine_status =='3',
-                                                'idle_wrap': mac?.machine_status !='3' && mac?.machine_status !='100' && mac?.machine_status != 'null',
-                                                'nodata_wrap': mac?.machine_status =='null'
+                                                'idle_wrap': mac?.machine_status !='3' && mac?.machine_status !='100' && mac?.machine_status != null,
+                                                'nodata_wrap': mac?.machine_status == null
                                             }">
                                             <div class="current_running">
 

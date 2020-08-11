@@ -1,0 +1,48 @@
+.filter_btn{
+    &.btn_orange {
+        background-color: #f58632;
+        border-color: #f58632;
+        color: #fff;
+        margin-top: 5px;
+    }
+}
+
+.drawing_img{
+    max-width: 100%;
+    position: relative;
+ img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border: 1px solid #e7e7e7;
+    padding: 5px;
+    border-radius: 3px;
+ }
+ .share_icon{
+    position: absolute;
+    right: -10px;
+    bottom: -10px;
+     a{
+        text-align: center;
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(74, 60, 247, .19);
+        color: #8d5716;
+        display: inline-block;
+        background: #ffd29e;
+        border: 1px solid #ffad4b;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        position: relative;
+        cursor: pointer;
+         i{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #8d5716;
+            font-weight: 600;
+            font-size: 15px; 
+         }
+     }
+ }
+}
