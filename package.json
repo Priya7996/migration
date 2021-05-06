@@ -39,7 +39,7 @@
     "file-saver": "^2.0.2",
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
-    "highcharts": "^8.0.0",
+    "highcharts": "^9.0.0",
     "highcharts-angular": "^2.4.0",
     "ng-circle-progress": "^1.5.1",
     "ng2-codemirror": "^1.1.3",
